@@ -753,12 +753,12 @@
   <div class="splash-screen">
     <div class="splash-content">
       <div class="splash-icon">
-        <i class="fas fa-chart-line"></i>
+        <i class="fas fa-user-check"></i>
       </div>
-      <h1>Effective</h1>
-      <p class="sub">Bienvenid@s</p>
+      <h1 id="splashTitle">Usuario Coppel</h1>
+      <p class="sub" id="splashSubtitle">Acceso autorizado</p>
       <div class="splash-loader"></div>
-      <p class="splash-footer">Cargando</p>
+      <p class="splash-footer" id="splashFooter">Iniciando sesión...</p>
     </div>
   </div>
 
@@ -855,6 +855,29 @@
   </div>
 
   <script>
+    // =========================
+    // ANIMACIÓN DE ACCESO COPPEL
+    // =========================
+    const splashTitle = document.getElementById("splashTitle");
+    const splashSubtitle = document.getElementById("splashSubtitle");
+    const splashFooter = document.getElementById("splashFooter");
+
+    setTimeout(() => {
+      splashSubtitle.textContent = "Verificando credenciales...";
+      splashFooter.textContent = "Espere un momento";
+    }, 700);
+
+    setTimeout(() => {
+      splashSubtitle.textContent = "Cargando entorno Coppel...";
+      splashFooter.textContent = "Preparando Dashboard";
+    }, 1500);
+
+    setTimeout(() => {
+      splashTitle.textContent = "Bienvenido";
+      splashSubtitle.textContent = "Redirigiendo al Dashboard de Coppel...";
+      splashFooter.textContent = "Carga completada";
+    }, 2300);
+
     // =========================
     // PANTALLA COMPLETA
     // =========================
