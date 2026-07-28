@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coppel | Dashboard desarrollado por Effective</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+  <style>
+    :root {
+      --coppel-blue: #0b4ea2;
+      --coppel-blue-dark: #073b7c;
+      --coppel-blue-soft: #eaf2ff;
+      --coppel-yellow: #ffdd22;
+      --coppel-yellow-soft: #fff8c7;
+      --white: #ffffff;
+      --ink: #152033;
+      --muted: #64748b;
+      --line: #dce5f1;
+      --surface: rgba(255, 255, 255, 0.92);
+      --shadow: 0 22px 70px rgba(7, 59, 124, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "Inter", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255, 221, 34, 0.22), transparent 22%),
+        radial-gradient(circle at 92% 5%, rgba(11, 78, 162, 0.14), transparent 25%),
+        linear-gradient(145deg, #f8fbff 0%, #eef5ff 50%, #ffffff 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(11, 78, 162, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11, 78, 162, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* =====================================================
+       LOGOTIPO COPPEL ACTUAL RECREADO EN HTML/CSS
+    ===================================================== */
+    .coppel-logo {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 12px;
+      color: var(--coppel-blue);
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .coppel-symbol {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding-bottom: 6px;
+    }
+
+    .coppel-symbol span {
+      display: block;
+      border-radius: 50%;
+      background: var(--coppel-yellow);
+      box-shadow: 0 4px 12px rgba(255, 221, 34, 0.25);
+    }
+
+    .coppel-symbol .circle-lg {
+      width: 27px;
+      height: 27px;
+    }
+
+    .coppel-symbol .circle-md {
+      width: 17px;
+      height: 17px;
+    }
+
+    .coppel-symbol .circle-sm {
+      width: 14px;
+      height: 14px;
+    }
+
+    .coppel-wordmark {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    /* =====================================================
+       SPLASH / EXPERIENCIA DE ENTRADA
+    ===================================================== */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(255, 221, 34, 0.3), transparent 25%),
+        linear-gradient(145deg, #062f66, var(--coppel-blue) 52%, #0f62c9);
+      animation: splashExit 1s ease forwards;
+      animation-delay: 4.2s;
+    }
+
+    .splash-screen::before,
+    .splash-screen::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(3px);
+      opacity: 0.22;
+      background: var(--coppel-yellow);
+      animation: floatShape 5s ease-in-out infinite;
+    }
+
+    .splash-screen::before {
+      width: 330px;
+      height: 330px;
+      left: -120px;
+      bottom: -100px;
+    }
+
+    .splash-screen::after {
+      width: 220px;
+      height: 220px;
+      right: -70px;
+      top: -70px;
+      animation-delay: 1.3s;
+    }
+
+    .splash-panel {
+      position: relative;
+      z-index: 2;
+      width: min(590px, calc(100% - 36px));
+      padding: 52px 52px 38px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 35px 100px rgba(0, 19, 54, 0.34);
+      animation: panelEnter 0.9s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .splash-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 7px;
+      background: linear-gradient(90deg,
+        var(--coppel-yellow) 0 27%,
+        var(--coppel-blue) 27% 100%);
+    }
+
+    .splash-logo {
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .splash-logo .coppel-wordmark {
+      font-size: 54px;
+    }
+
+    .splash-logo .circle-lg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .splash-logo .circle-md {
+      width: 22px;
+      height: 22px;
+    }
+
+    .splash-logo .circle-sm {
+      width: 18px;
+      height: 18px;
+    }
+
+    .client-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(11, 78, 162, 0.13);
+      border-radius: 999px;
+      color: var(--coppel-blue);
+      background: var(--coppel-blue-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .splash-panel h1 {
+      margin-bottom: 12px;
+      color: var(--ink);
+      font-size: clamp(28px, 5vw, 43px);
+      font-weight: 850;
+      letter-spacing: -1.6px;
+    }
+
+    .splash-panel .subtitle {
+      min-height: 22px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      transition: opacity 0.25s ease;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: #e7edf6;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--coppel-yellow), #ffd000, var(--coppel-blue));
+      animation: progressLoad 3.5s cubic-bezier(.22, .8, .25, 1) forwards;
+    }
+
+    .splash-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 20px;
+      color: #7a8798;
+      font-size: 11px;
+    }
+
+    .effective-signature {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .effective-mark {
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 7px;
+      color: #111827;
+      background: linear-gradient(135deg, #d4a843, #f0d078);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    /* =====================================================
+       ESTRUCTURA GENERAL
+    ===================================================== */
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 24px 0 26px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 88px;
+      margin-bottom: 22px;
+      padding: 18px 24px;
+      border: 1px solid rgba(11, 78, 162, 0.1);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: 0 12px 35px rgba(7, 59, 124, 0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .brand-divider {
+      width: 1px;
+      height: 42px;
+      background: var(--line);
+    }
+
+    .solution-title {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .solution-title strong {
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    .solution-title span {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.6px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-pill,
+    .date-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .date-pill {
+      color: var(--coppel-blue-dark);
+      background: var(--coppel-blue-soft);
+    }
+
+    .status-pill {
+      color: #166534;
+      background: #ecfdf3;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.11);
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    /* =====================================================
+       ENCABEZADO DEL DASHBOARD
+    ===================================================== */
+    .dashboard-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 0 4px 18px;
+    }
+
+    .dashboard-heading .eyebrow {
+      margin-bottom: 6px;
+      color: var(--coppel-blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .dashboard-heading h2 {
+      color: var(--ink);
+      font-size: clamp(24px, 4vw, 36px);
+      letter-spacing: -1.2px;
+    }
+
+    .dashboard-heading p {
+      max-width: 650px;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .partner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      padding: 10px 14px;
+      border: 1px solid rgba(212, 168, 67, 0.25);
+      border-radius: 12px;
+      color: #765816;
+      background: #fffaf0;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* =====================================================
+       CONTENEDOR DEL REPORTE
+    ===================================================== */
+    .report-card {
+      overflow: hidden;
+      border: 1px solid rgba(11, 78, 162, 0.12);
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .report-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 58px;
+      padding: 10px 16px 10px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .toolbar-icon {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 10px;
+      color: var(--coppel-blue);
+      background: var(--coppel-yellow-soft);
+    }
+
+    .toolbar-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .toolbar-copy strong {
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .toolbar-copy span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .fullscreen-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 0;
+      border-radius: 10px;
+      color: #ffffff;
+      background: var(--coppel-blue);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .fullscreen-btn:hover {
+      background: var(--coppel-blue-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(11, 78, 162, 0.18);
+    }
+
+    .iframe-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 520px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .iframe-wrap iframe {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
+    /* =====================================================
+       MODAL PANTALLA COMPLETA
+    ===================================================== */
+    .fullscreen-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99998;
+      display: none;
+      flex-direction: column;
+      background: #f4f8fe;
+    }
+
+    .fullscreen-modal.active {
+      display: flex;
+      animation: modalEnter 0.3s ease;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 66px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .modal-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .modal-title .coppel-wordmark {
+      font-size: 24px;
+      letter-spacing: -1.2px;
+    }
+
+    .modal-title .coppel-symbol {
+      gap: 3px;
+      padding-bottom: 4px;
+    }
+
+    .modal-title .circle-lg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .modal-title .circle-md {
+      width: 12px;
+      height: 12px;
+    }
+
+    .modal-title .circle-sm {
+      width: 10px;
+      height: 10px;
+    }
+
+    .modal-title-copy {
+      padding-left: 14px;
+      border-left: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .close-btn {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: var(--coppel-blue);
+      background: var(--coppel-blue-soft);
+      cursor: pointer;
+      font-size: 17px;
+      transition: 0.25s ease;
+    }
+
+    .close-btn:hover {
+      color: #ffffff;
+      background: var(--coppel-blue);
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      flex: 1;
+      min-height: 0;
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 18px;
+      padding: 18px 6px 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-effective {
+      color: #8a6414;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 18px;
+    }
+
+    /* =====================================================
+       ANIMACIONES
+    ===================================================== */
+    @keyframes panelEnter {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes splashExit {
+      0%, 80% {
+        opacity: 1;
+        visibility: visible;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    @keyframes progressLoad {
+      0% { width: 0; }
+      35% { width: 38%; }
+      70% { width: 75%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes floatShape {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-18px) scale(1.04); }
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
+    @keyframes modalEnter {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media (max-width: 900px) {
+      .shell {
+        width: min(100% - 24px, 1480px);
+        padding-top: 12px;
+      }
+
+      .topbar,
+      .dashboard-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .topbar {
+        padding: 18px;
+      }
+
+      .topbar-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .partner-badge {
+        align-self: flex-start;
+      }
+
+      .iframe-wrap {
+        min-height: 460px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .splash-panel {
+        padding: 40px 24px 30px;
+      }
+
+      .splash-logo .coppel-wordmark {
+        font-size: 41px;
+      }
+
+      .coppel-wordmark {
+        font-size: 27px;
+      }
+
+      .topbar-brand {
+        gap: 13px;
+      }
+
+      .brand-divider {
+        height: 34px;
+      }
+
+      .solution-title strong {
+        font-size: 13px;
+      }
+
+      .date-pill {
+        display: none;
+      }
+
+      .dashboard-heading h2 {
+        font-size: 27px;
+      }
+
+      .fullscreen-btn span {
+        display: none;
+      }
+
+      .iframe-wrap {
+        min-height: 390px;
+      }
+
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-right {
+        flex-wrap: wrap;
+      }
+
+      .modal-title-copy {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       EXPERIENCIA DE ACCESO PARA CLIENTE COPPEL
+  ====================================================== -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-panel">
+
+     
+
+
+      <h1 id="splashTitle">Bienvenido</h1>
+
+      <p class="subtitle" id="splashSubtitle">
+        Validando acceso seguro al entorno de Coppel
+      </p>
+
+      <div class="progress-track">
+        <div class="progress-bar"></div>
+      </div>
+
+      <div class="splash-meta">
+        <span id="splashStatus">
+          <i class="fas fa-circle-notch fa-spin"></i>
+          Iniciando sesión
+        </span>
+
+        <span class="effective-signature">
+          <span class="effective-mark">E</span>
+          <strong>Effective</strong>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       MODAL PANTALLA COMPLETA
+  ====================================================== -->
+  <div class="fullscreen-modal" id="fullscreenModal">
+    <div class="modal-header">
+
+      <div class="modal-title">
+        <div class="coppel-logo" aria-label="Coppel">
+          <div class="coppel-symbol" aria-hidden="true">
+            <span class="circle-lg"></span>
+            <span class="circle-md"></span>
+            <span class="circle-sm"></span>
+          </div>
+          <span class="coppel-wordmark">Coppel</span>
+        </div>
+
+        <span class="modal-title-copy">
+          Dashboard · Desarrollado por Effective
+        </span>
+      </div>
+
+      <button class="close-btn" id="closeFullscreen" aria-label="Cerrar pantalla completa">
+        <i class="fas fa-times"></i>
+      </button>
+
+    </div>
+
+    <div class="modal-body">
+      <iframe
+        id="fullscreenFrame"
+        title="Dashboard Coppel en pantalla completa"
+        src="https://app.powerbi.com/reportEmbed?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d&navContentPaneEnabled=false&filterPaneEnabled=false"
+        allowfullscreen="true">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+  ====================================================== -->
+  <main class="shell">
+
+    <header class="topbar">
+
+      <div class="topbar-brand">
+        <div class="coppel-logo" aria-label="Coppel">
+          <div class="coppel-symbol" aria-hidden="true">
+            <span class="circle-lg"></span>
+            <span class="circle-md"></span>
+            <span class="circle-sm"></span>
+          </div>
+          <span class="coppel-wordmark">Coppel</span>
+        </div>
+
+        <div class="brand-divider"></div>
+
+        <div class="solution-title">
+          <strong>Bienvenido</strong>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <span class="date-pill">
+          <i class="far fa-calendar-alt"></i>
+          <span id="currentDate">Actualización reciente</span>
+        </span>
+
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          Servicio activo
+        </span>
+      </div>
+
+    </header>
+
+    <section class="report-card">
+
+      <div class="report-toolbar">
+        <div class="toolbar-left">
+          <div class="toolbar-icon">
+            <i class="fas fa-chart-column"></i>
+          </div>
+
+          <div class="toolbar-copy">
+            <strong>Panel de resultados</strong>
+            <span>Vista autorizada para cliente Coppel</span>
+          </div>
+        </div>
+
+        <button class="fullscreen-btn" id="fullscreenBtn">
+          <i class="fas fa-expand"></i>
+          <span>Pantalla completa</span>
+        </button>
+      </div>
+
+      <div class="iframe-wrap">
+        <iframe
+          id="dashboardFrame"
+          title="Dashboard Ejecutivo Coppel"
+          src="https://app.powerbi.com/reportEmbed?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d&navContentPaneEnabled=false&filterPaneEnabled=false"
+          allowfullscreen="true">
+        </iframe>
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <span class="footer-effective">effective</span>
+        <span>by Coppel</span>
+      </div>
+
+      <div class="footer-right">
+        <span>Información confidencial</span>
+        <span>Acceso exclusivo</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // =====================================================
+    // ANIMACIÓN DE EXPERIENCIA CLIENTE COPPEL
+    // =====================================================
+    const splashTitle = document.getElementById("splashTitle");
+    const splashSubtitle = document.getElementById("splashSubtitle");
+    const splashStatus = document.getElementById("splashStatus");
+
+    setTimeout(() => {
+      splashSubtitle.textContent = "Verificando permisos del cliente";
+      splashStatus.innerHTML =
+        '<i class="fas fa-user-shield"></i> Acceso autorizado';
+    }, 900);
+
+    setTimeout(() => {
+      splashSubtitle.textContent = "Preparando indicadores y reportes de Coppel";
+      splashStatus.innerHTML =
+        '<i class="fas fa-chart-line"></i> Cargando información';
+    }, 1900);
+
+    setTimeout(() => {
+      splashTitle.textContent = "Todo está listo";
+      splashSubtitle.textContent = "Ingresando al Dashboard";
+      splashStatus.innerHTML =
+        '<i class="fas fa-circle-check"></i> Entorno disponible';
+    }, 3100);
+
+    // =====================================================
+    // FECHA AUTOMÁTICA
+    // =====================================================
+    const currentDate = document.getElementById("currentDate");
+
+    const formattedDate = new Intl.DateTimeFormat("es-MX", {
+      month: "long",
+      year: "numeric"
+    }).format(new Date());
+
+    currentDate.textContent =
+      formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+
+    // =====================================================
+    // PANTALLA COMPLETA
+    // =====================================================
+    const fullscreenBtn = document.getElementById("fullscreenBtn");
+    const fullscreenModal = document.getElementById("fullscreenModal");
+    const closeFullscreen = document.getElementById("closeFullscreen");
+
+    function openFullscreen() {
+      fullscreenModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeFullscreenModal() {
+      fullscreenModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    fullscreenBtn.addEventListener("click", openFullscreen);
+    closeFullscreen.addEventListener("click", closeFullscreenModal);
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key === "Escape" &&
+        fullscreenModal.classList.contains("active")
+      ) {
+        closeFullscreenModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
