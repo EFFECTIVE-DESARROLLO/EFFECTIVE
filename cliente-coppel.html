@@ -888,13 +888,14 @@
     let paginaActual = paginas[0];
 
     function generarEmbedURL(pageId) {
-      return "https://app.powerbi.com/reportEmbed" +
-        "?reportId=" + REPORT_ID +
-        "&autoAuth=true" +
-        "&ctid=" + TENANT_ID +
-        "&navContentPaneEnabled=false" +
-        "&filterPaneEnabled=false" +
-        "&pageName=" + pageId;
+     return "https://app.powerbi.com/reportEmbed" +
+    "?reportId=" + REPORT_ID +
+    "&autoAuth=true" +
+    "&ctid=" + TENANT_ID +
+    "&navContentPaneEnabled=false" +
+    "&filterPaneEnabled=false" +
+    "&actionBarEnabled=true" +
+    "&pageName=" + pageId;
     }
 
     function generarServiceURL(pageId) {
