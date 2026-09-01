@@ -1,1276 +1,3665 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coppel | Dashboard desarrollado por Effective</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
 
-  <style>
-    :root {
-      --coppel-blue: #0b4ea2;
-      --coppel-blue-dark: #073b7c;
-      --coppel-blue-soft: #eaf2ff;
-      --coppel-yellow: #ffdd22;
-      --coppel-yellow-soft: #fff8c7;
-      --white: #ffffff;
-      --ink: #152033;
-      --muted: #64748b;
-      --line: #dce5f1;
-      --shadow: 0 22px 70px rgba(7,59,124,.14);
-      --sidebar-width: 308px;
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Coppel | Centro de Inteligencia de Medios
+</title>
+
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+>
+
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+
+<style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --blue: #0b4ea2;
+
+    --blue-dark: #073b7c;
+
+    --blue-soft: #eaf2ff;
+
+    --yellow: #ffdd22;
+
+    --yellow-soft: #fff8c7;
+
+    --text: #152033;
+
+    --muted: #64748b;
+
+    --line: #dce5f1;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+
+body {
+
+    font-family:
+
+        "Inter",
+
+        Arial,
+
+        sans-serif;
+
+
+    background:
+
+        radial-gradient(
+
+            circle at 5% 10%,
+
+            rgba(255,221,34,.14),
+
+            transparent 24%
+
+        ),
+
+        radial-gradient(
+
+            circle at 95% 5%,
+
+            rgba(11,78,162,.10),
+
+            transparent 25%
+
+        ),
+
+        #eef5ff;
+
+}
+
+
+/* =========================================================
+   APP
+
+   Se reduce el alto deliberadamente
+   para que nunca sobrepase pantalla.
+========================================================= */
+
+.app {
+
+    width:
+
+        calc(100vw - 20px);
+
+
+    height:
+
+        calc(100vh - 20px);
+
+
+    margin:
+
+        10px;
+
+
+    display:
+
+        grid;
+
+
+    grid-template-rows:
+
+        68px
+
+        minmax(0, 1fr);
+
+
+    gap:
+
+        8px;
+
+
+    overflow:
+
+        hidden;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    width: 100%;
+
+    height: 68px;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        space-between;
+
+
+    padding:
+
+        0 22px;
+
+
+    background:
+
+        #ffffff;
+
+
+    border:
+
+        1px solid
+
+        rgba(11,78,162,.10);
+
+
+    border-radius:
+
+        18px;
+
+
+    box-shadow:
+
+        0 8px 25px
+
+        rgba(7,59,124,.07);
+
+}
+
+
+/* =========================================================
+   HEADER IZQUIERDO
+========================================================= */
+
+.header-left {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        17px;
+
+
+    min-width:
+
+        0;
+
+}
+
+
+/* =========================================================
+   LOGO COPPEL
+========================================================= */
+
+.coppel-logo {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        9px;
+
+
+    color:
+
+        var(--blue);
+
+
+    flex-shrink:
+
+        0;
+
+}
+
+
+.coppel-symbol {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        4px;
+
+}
+
+
+.coppel-symbol span {
+
+    display:
+
+        block;
+
+
+    border-radius:
+
+        50%;
+
+
+    background:
+
+        var(--yellow);
+
+}
+
+
+.circle-lg {
+
+    width: 24px;
+
+    height: 24px;
+
+}
+
+
+.circle-md {
+
+    width: 15px;
+
+    height: 15px;
+
+}
+
+
+.circle-sm {
+
+    width: 12px;
+
+    height: 12px;
+
+}
+
+
+.coppel-name {
+
+    font-size:
+
+        29px;
+
+
+    font-weight:
+
+        800;
+
+
+    letter-spacing:
+
+        -1.5px;
+
+}
+
+
+/* =========================================================
+   DIVISOR
+========================================================= */
+
+.divider {
+
+    width:
+
+        1px;
+
+
+    height:
+
+        36px;
+
+
+    background:
+
+        var(--line);
+
+
+    flex-shrink:
+
+        0;
+
+}
+
+
+/* =========================================================
+   TEXTO HEADER
+========================================================= */
+
+.header-copy {
+
+    min-width:
+
+        0;
+
+}
+
+
+.header-copy strong {
+
+    display:
+
+        block;
+
+
+    color:
+
+        var(--text);
+
+
+    font-size:
+
+        14px;
+
+
+    font-weight:
+
+        800;
+
+
+    white-space:
+
+        nowrap;
+
+}
+
+
+.header-copy span {
+
+    display:
+
+        block;
+
+
+    margin-top:
+
+        3px;
+
+
+    color:
+
+        var(--muted);
+
+
+    font-size:
+
+        10px;
+
+
+    white-space:
+
+        nowrap;
+
+}
+
+
+/* =========================================================
+   HEADER DERECHA
+========================================================= */
+
+.header-right {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        10px;
+
+
+    flex-shrink:
+
+        0;
+
+}
+
+
+.pill {
+
+    height:
+
+        34px;
+
+
+    padding:
+
+        0 12px;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        7px;
+
+
+    border-radius:
+
+        10px;
+
+
+    font-size:
+
+        10.5px;
+
+
+    font-weight:
+
+        700;
+
+
+    white-space:
+
+        nowrap;
+
+}
+
+
+.date-pill {
+
+    color:
+
+        var(--blue-dark);
+
+
+    background:
+
+        var(--blue-soft);
+
+}
+
+
+.status-pill {
+
+    color:
+
+        #166534;
+
+
+    background:
+
+        #ecfdf3;
+
+}
+
+
+.status-dot {
+
+    width:
+
+        8px;
+
+
+    height:
+
+        8px;
+
+
+    border-radius:
+
+        50%;
+
+
+    background:
+
+        #22c55e;
+
+
+    box-shadow:
+
+        0 0 0 4px
+
+        rgba(34,197,94,.10);
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+
+    width:
+
+        100%;
+
+
+    height:
+
+        100%;
+
+
+    min-height:
+
+        0;
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        290px
+
+        minmax(0, 1fr);
+
+
+    overflow:
+
+        hidden;
+
+
+    background:
+
+        #ffffff;
+
+
+    border:
+
+        1px solid
+
+        rgba(11,78,162,.12);
+
+
+    border-radius:
+
+        18px;
+
+
+    box-shadow:
+
+        0 16px 45px
+
+        rgba(7,59,124,.10);
+
+}
+
+
+.dashboard.collapsed {
+
+    grid-template-columns:
+
+        60px
+
+        minmax(0,1fr);
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    min-width:
+
+        0;
+
+
+    min-height:
+
+        0;
+
+
+    display:
+
+        grid;
+
+
+    grid-template-rows:
+
+        58px
+
+        minmax(0,1fr);
+
+
+    overflow:
+
+        hidden;
+
+
+    border-right:
+
+        1px solid
+
+        var(--line);
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #ffffff 0%,
+
+            #f8fbff 100%
+
+        );
+
+}
+
+
+/* =========================================================
+   SIDEBAR HEADER
+========================================================= */
+
+.sidebar-header {
+
+    height:
+
+        58px;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        space-between;
+
+
+    padding:
+
+        0 13px
+
+        0 17px;
+
+
+    border-bottom:
+
+        1px solid
+
+        var(--line);
+
+}
+
+
+.sidebar-copy strong {
+
+    display:
+
+        block;
+
+
+    color:
+
+        var(--blue-dark);
+
+
+    font-size:
+
+        13px;
+
+
+    font-weight:
+
+        800;
+
+}
+
+
+.sidebar-copy span {
+
+    display:
+
+        block;
+
+
+    margin-top:
+
+        2px;
+
+
+    color:
+
+        var(--muted);
+
+
+    font-size:
+
+        9.5px;
+
+}
+
+
+.dashboard.collapsed
+.sidebar-copy {
+
+    display:
+
+        none;
+
+}
+
+
+/* =========================================================
+   BOTÓN COLAPSAR
+========================================================= */
+
+.collapse-btn {
+
+    width:
+
+        32px;
+
+
+    height:
+
+        32px;
+
+
+    display:
+
+        grid;
+
+
+    place-items:
+
+        center;
+
+
+    flex-shrink:
+
+        0;
+
+
+    border:
+
+        0;
+
+
+    border-radius:
+
+        9px;
+
+
+    background:
+
+        var(--blue-soft);
+
+
+    color:
+
+        var(--blue);
+
+
+    cursor:
+
+        pointer;
+
+
+    transition:
+
+        .2s ease;
+
+}
+
+
+.collapse-btn:hover {
+
+    color:
+
+        #ffffff;
+
+
+    background:
+
+        var(--blue);
+
+}
+
+
+/* =========================================================
+   LISTA
+
+   SOLO ESTA PARTE TIENE SCROLL
+========================================================= */
+
+.pages {
+
+    min-height:
+
+        0;
+
+
+    overflow-y:
+
+        auto;
+
+
+    overflow-x:
+
+        hidden;
+
+
+    overscroll-behavior:
+
+        contain;
+
+
+    padding:
+
+        8px
+
+        7px
+
+        12px;
+
+
+    scrollbar-gutter:
+
+        stable;
+
+}
+
+
+.pages::-webkit-scrollbar {
+
+    width:
+
+        6px;
+
+}
+
+
+.pages::-webkit-scrollbar-track {
+
+    background:
+
+        transparent;
+
+}
+
+
+.pages::-webkit-scrollbar-thumb {
+
+    background:
+
+        #cbd9ea;
+
+
+    border-radius:
+
+        999px;
+
+}
+
+
+.pages::-webkit-scrollbar-thumb:hover {
+
+    background:
+
+        #9fb9d9;
+
+}
+
+
+/* =========================================================
+   BOTONES DE PÁGINA
+========================================================= */
+
+.page-btn {
+
+    position:
+
+        relative;
+
+
+    width:
+
+        100%;
+
+
+    min-height:
+
+        40px;
+
+
+    margin-bottom:
+
+        3px;
+
+
+    padding:
+
+        6px
+
+        10px;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        10px;
+
+
+    border:
+
+        0;
+
+
+    border-radius:
+
+        10px;
+
+
+    background:
+
+        transparent;
+
+
+    color:
+
+        #40516a;
+
+
+    font-family:
+
+        inherit;
+
+
+    font-size:
+
+        10.5px;
+
+
+    font-weight:
+
+        600;
+
+
+    text-align:
+
+        left;
+
+
+    cursor:
+
+        pointer;
+
+
+    transition:
+
+        .15s ease;
+
+}
+
+
+.page-btn:hover {
+
+    color:
+
+        var(--blue-dark);
+
+
+    background:
+
+        var(--blue-soft);
+
+}
+
+
+.page-btn.active {
+
+    color:
+
+        var(--blue-dark);
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            var(--yellow-soft),
+
+            #eef5ff
+
+        );
+
+}
+
+
+.page-btn.active::before {
+
+    content:
+
+        "";
+
+
+    position:
+
+        absolute;
+
+
+    left:
+
+        0;
+
+
+    top:
+
+        7px;
+
+
+    bottom:
+
+        7px;
+
+
+    width:
+
+        4px;
+
+
+    border-radius:
+
+        4px;
+
+
+    background:
+
+        var(--blue);
+
+}
+
+
+/* =========================================================
+   ICONO
+========================================================= */
+
+.page-icon {
+
+    width:
+
+        28px;
+
+
+    height:
+
+        28px;
+
+
+    display:
+
+        grid;
+
+
+    place-items:
+
+        center;
+
+
+    flex-shrink:
+
+        0;
+
+
+    border-radius:
+
+        8px;
+
+
+    color:
+
+        var(--blue);
+
+
+    background:
+
+        #eff5fd;
+
+}
+
+
+.page-btn.active
+.page-icon {
+
+    color:
+
+        var(--blue-dark);
+
+
+    background:
+
+        var(--yellow);
+
+}
+
+
+/* =========================================================
+   TEXTO PAGINA
+========================================================= */
+
+.page-label {
+
+    white-space:
+
+        nowrap;
+
+
+    overflow:
+
+        hidden;
+
+
+    text-overflow:
+
+        ellipsis;
+
+}
+
+
+.dashboard.collapsed
+.page-label {
+
+    display:
+
+        none;
+
+}
+
+
+.dashboard.collapsed
+.page-btn {
+
+    justify-content:
+
+        center;
+
+
+    padding-left:
+
+        0;
+
+
+    padding-right:
+
+        0;
+
+}
+
+
+/* =========================================================
+   ÁREA REPORTE
+========================================================= */
+
+.report-area {
+
+    min-width:
+
+        0;
+
+
+    min-height:
+
+        0;
+
+
+    display:
+
+        grid;
+
+
+    grid-template-rows:
+
+        58px
+
+        minmax(0,1fr);
+
+
+    overflow:
+
+        hidden;
+
+
+    background:
+
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.report-toolbar {
+
+    height:
+
+        58px;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        space-between;
+
+
+    padding:
+
+        0 13px
+
+        0 17px;
+
+
+    border-bottom:
+
+        1px solid
+
+        var(--line);
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #ffffff,
+
+            #f8fbff
+
+        );
+
+}
+
+
+.toolbar-left {
+
+    min-width:
+
+        0;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        10px;
+
+}
+
+
+.toolbar-icon {
+
+    width:
+
+        35px;
+
+
+    height:
+
+        35px;
+
+
+    display:
+
+        grid;
+
+
+    place-items:
+
+        center;
+
+
+    flex-shrink:
+
+        0;
+
+
+    border-radius:
+
+        10px;
+
+
+    color:
+
+        var(--blue);
+
+
+    background:
+
+        var(--yellow-soft);
+
+}
+
+
+.toolbar-copy {
+
+    min-width:
+
+        0;
+
+}
+
+
+.toolbar-copy strong {
+
+    display:
+
+        block;
+
+
+    overflow:
+
+        hidden;
+
+
+    color:
+
+        var(--text);
+
+
+    font-size:
+
+        12px;
+
+
+    font-weight:
+
+        800;
+
+
+    white-space:
+
+        nowrap;
+
+
+    text-overflow:
+
+        ellipsis;
+
+}
+
+
+.toolbar-copy span {
+
+    display:
+
+        block;
+
+
+    margin-top:
+
+        2px;
+
+
+    color:
+
+        var(--muted);
+
+
+    font-size:
+
+        9.5px;
+
+}
+
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+.fullscreen-btn {
+
+    height:
+
+        36px;
+
+
+    padding:
+
+        0 13px;
+
+
+    display:
+
+        inline-flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    gap:
+
+        7px;
+
+
+    border:
+
+        0;
+
+
+    border-radius:
+
+        9px;
+
+
+    background:
+
+        var(--blue);
+
+
+    color:
+
+        #ffffff;
+
+
+    font-family:
+
+        inherit;
+
+
+    font-size:
+
+        10.5px;
+
+
+    font-weight:
+
+        800;
+
+
+    cursor:
+
+        pointer;
+
+}
+
+
+.fullscreen-btn:hover {
+
+    background:
+
+        var(--blue-dark);
+
+}
+
+
+/* =========================================================
+   IFRAME
+========================================================= */
+
+.iframe-wrap {
+
+    position:
+
+        relative;
+
+
+    min-width:
+
+        0;
+
+
+    min-height:
+
+        0;
+
+
+    width:
+
+        100%;
+
+
+    height:
+
+        100%;
+
+
+    overflow:
+
+        hidden;
+
+
+    background:
+
+        #ffffff;
+
+}
+
+
+#dashboardFrame {
+
+    position:
+
+        absolute;
+
+
+    inset:
+
+        0;
+
+
+    width:
+
+        100%;
+
+
+    height:
+
+        100%;
+
+
+    border:
+
+        0;
+
+
+    display:
+
+        block;
+
+
+    background:
+
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading {
+
+    position:
+
+        absolute;
+
+
+    inset:
+
+        0;
+
+
+    z-index:
+
+        60;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    background:
+
+        rgba(255,255,255,.96);
+
+
+    color:
+
+        var(--blue-dark);
+
+
+    font-size:
+
+        11px;
+
+
+    font-weight:
+
+        700;
+
+}
+
+
+.loading.hidden {
+
+    opacity:
+
+        0;
+
+
+    visibility:
+
+        hidden;
+
+
+    pointer-events:
+
+        none;
+
+}
+
+
+.spinner {
+
+    width:
+
+        20px;
+
+
+    height:
+
+        20px;
+
+
+    margin-right:
+
+        9px;
+
+
+    border:
+
+        3px solid
+
+        #dce5f1;
+
+
+    border-top-color:
+
+        var(--blue);
+
+
+    border-radius:
+
+        50%;
+
+
+    animation:
+
+        spin .65s linear infinite;
+
+}
+
+
+@keyframes spin {
+
+    to {
+
+        transform:
+
+            rotate(360deg);
+
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+}
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      font-family: "Inter", Arial, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 7% 10%, rgba(255,221,34,.18), transparent 22%),
-        radial-gradient(circle at 94% 5%, rgba(11,78,162,.12), transparent 28%),
-        linear-gradient(145deg,#f8fbff 0%,#eef5ff 50%,#fff 100%);
+
+/* =========================================================
+   ACTION BAR POWER BI
+
+   Dejamos libre EXPORTAR
+========================================================= */
+
+
+.powerbi-mask {
+    position: absolute;
+    top: 0;
+    height: 38px;
+    z-index: 25;
+    background: #ffffff;
+    pointer-events: auto;
+}
+
+/* TAPA ARCHIVO */
+
+.mask-left {
+
+    left:
+
+        0;
+
+
+    width:
+
+        100px;
+
+}
+
+
+/* TAPA COMPARTIR / SUSCRIBIRSE / ... */
+
+.mask-right {
+
+    left:
+
+        226px;
+
+
+    right:
+
+        0;
+
+}
+
+
+.powerbi-mask::after {
+
+    content:
+
+        "";
+
+
+    position:
+
+        absolute;
+
+
+    left:
+
+        0;
+
+
+    right:
+
+        0;
+
+
+    bottom:
+
+        0;
+
+
+    height:
+
+        1px;
+
+
+    background:
+
+        #e5e7eb;
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media
+(max-width: 1450px) {
+
+    .app {
+
+        width:
+
+            calc(100vw - 14px);
+
+
+        height:
+
+            calc(100vh - 14px);
+
+
+        margin:
+
+            7px;
+
+
+        grid-template-rows:
+
+            62px
+
+            minmax(0,1fr);
+
+
+        gap:
+
+            6px;
+
     }
 
-    body {
-      overflow: hidden;
-      height: 100vh;
+
+    .header {
+
+        height:
+
+            62px;
+
+
+        padding:
+
+            0 16px;
+
     }
 
-    .splash-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 50% 15%, rgba(255,221,34,.30), transparent 25%),
-        linear-gradient(145deg,#062f66,var(--coppel-blue) 52%,#0f62c9);
-      animation: splashExit .9s ease forwards;
-      animation-delay: 3.7s;
+
+    .coppel-name {
+
+        font-size:
+
+            26px;
+
     }
 
-    .splash-panel {
-      width: min(590px, calc(100% - 36px));
-      padding: 50px 50px 36px;
-      text-align: center;
-      border-radius: 28px;
-      background: rgba(255,255,255,.97);
-      box-shadow: 0 35px 100px rgba(0,19,54,.34);
-      position: relative;
-      overflow: hidden;
+
+    .circle-lg {
+
+        width:
+
+            21px;
+
+
+        height:
+
+            21px;
+
     }
 
-    .splash-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 7px;
-      background: linear-gradient(90deg,var(--coppel-yellow) 0 28%,var(--coppel-blue) 28% 100%);
+
+    .circle-md {
+
+        width:
+
+            14px;
+
+
+        height:
+
+            14px;
+
     }
 
-    .coppel-logo {
-      display: inline-flex;
-      align-items: flex-end;
-      gap: 10px;
-      color: var(--coppel-blue);
-      line-height: 1;
+
+    .circle-sm {
+
+        width:
+
+            11px;
+
+
+        height:
+
+            11px;
+
     }
 
-    .coppel-symbol {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding-bottom: 5px;
+
+    .dashboard {
+
+        grid-template-columns:
+
+            270px
+
+            minmax(0,1fr);
+
     }
 
-    .coppel-symbol span {
-      display: block;
-      border-radius: 50%;
-      background: var(--coppel-yellow);
-      box-shadow: 0 4px 12px rgba(255,221,34,.25);
+
+    .dashboard.collapsed {
+
+        grid-template-columns:
+
+            56px
+
+            minmax(0,1fr);
+
     }
 
-    .circle-lg { width: 25px; height: 25px; }
-    .circle-md { width: 16px; height: 16px; }
-    .circle-sm { width: 13px; height: 13px; }
-
-    .coppel-wordmark {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -1.8px;
-    }
-
-    .splash-logo { justify-content: center; margin-bottom: 26px; }
-    .splash-logo .coppel-wordmark { font-size: 50px; }
-    .splash-logo .circle-lg { width: 32px; height: 32px; }
-    .splash-logo .circle-md { width: 21px; height: 21px; }
-    .splash-logo .circle-sm { width: 17px; height: 17px; }
-
-    .client-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      color: var(--coppel-blue);
-      background: var(--coppel-blue-soft);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-    }
-
-    .splash-panel h1 {
-      margin-bottom: 10px;
-      font-size: clamp(27px,5vw,42px);
-      letter-spacing: -1.4px;
-    }
-
-    .splash-panel .subtitle {
-      margin-bottom: 28px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .progress-track {
-      height: 7px;
-      overflow: hidden;
-      border-radius: 99px;
-      background: #e7edf6;
-    }
-
-    .progress-bar {
-      width: 0;
-      height: 100%;
-      background: linear-gradient(90deg,var(--coppel-yellow),#ffd000,var(--coppel-blue));
-      animation: progressLoad 3.2s cubic-bezier(.22,.8,.25,1) forwards;
-    }
-
-    .splash-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 18px;
-      color: #7a8798;
-      font-size: 11px;
-    }
-
-    .effective-signature { display: inline-flex; align-items: center; gap: 8px; }
-    .effective-mark {
-      display: inline-grid;
-      width: 24px;
-      height: 24px;
-      place-items: center;
-      border-radius: 7px;
-      color: #111827;
-      background: linear-gradient(135deg,#d4a843,#f0d078);
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .shell {
-      width: min(1580px, calc(100% - 30px));
-      height: 100vh;
-      margin: 0 auto;
-      padding: 18px 0 14px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .topbar {
-      min-height: 78px;
-      flex-shrink: 0;
-      margin-bottom: 14px;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      border: 1px solid rgba(11,78,162,.10);
-      border-radius: 20px;
-      background: rgba(255,255,255,.96);
-      box-shadow: 0 12px 35px rgba(7,59,124,.08);
-      backdrop-filter: blur(16px);
-    }
-
-    .topbar-brand {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .brand-divider {
-      width: 1px;
-      height: 38px;
-      background: var(--line);
-    }
-
-    .solution-title {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .solution-title strong {
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-    .solution-title span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .topbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .date-pill, .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 36px;
-      padding: 0 12px;
-      border-radius: 11px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .date-pill {
-      color: var(--coppel-blue-dark);
-      background: var(--coppel-blue-soft);
-    }
-
-    .status-pill {
-      color: #166534;
-      background: #ecfdf3;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 0 5px rgba(34,197,94,.11);
-    }
-
-    .dashboard-shell {
-      display: grid;
-      grid-template-columns: var(--sidebar-width) minmax(0,1fr);
-      flex: 1;
-      min-height: 0;
-      overflow: hidden;
-      border: 1px solid rgba(11,78,162,.12);
-      border-radius: 24px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .dashboard-shell.sidebar-collapsed {
-      grid-template-columns: 64px minmax(0,1fr);
-    }
 
     .sidebar {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      min-height: 0;
-      overflow: hidden;
-      background: linear-gradient(180deg,#fff 0%,#f7fbff 100%);
-      border-right: 1px solid var(--line);
+
+        grid-template-rows:
+
+            54px
+
+            minmax(0,1fr);
+
     }
 
-    .sidebar-head {
-      min-height: 72px;
-      padding: 14px 14px 12px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .sidebar-copy strong {
-      display: block;
-      color: var(--coppel-blue-dark);
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .sidebar-copy span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    .dashboard-shell.sidebar-collapsed .sidebar-copy { display: none; }
-
-    .collapse-btn {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      border: 0;
-      border-radius: 10px;
-      color: var(--coppel-blue);
-      background: var(--coppel-blue-soft);
-      cursor: pointer;
-    }
-
-    .collapse-btn:hover {
-      color: #fff;
-      background: var(--coppel-blue);
-    }
-
-    .pages-list {
-      flex: 1;
-      min-height: 0;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      scrollbar-gutter: stable;
-      padding: 10px 8px 18px;
-    }
-
-    .pages-list::-webkit-scrollbar { width: 5px; }
-    .pages-list::-webkit-scrollbar-thumb {
-      background: #cad8ea;
-      border-radius: 99px;
-    }
-
-    .page-btn {
-      width: 100%;
-      min-height: 46px;
-      margin-bottom: 4px;
-      padding: 9px 11px;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      position: relative;
-      border: 0;
-      border-radius: 11px;
-      color: #40516a;
-      background: transparent;
-      font-family: inherit;
-      font-size: 11.5px;
-      font-weight: 600;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .page-btn:hover {
-      color: var(--coppel-blue-dark);
-      background: var(--coppel-blue-soft);
-      transform: translateX(2px);
-    }
-
-    .page-btn.active {
-      color: var(--coppel-blue-dark);
-      background: linear-gradient(90deg,var(--coppel-yellow-soft),#eef5ff);
-      box-shadow: inset 0 0 0 1px rgba(11,78,162,.07);
-    }
-
-    .page-btn.active::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 8px;
-      width: 4px;
-      border-radius: 4px;
-      background: var(--coppel-blue);
-    }
-
-    .page-icon {
-      width: 30px;
-      height: 30px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      border-radius: 9px;
-      color: var(--coppel-blue);
-      background: #eff5fd;
-    }
-
-    .page-btn.active .page-icon {
-      color: var(--coppel-blue-dark);
-      background: var(--coppel-yellow);
-    }
-
-    .page-label {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .dashboard-shell.sidebar-collapsed .page-label { display: none; }
-
-    .dashboard-shell.sidebar-collapsed .page-btn {
-      justify-content: center;
-      padding-left: 0;
-      padding-right: 0;
-    }
 
     .report-area {
-      min-width: 0;
-      min-height: 0;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background: #fff;
+
+        grid-template-rows:
+
+            54px
+
+            minmax(0,1fr);
+
     }
 
+
+    .sidebar-header,
     .report-toolbar {
-      min-height: 72px;
-      padding: 10px 14px 10px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg,#fff,#f8fbff);
+
+        height:
+
+            54px;
+
     }
 
-    .toolbar-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
+
+    .page-btn {
+
+        min-height:
+
+            37px;
+
+
+        margin-bottom:
+
+            2px;
+
     }
+
+
+    .page-icon {
+
+        width:
+
+            26px;
+
+
+        height:
+
+            26px;
+
+    }
+
 
     .toolbar-icon {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      border-radius: 11px;
-      color: var(--coppel-blue);
-      background: var(--coppel-yellow-soft);
+
+        width:
+
+            32px;
+
+
+        height:
+
+            32px;
+
     }
 
-    .toolbar-copy { min-width: 0; }
 
-    .toolbar-copy strong {
-      display: block;
-      overflow: hidden;
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 800;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    .fullscreen-btn {
+
+        height:
+
+            34px;
+
     }
 
-    .toolbar-copy span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 10px;
+
+    .mask-left {
+
+        width:
+
+            98px;
+
     }
 
-    .toolbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
+
+    .mask-right {
+
+        left:
+
+            222px;
+
     }
 
-    .action-btn {
-      min-height: 38px;
-      padding: 0 13px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: 0;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 11px;
-      font-weight: 800;
-      cursor: pointer;
+}
+
+
+/* =========================================================
+   PANTALLAS BAJAS
+========================================================= */
+
+@media
+(max-height: 800px) {
+
+    .app {
+
+        width:
+
+            calc(100vw - 10px);
+
+
+        height:
+
+            calc(100vh - 10px);
+
+
+        margin:
+
+            5px;
+
+
+        grid-template-rows:
+
+            58px
+
+            minmax(0,1fr);
+
+
+        gap:
+
+            5px;
+
     }
 
-    .action-btn.primary {
-      color: #fff;
-      background: var(--coppel-blue);
+
+    .header {
+
+        height:
+
+            58px;
+
     }
 
-    .action-btn.primary:hover { background: var(--coppel-blue-dark); }
 
-    .action-btn.ppt {
-      color: #fff;
-      background: #c43e1c;
+    .dashboard {
+
+        grid-template-columns:
+
+            260px
+
+            minmax(0,1fr);
+
     }
 
-    .action-btn.ppt:hover { background: #9d2f14; }
 
-    .iframe-wrap {
-      position: relative;
-      flex: 1;
-      min-height: 0;
-      background: #fff;
+    .sidebar {
+
+        grid-template-rows:
+
+            50px
+
+            minmax(0,1fr);
+
     }
 
-    .iframe-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: #fff;
-      display: block;
+
+    .report-area {
+
+        grid-template-rows:
+
+            50px
+
+            minmax(0,1fr);
+
     }
 
-    .loading {
-      position: absolute;
-      inset: 0;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,.95);
-      color: var(--coppel-blue-dark);
-      font-size: 12px;
-      font-weight: 700;
+
+    .sidebar-header,
+    .report-toolbar {
+
+        height:
+
+            50px;
+
     }
 
-    .loading.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+
+    .page-btn {
+
+        min-height:
+
+            35px;
+
+
+        font-size:
+
+            10px;
+
     }
 
-    .spinner {
-      width: 22px;
-      height: 22px;
-      margin-right: 10px;
-      border: 3px solid #dce5f1;
-      border-top-color: var(--coppel-blue);
-      border-radius: 50%;
-      animation: spin .65s linear infinite;
+
+    .page-icon {
+
+        width:
+
+            25px;
+
+
+        height:
+
+            25px;
+
     }
 
-    .toast {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 100000;
-      width: min(430px, calc(100% - 44px));
-      padding: 15px 16px;
-      display: none;
-      gap: 12px;
-      align-items: flex-start;
-      border-radius: 15px;
-      color: #fff;
-      background: #172033;
-      box-shadow: 0 20px 55px rgba(0,0,0,.22);
+
+    .toolbar-icon {
+
+        width:
+
+            30px;
+
+
+        height:
+
+            30px;
+
     }
 
-    .toast.show { display: flex; }
-    .toast i { margin-top: 2px; color: var(--coppel-yellow); }
-    .toast strong { display: block; font-size: 12px; }
-    .toast span { display: block; margin-top: 4px; color: #d6deea; font-size: 11px; line-height: 1.45; }
+}
 
-    .footer {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 14px 5px 0;
-      color: var(--muted);
-      font-size: 10.5px;
+
+/* =========================================================
+   MONITORES GRANDES
+========================================================= */
+
+@media
+(min-width: 1700px) {
+
+    .app {
+
+        width:
+
+            calc(100vw - 28px);
+
+
+        height:
+
+            calc(100vh - 28px);
+
+
+        margin:
+
+            14px;
+
+
+        max-width:
+
+            none;
+
     }
 
-    .footer-left { display: flex; align-items: center; gap: 10px; }
 
-    .footer-effective {
-      color: #8a6414;
-      font-size: 14px;
-      font-weight: 800;
+    .dashboard {
+
+        grid-template-columns:
+
+            300px
+
+            minmax(0,1fr);
+
     }
 
-    @keyframes splashExit {
-      0%,80% { opacity: 1; visibility: visible; }
-      100% { opacity: 0; visibility: hidden; }
+
+    /*
+      IMPORTANTE:
+      Los elementos NO crecen demasiado.
+      Se conserva escala similar a laptop.
+    */
+
+    .header {
+
+        height:
+
+            68px;
+
     }
 
-    @keyframes progressLoad {
-      0% { width: 0; }
-      35% { width: 38%; }
-      70% { width: 76%; }
-      100% { width: 100%; }
+
+    .page-btn {
+
+        font-size:
+
+            11px;
+
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+}
 
-    @media (max-width: 1000px) {
-      :root { --sidebar-width: 250px; }
-      .topbar { align-items: flex-start; flex-direction: column; }
-      .topbar-actions { width: 100%; justify-content: space-between; }
-      .dashboard-shell { min-height: 760px; }
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media
+(max-width: 900px) {
+
+    .dashboard {
+
+        grid-template-columns:
+
+            215px
+
+            minmax(0,1fr);
+
     }
 
-    @media (max-width: 760px) {
-      .shell { width: calc(100% - 16px); padding-top: 8px; }
-      .topbar { border-radius: 15px; }
-      .coppel-wordmark { font-size: 26px; }
-      .date-pill { display: none; }
-      .dashboard-shell { grid-template-columns: 64px minmax(0,1fr); border-radius: 16px; }
-      .sidebar-copy, .page-label { display: none !important; }
-      .page-btn { justify-content: center; padding-left: 0; padding-right: 0; }
-      .collapse-btn { display: none; }
-      .toolbar-copy span { display: none; }
-      .action-btn span { display: none; }
-      .action-btn { width: 38px; padding: 0; }
-      .iframe-wrap { min-height: 620px; }
-    }
-  </style>
 
-  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
+    .date-pill {
+
+        display:
+
+            none;
+
+    }
+
+
+    .header-copy span {
+
+        display:
+
+            none;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media
+(max-width: 650px) {
+
+    .app {
+
+        width:
+
+            calc(100vw - 6px);
+
+
+        height:
+
+            calc(100vh - 6px);
+
+
+        margin:
+
+            3px;
+
+    }
+
+
+    .divider,
+    .header-copy {
+
+        display:
+
+            none;
+
+    }
+
+
+    .status-pill {
+
+        display:
+
+            none;
+
+    }
+
+
+    .dashboard {
+
+        grid-template-columns:
+
+            54px
+
+            minmax(0,1fr);
+
+    }
+
+
+    .sidebar-copy,
+    .page-label {
+
+        display:
+
+            none !important;
+
+    }
+
+
+    .collapse-btn {
+
+        display:
+
+            none;
+
+    }
+
+
+    .page-btn {
+
+        justify-content:
+
+            center;
+
+
+        padding:
+
+            0;
+
+    }
+
+
+    .fullscreen-btn {
+
+        width:
+
+            34px;
+
+
+        padding:
+
+            0;
+
+    }
+
+
+    .fullscreen-btn span {
+
+        display:
+
+            none;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-  <div class="splash-screen" id="splashScreen">
-    <div class="splash-panel">
 
-      <div class="coppel-logo splash-logo" aria-label="Coppel">
-        <div class="coppel-symbol" aria-hidden="true">
-          <span class="circle-lg"></span>
-          <span class="circle-md"></span>
-          <span class="circle-sm"></span>
+<div class="app">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+
+    <div class="header-left">
+
+
+        <div class="coppel-logo">
+
+
+            <div class="coppel-symbol">
+
+                <span class="circle-lg"></span>
+
+                <span class="circle-md"></span>
+
+                <span class="circle-sm"></span>
+
+            </div>
+
+
+            <span class="coppel-name">
+
+                Coppel
+
+            </span>
+
+
         </div>
-        <span class="coppel-wordmark">Coppel</span>
-      </div>
 
-      <div class="client-badge">
-        <i class="fas fa-shield-halved"></i>
-        Portal exclusivo para cliente
-      </div>
 
-      <h1 id="splashTitle">Bienvenido</h1>
+        <div class="divider"></div>
 
-      <p class="subtitle" id="splashSubtitle">
-        Validando acceso seguro al entorno de Coppel
-      </p>
 
-      <div class="progress-track">
-        <div class="progress-bar"></div>
-      </div>
+        <div class="header-copy">
 
-      <div class="splash-meta">
-        <span id="splashStatus">
-          <i class="fas fa-circle-notch fa-spin"></i>
-          Iniciando sesión
-        </span>
+        </div>
 
-        <span class="effective-signature">
-          <span class="effective-mark">E</span>
-          <strong>Effective</strong>
-        </span>
-      </div>
 
     </div>
-  </div>
 
-  <main class="shell">
 
-    <header class="topbar">
 
-      <div class="topbar-brand">
+    <div class="header-right">
 
-        <div class="coppel-logo" aria-label="Coppel">
-          <div class="coppel-symbol" aria-hidden="true">
-            <span class="circle-lg"></span>
-            <span class="circle-md"></span>
-            <span class="circle-sm"></span>
-          </div>
-          <span class="coppel-wordmark">Coppel</span>
+
+        <div class="pill date-pill">
+
+
+            <i class="far fa-calendar-alt"></i>
+
+
+            <span id="currentDate">
+
+            </span>
+
+
         </div>
 
-        <div class="brand-divider"></div>
 
-        <div class="solution-title">
-          <strong>Centro de Inteligencia de Medios</strong>
-          <span>Dashboard de competencia desarrollado por Effective</span>
+        <div class="pill status-pill">
+
+
+            <span class="status-dot"></span>
+
+
+            Servicio activo
+
+
         </div>
 
-      </div>
 
-      <div class="topbar-actions">
+    </div>
 
-        <span class="date-pill">
-          <i class="far fa-calendar-alt"></i>
-          <span id="currentDate">Actualización reciente</span>
-        </span>
 
-        <span class="status-pill">
-          <span class="status-dot"></span>
-          Servicio activo
-        </span>
+</header>
 
-      </div>
 
-    </header>
 
-    <section class="dashboard-shell" id="dashboardShell">
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
 
-      <aside class="sidebar">
+<section
+    class="dashboard"
+    id="dashboard"
+>
 
-        <div class="sidebar-head">
 
-          <div class="sidebar-copy">
-            <strong>Contenido del reporte</strong>
-            <span>Selecciona una sección</span>
-          </div>
+<!-- =========================================================
+     MENU
+========================================================= -->
 
-          <button class="collapse-btn" id="collapseBtn" title="Contraer menú" aria-label="Contraer menú">
+<aside class="sidebar">
+
+
+    <div class="sidebar-header">
+
+
+        <div class="sidebar-copy">
+
+
+            <strong>
+
+                Contenido del reporte
+
+            </strong>
+
+
+            <span>
+
+                Selecciona una sección
+
+            </span>
+
+
+        </div>
+
+
+        <button
+            class="collapse-btn"
+            id="collapseBtn"
+            title="Contraer menú"
+        >
+
             <i class="fas fa-angles-left"></i>
-          </button>
 
-        </div>
+        </button>
 
-        <div class="pages-list" id="pagesList"></div>
 
-      </aside>
+    </div>
 
-      <div class="report-area">
 
-        <div class="report-toolbar">
 
-          <div class="toolbar-left">
+    <div
+        class="pages"
+        id="pages"
+    >
+    </div>
+
+
+</aside>
+
+
+
+<!-- =========================================================
+     REPORTE
+========================================================= -->
+
+<div class="report-area">
+
+
+    <div class="report-toolbar">
+
+
+        <div class="toolbar-left">
+
 
             <div class="toolbar-icon">
-              <i class="fas fa-chart-column"></i>
+
+
+                <i class="fas fa-chart-column"></i>
+
+
             </div>
+
 
             <div class="toolbar-copy">
-              <strong id="currentPageTitle">Coppel PORTADA</strong>
-              <span>Vista autorizada para cliente Coppel</span>
+
+
+                <strong
+                    id="currentPageTitle"
+                >
+
+                    Coppel PORTADA
+
+                </strong>
+
+
+                <span>
+
+                    Vista autorizada para cliente Coppel
+
+                </span>
+
+
             </div>
 
-          </div>
-
-          <div class="toolbar-actions">
-
-            <button class="action-btn ppt" id="exportPptBtn" title="Exportar reporte a PowerPoint">
-              <i class="fas fa-file-powerpoint"></i>
-              <span>Exportar PowerPoint</span>
-            </button>
-
-            <button class="action-btn primary" id="fullscreenBtn" title="Pantalla completa">
-              <i class="fas fa-expand"></i>
-              <span>Pantalla completa</span>
-            </button>
-
-          </div>
 
         </div>
 
-        <div class="iframe-wrap" id="iframeWrap">
 
-          <div class="loading" id="loading">
-            <div class="spinner"></div>
-            Cargando sección...
-          </div>
 
-          <iframe id="dashboardFrame" title="Dashboard Ejecutivo Coppel" allowfullscreen="true"></iframe>
+        <button
+            class="fullscreen-btn"
+            id="fullscreenBtn"
+        >
 
-        </div>
 
-      </div>
+            <i class="fas fa-expand"></i>
 
-    </section>
 
-    <footer class="footer">
-      <div class="footer-left">
-        <span class="footer-effective">effective</span>
-        <span>para Coppel</span>
-      </div>
+            <span>
 
-      <div>
-        Información confidencial · Acceso exclusivo · © 2026
-      </div>
-    </footer>
+                Pantalla completa
 
-  </main>
+            </span>
 
-  <div class="toast" id="toast">
-    <i class="fas fa-circle-info"></i>
-    <div>
-      <strong id="toastTitle">Información</strong>
-      <span id="toastText"></span>
+
+        </button>
+
+
     </div>
-  </div>
 
-  <script>
-    const REPORT_ID = "7647a9ef-ef89-45fa-9689-2d64e55c5637";
-    const TENANT_ID = "1b635d23-d7cd-46f8-a33b-d081f11e0d7d";
 
-    /*
-      EXPORTACIÓN DIRECTA A POWERPOINT
-      --------------------------------
-      1) Crea una App Registration tipo SPA en Microsoft Entra ID.
-      2) Agrega como Redirect URI la URL donde publicas este HTML.
-      3) Agrega permisos delegados de Power BI:
-         - Report.Read.All
-         - Dataset.Read.All
-      4) Pega aquí el Application (client) ID.
-    */
-    const POWERBI_CLIENT_ID = "PEGA_AQUI_TU_CLIENT_ID";
 
-    const msalConfig = {
-      auth: {
-        clientId: POWERBI_CLIENT_ID,
-        authority: "https://login.microsoftonline.com/" + TENANT_ID,
-        redirectUri: window.location.origin + window.location.pathname
-      },
-      cache: {
-        cacheLocation: "sessionStorage",
-        storeAuthStateInCookie: false
-      }
-    };
+<!-- =========================================================
+     POWER BI
+========================================================= -->
 
-    const powerBiScopes = [
-      "https://analysis.windows.net/powerbi/api/Report.Read.All",
-      "https://analysis.windows.net/powerbi/api/Dataset.Read.All"
-    ];
+<div
+    class="iframe-wrap"
+    id="iframeWrap"
+>
 
-    let msalInstance = null;
 
-    const paginas = [
-      { titulo:"Coppel PORTADA", pageId:"881bff93b9de002cba6a", icono:"fa-house" },
-      { titulo:"Coppel GLOSARIO-TERMINOS", pageId:"0a85d6136e4d5605b004", icono:"fa-book" },
-      { titulo:"Coppel EIC-CONFIDENCIAL", pageId:"8db29d4c626d4a60dbb6", icono:"fa-lock" },
-      { titulo:"Coppel CONTENIDO", pageId:"e3167165bdb45881e1cd", icono:"fa-list" },
-      { titulo:"Coppel SOI marca-medio", pageId:"d7cff51812c40c095684", icono:"fa-chart-bar" },
-      { titulo:"Coppel SOI marca-medio impresiones", pageId:"80f8296d8837b75ec863", icono:"fa-chart-column" },
-      { titulo:"Coppel SOI por tipo de tiendas YTD", pageId:"05b6a8037608c3395038", icono:"fa-store" },
-      { titulo:"Coppel Inversión por Medio", pageId:"b004a9ed7cd4b9e00453", icono:"fa-dollar-sign" },
-      { titulo:"Coppel SOI por temporalidad YTD", pageId:"63ac364b5e80876e3764", icono:"fa-chart-line" },
-      { titulo:"Coppel Actividad Tv Abierta Nacional", pageId:"3476180640a1e911b741", icono:"fa-tv" },
-      { titulo:"Coppel Tv abierta, SOV / SOI", pageId:"0fcdc9064c0be0be5026", icono:"fa-tv" },
-      { titulo:"Coppel Tv abierta SOV / SOI mes actual", pageId:"7dc1d0dccd8ee123d40d", icono:"fa-calendar" },
-      { titulo:"Coppel Tv local", pageId:"883600c3ab088535b05d", icono:"fa-location-dot" },
-      { titulo:"Coppel Tv de Paga", pageId:"0b40b97a3d74da3dda03", icono:"fa-satellite-dish" },
-      { titulo:"Coppel Radio 49 Plazas", pageId:"033aca8780bdb0300b06", icono:"fa-radio" },
-      { titulo:"Coppel Radio Footprint", pageId:"de5aad3ea5869580840d", icono:"fa-tower-broadcast" },
-      { titulo:"Coppel DIGITAL", pageId:"4af16653c4d4d4bb0208", icono:"fa-globe" }
-    ];
+    <div
+        class="loading"
+        id="loading"
+    >
 
-    const dashboardFrame = document.getElementById("dashboardFrame");
-    const pagesList = document.getElementById("pagesList");
-    const loading = document.getElementById("loading");
-    const dashboardShell = document.getElementById("dashboardShell");
-    const collapseBtn = document.getElementById("collapseBtn");
-    const fullscreenBtn = document.getElementById("fullscreenBtn");
-    const exportPptBtn = document.getElementById("exportPptBtn");
-    const iframeWrap = document.getElementById("iframeWrap");
-    const currentPageTitle = document.getElementById("currentPageTitle");
-    const toast = document.getElementById("toast");
-    const toastTitle = document.getElementById("toastTitle");
-    const toastText = document.getElementById("toastText");
 
-    let paginaActual = paginas[0];
+        <div class="spinner"></div>
 
-    function generarEmbedURL(pageId) {
-     return "https://app.powerbi.com/reportEmbed" +
-    "?reportId=" + REPORT_ID +
-    "&autoAuth=true" +
-    "&ctid=" + TENANT_ID +
-    "&navContentPaneEnabled=false" +
-    "&filterPaneEnabled=false" +
-    "&actionBarEnabled=true" +
-    "&pageName=" + pageId;
+
+        Cargando sección...
+
+
+    </div>
+
+
+
+    <iframe
+        id="dashboardFrame"
+        title="Dashboard Ejecutivo Coppel"
+        allowfullscreen="true"
+    >
+    </iframe>
+
+
+
+    <!-- ==============================================
+         TAPAR ARCHIVO
+    =============================================== -->
+
+    <div
+        class="powerbi-mask mask-left"
+    >
+    </div>
+
+
+
+    <!-- ==============================================
+         TAPAR COMPARTIR / SUSCRIBIRSE / ...
+    =============================================== -->
+
+    <div
+        class="powerbi-mask mask-right"
+    >
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   POWER BI
+========================================================= */
+
+
+const REPORT_ID =
+
+    "7647a9ef-ef89-45fa-9689-2d64e55c5637";
+
+
+const TENANT_ID =
+
+    "1b635d23-d7cd-46f8-a33b-d081f11e0d7d";
+
+
+
+/* =========================================================
+   PAGINAS CLIENTE
+========================================================= */
+
+
+const paginas = [
+
+
+    {
+
+        titulo:
+            "Coppel PORTADA",
+
+        pageId:
+            "881bff93b9de002cba6a",
+
+        icono:
+            "fa-house"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel GLOSARIO-TERMINOS",
+
+        pageId:
+            "0a85d6136e4d5605b004",
+
+        icono:
+            "fa-book"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel EIC-CONFIDENCIAL",
+
+        pageId:
+            "8db29d4c626d4a60dbb6",
+
+        icono:
+            "fa-lock"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel CONTENIDO",
+
+        pageId:
+            "e3167165bdb45881e1cd",
+
+        icono:
+            "fa-list"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel SOI marca-medio",
+
+        pageId:
+            "d7cff51812c40c095684",
+
+        icono:
+            "fa-chart-bar"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel SOI marca-medio impresiones",
+
+        pageId:
+            "80f8296d8837b75ec863",
+
+        icono:
+            "fa-chart-column"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel SOI por tipo de tiendas YTD",
+
+        pageId:
+            "05b6a8037608c3395038",
+
+        icono:
+            "fa-store"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Inversión por Medio",
+
+        pageId:
+            "b004a9ed7cd4b9e00453",
+
+        icono:
+            "fa-dollar-sign"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel SOI por temporalidad YTD",
+
+        pageId:
+            "63ac364b5e80876e3764",
+
+        icono:
+            "fa-chart-line"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Actividad Tv Abierta Nacional",
+
+        pageId:
+            "3476180640a1e911b741",
+
+        icono:
+            "fa-tv"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Tv abierta, SOV / SOI",
+
+        pageId:
+            "0fcdc9064c0be0be5026",
+
+        icono:
+            "fa-tv"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Tv abierta SOV / SOI mes actual",
+
+        pageId:
+            "7dc1d0dccd8ee123d40d",
+
+        icono:
+            "fa-calendar"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Tv local",
+
+        pageId:
+            "883600c3ab088535b05d",
+
+        icono:
+            "fa-location-dot"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Tv de Paga",
+
+        pageId:
+            "0b40b97a3d74da3dda03",
+
+        icono:
+            "fa-satellite-dish"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Radio 49 Plazas",
+
+        pageId:
+            "033aca8780bdb0300b06",
+
+        icono:
+            "fa-radio"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel Radio Footprint",
+
+        pageId:
+            "de5aad3ea5869580840d",
+
+        icono:
+            "fa-tower-broadcast"
+
+    },
+
+
+    {
+
+        titulo:
+            "Coppel DIGITAL",
+
+        pageId:
+            "4af16653c4d4d4bb0208",
+
+        icono:
+            "fa-globe"
+
     }
 
-    function generarServiceURL(pageId) {
-      return "https://app.powerbi.com/groups/me/reports/" +
-        REPORT_ID + "/" + pageId +
-        "?experience=power-bi";
-    }
 
-    function mostrarToast(titulo, texto, tiempo = 5200) {
-      toastTitle.textContent = titulo;
-      toastText.textContent = texto;
-      toast.classList.add("show");
+];
 
-      window.clearTimeout(mostrarToast.timer);
-      mostrarToast.timer = window.setTimeout(() => {
-        toast.classList.remove("show");
-      }, tiempo);
-    }
 
-    function crearMenu() {
-      pagesList.innerHTML = "";
 
-      paginas.forEach((pagina, index) => {
-        const boton = document.createElement("button");
-        boton.className = "page-btn";
-        boton.dataset.page = pagina.pageId;
-        boton.title = pagina.titulo;
+/* =========================================================
+   DOM
+========================================================= */
 
-        boton.innerHTML = `
-          <span class="page-icon">
-            <i class="fas ${pagina.icono}"></i>
-          </span>
-          <span class="page-label">${pagina.titulo}</span>
-        `;
 
-        boton.addEventListener("click", () => {
-          cambiarPagina(pagina, boton);
-        });
+const dashboard =
 
-        if (index === 0) {
-          boton.classList.add("active");
-        }
+    document.getElementById(
+        "dashboard"
+    );
 
-        pagesList.appendChild(boton);
-      });
-    }
 
-    function cambiarPagina(pagina, boton) {
-      paginaActual = pagina;
+const pagesContainer =
 
-      document.querySelectorAll(".page-btn").forEach(btn => {
-        btn.classList.remove("active");
-      });
+    document.getElementById(
+        "pages"
+    );
 
-      boton.classList.add("active");
-      currentPageTitle.textContent = pagina.titulo;
 
-      loading.classList.remove("hidden");
-      dashboardFrame.src = generarEmbedURL(pagina.pageId);
-    }
+const frame =
 
-    function cargarInicial() {
-      paginaActual = paginas[0];
-      currentPageTitle.textContent = paginaActual.titulo;
-      loading.classList.remove("hidden");
-      dashboardFrame.src = generarEmbedURL(paginaActual.pageId);
-    }
+    document.getElementById(
+        "dashboardFrame"
+    );
 
-    dashboardFrame.addEventListener("load", () => {
-      setTimeout(() => {
-        loading.classList.add("hidden");
-      }, 150);
-    });
 
-    collapseBtn.addEventListener("click", () => {
-      dashboardShell.classList.toggle("sidebar-collapsed");
+const loading =
 
-      const icon = collapseBtn.querySelector("i");
+    document.getElementById(
+        "loading"
+    );
 
-      if (dashboardShell.classList.contains("sidebar-collapsed")) {
-        icon.className = "fas fa-angles-right";
-        collapseBtn.title = "Mostrar menú";
-      } else {
-        icon.className = "fas fa-angles-left";
-        collapseBtn.title = "Contraer menú";
-      }
-    });
 
-    fullscreenBtn.addEventListener("click", async () => {
-      try {
-        if (!document.fullscreenElement) {
-          await iframeWrap.requestFullscreen();
-        } else {
-          await document.exitFullscreen();
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    });
+const collapseBtn =
 
-    document.addEventListener("fullscreenchange", () => {
-      const icon = fullscreenBtn.querySelector("i");
-      const label = fullscreenBtn.querySelector("span");
+    document.getElementById(
+        "collapseBtn"
+    );
 
-      if (document.fullscreenElement) {
-        icon.className = "fas fa-compress";
-        if (label) label.textContent = "Salir";
-      } else {
-        icon.className = "fas fa-expand";
-        if (label) label.textContent = "Pantalla completa";
-      }
-    });
 
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+const fullscreenBtn =
 
-    async function obtenerPowerBiToken() {
-      if (
-        !POWERBI_CLIENT_ID ||
-        POWERBI_CLIENT_ID === "PEGA_AQUI_TU_CLIENT_ID"
-      ) {
-        throw new Error(
-          "Falta configurar POWERBI_CLIENT_ID en el archivo HTML."
-        );
-      }
+    document.getElementById(
+        "fullscreenBtn"
+    );
 
-      if (!msalInstance) {
-        msalInstance = new msal.PublicClientApplication(msalConfig);
-        await msalInstance.initialize();
-      }
 
-      let account = msalInstance.getActiveAccount();
+const iframeWrap =
 
-      if (!account) {
-        const accounts = msalInstance.getAllAccounts();
-        if (accounts.length > 0) {
-          account = accounts[0];
-          msalInstance.setActiveAccount(account);
-        }
-      }
+    document.getElementById(
+        "iframeWrap"
+    );
 
-      if (!account) {
-        const loginResult = await msalInstance.loginPopup({
-          scopes: powerBiScopes,
-          prompt: "select_account"
-        });
 
-        account = loginResult.account;
-        msalInstance.setActiveAccount(account);
-      }
+const currentPageTitle =
 
-      try {
-        const silent = await msalInstance.acquireTokenSilent({
-          account,
-          scopes: powerBiScopes
-        });
+    document.getElementById(
+        "currentPageTitle"
+    );
 
-        return silent.accessToken;
 
-      } catch (error) {
-        const interactive = await msalInstance.acquireTokenPopup({
-          account,
-          scopes: powerBiScopes
-        });
 
-        return interactive.accessToken;
-      }
-    }
+/* =========================================================
+   URL POWER BI
+========================================================= */
 
-    async function exportarReporteCompletoAPowerPoint() {
-      const token = await obtenerPowerBiToken();
 
-      /*
-        Exporta SOLO las páginas disponibles en este portal.
-        ROW DATA no está en la lista, así que tampoco se exporta.
-      */
-      const pages = paginas.map(pagina => ({
-        pageName: pagina.pageId
-      }));
+function generarPowerBiURL(
+    pageId
+) {
 
-      const exportResponse = await fetch(
-        "https://api.powerbi.com/v1.0/myorg/reports/" +
-          REPORT_ID +
-          "/ExportTo",
-        {
-          method: "POST",
-          headers: {
-            "Authorization": "Bearer " + token,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            format: "PPTX",
-            powerBIReportConfiguration: {
-              pages: pages
+
+    return (
+
+        "https://app.powerbi.com/reportEmbed" +
+
+        "?reportId=" +
+
+        encodeURIComponent(
+            REPORT_ID
+        ) +
+
+        "&autoAuth=true" +
+
+        "&ctid=" +
+
+        encodeURIComponent(
+            TENANT_ID
+        ) +
+
+        "&navContentPaneEnabled=false" +
+
+        "&filterPaneEnabled=false" +
+
+        "&actionBarEnabled=true" +
+
+        "&pageName=" +
+
+        encodeURIComponent(
+            pageId
+        )
+
+    );
+
+
+}
+
+
+
+/* =========================================================
+   CREAR MENU
+========================================================= */
+
+
+function crearMenu() {
+
+
+    pagesContainer.innerHTML = "";
+
+
+    paginas.forEach(
+
+        (
+            pagina,
+            index
+        ) => {
+
+
+            const boton =
+
+                document.createElement(
+                    "button"
+                );
+
+
+            boton.className =
+
+                "page-btn";
+
+
+            boton.title =
+
+                pagina.titulo;
+
+
+            boton.innerHTML = `
+
+                <span class="page-icon">
+
+                    <i class="fas ${pagina.icono}"></i>
+
+                </span>
+
+
+                <span class="page-label">
+
+                    ${pagina.titulo}
+
+                </span>
+
+            `;
+
+
+            if (
+                index === 0
+            ) {
+
+
+                boton.classList.add(
+                    "active"
+                );
+
+
             }
-          })
-        }
-      );
 
-      if (!exportResponse.ok) {
-        const details = await exportResponse.text();
-        throw new Error(
-          "Power BI rechazó la exportación (" +
-          exportResponse.status +
-          "): " +
-          details
-        );
-      }
 
-      const exportJob = await exportResponse.json();
-      const exportId = exportJob.id;
+            boton.addEventListener(
 
-      if (!exportId) {
-        throw new Error("Power BI no devolvió un identificador de exportación.");
-      }
+                "click",
 
-      let status = exportJob.status || "NotStarted";
-      let percent = exportJob.percentComplete || 0;
+                () => {
 
-      for (let intento = 0; intento < 120; intento++) {
-        if (status === "Succeeded") {
-          break;
+
+                    cambiarPagina(
+                        pagina,
+                        boton
+                    );
+
+
+                }
+
+            );
+
+
+            pagesContainer.appendChild(
+                boton
+            );
+
+
         }
 
-        if (status === "Failed") {
-          throw new Error("Power BI indicó que la exportación falló.");
-        }
+    );
 
-        exportPptBtn.innerHTML =
-          '<i class="fas fa-circle-notch fa-spin"></i>' +
-          '<span>Generando ' +
-          (percent || 0) +
-          '%</span>';
 
-        await sleep(2000);
+}
 
-        const statusResponse = await fetch(
-          "https://api.powerbi.com/v1.0/myorg/reports/" +
-            REPORT_ID +
-            "/exports/" +
-            encodeURIComponent(exportId),
-          {
-            headers: {
-              "Authorization": "Bearer " + token
+
+
+/* =========================================================
+   CAMBIAR PAGINA
+========================================================= */
+
+
+function cambiarPagina(
+    pagina,
+    boton
+) {
+
+
+    document
+        .querySelectorAll(
+            ".page-btn"
+        )
+        .forEach(
+
+            b => {
+
+
+                b.classList.remove(
+                    "active"
+                );
+
+
             }
-          }
+
         );
 
-        if (!statusResponse.ok) {
-          throw new Error(
-            "No se pudo consultar el avance de la exportación."
-          );
-        }
 
-        const statusData = await statusResponse.json();
-        status = statusData.status;
-        percent = statusData.percentComplete || percent;
-      }
+    boton.classList.add(
+        "active"
+    );
 
-      if (status !== "Succeeded") {
-        throw new Error(
-          "La exportación tardó demasiado. Intenta nuevamente."
+
+    currentPageTitle.textContent =
+
+        pagina.titulo;
+
+
+    loading.classList.remove(
+        "hidden"
+    );
+
+
+    frame.src =
+
+        generarPowerBiURL(
+            pagina.pageId
         );
-      }
 
-      const fileResponse = await fetch(
-        "https://api.powerbi.com/v1.0/myorg/reports/" +
-          REPORT_ID +
-          "/exports/" +
-          encodeURIComponent(exportId) +
-          "/file",
-        {
-          headers: {
-            "Authorization": "Bearer " + token
-          }
-        }
-      );
 
-      if (!fileResponse.ok) {
-        throw new Error(
-          "La exportación terminó, pero no se pudo descargar el archivo."
+}
+
+
+
+/* =========================================================
+   INICIO
+========================================================= */
+
+
+function iniciarReporte() {
+
+
+    const primeraPagina =
+
+        paginas[0];
+
+
+    currentPageTitle.textContent =
+
+        primeraPagina.titulo;
+
+
+    loading.classList.remove(
+        "hidden"
+    );
+
+
+    frame.src =
+
+        generarPowerBiURL(
+            primeraPagina.pageId
         );
-      }
 
-      const blob = await fileResponse.blob();
-      const downloadUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
 
-      link.href = downloadUrl;
-      link.download = "Coppel_Reporte_Competencia.pptx";
+}
 
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
 
-      URL.revokeObjectURL(downloadUrl);
+
+/* =========================================================
+   IFRAME CARGADO
+========================================================= */
+
+
+frame.addEventListener(
+
+    "load",
+
+    () => {
+
+
+        setTimeout(
+
+            () => {
+
+
+                loading.classList.add(
+                    "hidden"
+                );
+
+
+            },
+
+            150
+
+        );
+
+
     }
 
-    exportPptBtn.addEventListener("click", async () => {
-      const contenidoOriginal = exportPptBtn.innerHTML;
+);
 
-      try {
-        exportPptBtn.disabled = true;
-        exportPptBtn.innerHTML =
-          '<i class="fas fa-circle-notch fa-spin"></i>' +
-          '<span>Preparando...</span>';
 
-        await exportarReporteCompletoAPowerPoint();
 
-        mostrarToast(
-          "PowerPoint listo",
-          "Se exportaron las páginas autorizadas del reporte de Coppel."
+/* =========================================================
+   COLAPSAR MENU
+========================================================= */
+
+
+collapseBtn.addEventListener(
+
+    "click",
+
+    () => {
+
+
+        dashboard.classList.toggle(
+            "collapsed"
         );
 
-      } catch (error) {
-        console.error(error);
 
-        let texto =
-          error && error.message
-            ? error.message
-            : "No fue posible exportar el reporte.";
+        const icon =
 
-        if (texto.includes("PEGA_AQUI_TU_CLIENT_ID")) {
-          texto =
-            "Primero configura el Application (client) ID de una App Registration de Microsoft Entra ID.";
+            collapseBtn.querySelector(
+                "i"
+            );
+
+
+        if (
+
+            dashboard.classList.contains(
+                "collapsed"
+            )
+
+        ) {
+
+
+            icon.className =
+
+                "fas fa-angles-right";
+
+
+            collapseBtn.title =
+
+                "Mostrar menú";
+
+
         }
 
-        mostrarToast(
-          "No se pudo exportar",
-          texto,
-          9000
-        );
+        else {
 
-      } finally {
-        exportPptBtn.disabled = false;
-        exportPptBtn.innerHTML = contenidoOriginal;
-      }
-    });
 
-    const currentDate = document.getElementById("currentDate");
-    const formattedDate = new Intl.DateTimeFormat("es-MX", {
-      month: "long",
-      year: "numeric"
-    }).format(new Date());
+            icon.className =
 
-    currentDate.textContent =
-      formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+                "fas fa-angles-left";
 
-    const splashTitle = document.getElementById("splashTitle");
-    const splashSubtitle = document.getElementById("splashSubtitle");
-    const splashStatus = document.getElementById("splashStatus");
 
-    setTimeout(() => {
-      splashSubtitle.textContent = "Verificando permisos del cliente";
-      splashStatus.innerHTML =
-        '<i class="fas fa-user-shield"></i> Acceso autorizado';
-    }, 850);
+            collapseBtn.title =
 
-    setTimeout(() => {
-      splashSubtitle.textContent = "Preparando indicadores y reportes de Coppel";
-      splashStatus.innerHTML =
-        '<i class="fas fa-chart-line"></i> Cargando información';
-    }, 1750);
+                "Contraer menú";
 
-    setTimeout(() => {
-      splashTitle.textContent = "Todo está listo";
-      splashSubtitle.textContent = "Ingresando al Centro de Inteligencia";
-      splashStatus.innerHTML =
-        '<i class="fas fa-circle-check"></i> Entorno disponible';
-    }, 2850);
 
-    crearMenu();
-    cargarInicial();
-  </script>
+        }
+
+
+    }
+
+);
+
+
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+
+fullscreenBtn.addEventListener(
+
+    "click",
+
+    async () => {
+
+
+        try {
+
+
+            if (
+                !document.fullscreenElement
+            ) {
+
+
+                await iframeWrap
+                    .requestFullscreen();
+
+
+            }
+
+            else {
+
+
+                await document
+                    .exitFullscreen();
+
+
+            }
+
+
+        }
+
+        catch (
+            error
+        ) {
+
+
+            console.error(
+                error
+            );
+
+
+        }
+
+
+    }
+
+);
+
+
+
+/* =========================================================
+   FULLSCREEN ICON
+========================================================= */
+
+
+document.addEventListener(
+
+    "fullscreenchange",
+
+    () => {
+
+
+        const icon =
+
+            fullscreenBtn.querySelector(
+                "i"
+            );
+
+
+        const label =
+
+            fullscreenBtn.querySelector(
+                "span"
+            );
+
+
+        if (
+            document.fullscreenElement
+        ) {
+
+
+            icon.className =
+
+                "fas fa-compress";
+
+
+            if (
+                label
+            ) {
+
+
+                label.textContent =
+
+                    "Salir";
+
+
+            }
+
+
+        }
+
+        else {
+
+
+            icon.className =
+
+                "fas fa-expand";
+
+
+            if (
+                label
+            ) {
+
+
+                label.textContent =
+
+                    "Pantalla completa";
+
+
+            }
+
+
+        }
+
+
+    }
+
+);
+
+
+
+/* =========================================================
+   FECHA
+========================================================= */
+
+
+const currentDate =
+
+    document.getElementById(
+        "currentDate"
+    );
+
+
+const fecha =
+
+    new Intl.DateTimeFormat(
+
+        "es-MX",
+
+        {
+
+            month:
+                "long",
+
+            year:
+                "numeric"
+
+        }
+
+    )
+
+    .format(
+        new Date()
+    );
+
+
+currentDate.textContent =
+
+    fecha
+        .charAt(0)
+        .toUpperCase()
+
+    +
+
+    fecha
+        .slice(1);
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+
+crearMenu();
+
+
+iniciarReporte();
+
+
+</script>
+
 
 </body>
 </html>
