@@ -6,29 +6,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Effective | Dashboard Coppel</title>
+<title>Effective | Coppel</title>
 
 <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
 >
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 >
 
 <style>
 
-:root{
-    --gold:#d4a843;
-    --gold-light:#f0d078;
-    --dark:#0a0a0a;
-    --dark2:#101010;
-    --border:rgba(255,255,255,.08);
-    --text:#ffffff;
-    --muted:rgba(255,255,255,.55);
-}
+/* =========================================================
+   GENERAL
+========================================================= */
 
 *{
     margin:0;
@@ -44,29 +38,30 @@ body{
 
 body{
     font-family:"Inter",sans-serif;
-    background:var(--dark);
+    background:#ffffff;
     overflow:hidden;
 }
 
 
-/* =========================================
+/* =========================================================
    APP
-========================================= */
+========================================================= */
 
 .app{
+    width:100%;
     height:100vh;
     display:flex;
     flex-direction:column;
 }
 
 
-/* =========================================
+/* =========================================================
    HEADER
-========================================= */
+========================================================= */
 
-.topbar{
+.header{
 
-    height:64px;
+    height:58px;
 
     flex-shrink:0;
 
@@ -74,94 +69,102 @@ body{
     align-items:center;
     justify-content:space-between;
 
-    padding:0 24px;
+    padding:0 20px;
 
-    background:#0e0e0e;
+    background:#111111;
 
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid #292929;
 
 }
 
 
 .brand{
+
     display:flex;
     align-items:center;
-    gap:12px;
+
+    gap:11px;
+
 }
 
 
 .logo{
 
-    width:38px;
-    height:38px;
+    width:34px;
+    height:34px;
 
-    display:grid;
-    place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    border-radius:10px;
+    border-radius:8px;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold),
-            var(--gold-light)
-        );
+    background:#d6ad54;
 
-    color:#000;
+    color:#111;
 
-    font-weight:800;
+    font-size:17px;
+    font-weight:700;
 
 }
 
 
-.brand-info{
+.brand-text{
     display:flex;
     flex-direction:column;
 }
 
 
-.brand-name{
-    color:var(--gold);
-    font-size:18px;
-    font-weight:800;
+.brand-title{
+
+    color:#ffffff;
+
+    font-size:15px;
+    font-weight:600;
+
 }
 
 
-.brand-sub{
+.brand-subtitle{
+
     margin-top:2px;
-    color:var(--muted);
+
+    color:#888;
+
     font-size:11px;
+
 }
 
 
-.status{
+.header-right{
 
     display:flex;
     align-items:center;
+
     gap:7px;
 
-    color:var(--muted);
+    color:#aaa;
 
-    font-size:12px;
+    font-size:11px;
 
 }
 
 
 .status-dot{
 
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
 
     border-radius:50%;
 
-    background:#3ddc84;
+    background:#43c982;
 
 }
 
 
-/* =========================================
+/* =========================================================
    WORKSPACE
-========================================= */
+========================================================= */
 
 .workspace{
 
@@ -174,23 +177,22 @@ body{
 }
 
 
-/* =========================================
+/* =========================================================
    SIDEBAR
-========================================= */
+========================================================= */
 
 .sidebar{
 
-    width:285px;
+    width:290px;
 
     flex-shrink:0;
 
-    background:#111;
-
-    border-right:1px solid var(--border);
-
     display:flex;
-
     flex-direction:column;
+
+    background:#ffffff;
+
+    border-right:1px solid #d8d8d8;
 
     transition:width .2s ease;
 
@@ -198,15 +200,19 @@ body{
 
 
 .sidebar.collapsed{
-    width:58px;
+
+    width:52px;
+
 }
 
 
-/* HEADER SIDEBAR */
+/* =========================================================
+   SIDEBAR HEADER
+========================================================= */
 
 .sidebar-header{
 
-    height:58px;
+    height:50px;
 
     flex-shrink:0;
 
@@ -216,18 +222,18 @@ body{
 
     justify-content:space-between;
 
-    padding:0 16px;
+    padding:0 14px 0 18px;
 
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid #e7e7e7;
 
 }
 
 
 .sidebar-title{
 
-    color:white;
+    color:#222;
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:600;
 
@@ -235,25 +241,28 @@ body{
 
 
 .sidebar.collapsed .sidebar-title{
+
     display:none;
+
 }
 
 
 .collapse-btn{
 
-    width:30px;
-    height:30px;
-
-    display:grid;
-    place-items:center;
+    width:28px;
+    height:28px;
 
     border:0;
 
-    border-radius:7px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:transparent;
 
-    color:#aaa;
+    color:#777;
+
+    border-radius:5px;
 
     cursor:pointer;
 
@@ -262,16 +271,16 @@ body{
 
 .collapse-btn:hover{
 
-    background:rgba(212,168,67,.12);
+    background:#eeeeee;
 
-    color:var(--gold);
+    color:#111;
 
 }
 
 
-/* =========================================
+/* =========================================================
    PAGINAS
-========================================= */
+========================================================= */
 
 .pages{
 
@@ -279,36 +288,34 @@ body{
 
     overflow-y:auto;
 
-    padding:8px;
+    padding:6px 5px;
 
 }
 
 
 .page-btn{
 
+    position:relative;
+
     width:100%;
 
-    min-height:42px;
-
-    padding:9px 11px;
-
-    margin-bottom:3px;
+    min-height:40px;
 
     display:flex;
 
     align-items:center;
 
-    gap:11px;
+    gap:9px;
+
+    padding:8px 12px;
 
     border:0;
 
-    border-radius:7px;
+    background:#ffffff;
 
-    background:transparent;
+    color:#222;
 
-    color:rgba(255,255,255,.72);
-
-    font-family:inherit;
+    font-family:"Inter",sans-serif;
 
     font-size:12px;
 
@@ -316,34 +323,27 @@ body{
 
     cursor:pointer;
 
-    position:relative;
+    border-radius:2px;
 
-    transition:
-        background .15s,
-        color .15s;
+    margin-bottom:1px;
+
+    transition:background .12s ease;
 
 }
 
 
 .page-btn:hover{
 
-    background:rgba(255,255,255,.06);
-
-    color:#fff;
+    background:#f3f3f3;
 
 }
 
 
 .page-btn.active{
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(212,168,67,.18),
-            rgba(212,168,67,.04)
-        );
+    background:#e9e9e9;
 
-    color:#fff;
+    font-weight:600;
 
 }
 
@@ -354,38 +354,37 @@ body{
 
     position:absolute;
 
-    left:0;
+    left:3px;
 
     top:7px;
 
     bottom:7px;
 
-    width:3px;
+    width:4px;
 
     border-radius:4px;
 
-    background:var(--gold);
+    background:#118c7e;
 
 }
 
 
 .page-btn i{
 
-    width:19px;
-
-    flex-shrink:0;
+    width:17px;
 
     text-align:center;
 
-    color:rgba(255,255,255,.35);
+    color:#777;
+
+    flex-shrink:0;
 
 }
 
 
-.page-btn.active i,
-.page-btn:hover i{
+.page-btn.active i{
 
-    color:var(--gold);
+    color:#118c7e;
 
 }
 
@@ -402,7 +401,9 @@ body{
 
 
 .sidebar.collapsed .page-text{
+
     display:none;
+
 }
 
 
@@ -411,76 +412,91 @@ body{
     justify-content:center;
 
     padding-left:0;
-
     padding-right:0;
 
 }
 
 
-/* SCROLL */
+.sidebar.collapsed .page-btn.active::before{
+
+    left:1px;
+
+}
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
 
 .pages::-webkit-scrollbar{
+
     width:5px;
+
+}
+
+
+.pages::-webkit-scrollbar-track{
+
+    background:transparent;
+
 }
 
 
 .pages::-webkit-scrollbar-thumb{
 
-    background:rgba(255,255,255,.15);
+    background:#cccccc;
 
     border-radius:10px;
 
 }
 
 
-/* =========================================
+/* =========================================================
    POWER BI
-========================================= */
+========================================================= */
 
 .report-area{
+
+    position:relative;
 
     flex:1;
 
     min-width:0;
 
-    position:relative;
-
-    background:#fff;
+    background:#ffffff;
 
 }
 
 
-.iframe-wrap{
+.iframe-container{
 
     position:absolute;
 
     inset:0;
 
-    overflow:hidden;
-
-    background:white;
+    background:#ffffff;
 
 }
 
 
-#dashboardFrame{
+#powerbiFrame{
 
     width:100%;
 
     height:100%;
 
-    border:0;
-
     display:block;
 
-    background:#fff;
+    border:0;
+
+    background:#ffffff;
 
 }
 
 
-/* =========================================
+/* =========================================================
    LOADING
-========================================= */
+========================================================= */
 
 .loading{
 
@@ -488,7 +504,7 @@ body{
 
     inset:0;
 
-    z-index:20;
+    z-index:50;
 
     display:flex;
 
@@ -496,13 +512,13 @@ body{
 
     justify-content:center;
 
-    background:#fff;
+    background:#ffffff;
 
     color:#555;
 
     font-size:13px;
 
-    transition:opacity .2s;
+    transition:opacity .15s ease;
 
 }
 
@@ -510,6 +526,8 @@ body{
 .loading.hidden{
 
     opacity:0;
+
+    visibility:hidden;
 
     pointer-events:none;
 
@@ -523,9 +541,9 @@ body{
 
     margin-right:10px;
 
-    border:3px solid #ddd;
+    border:3px solid #dddddd;
 
-    border-top-color:var(--gold);
+    border-top-color:#118c7e;
 
     border-radius:50%;
 
@@ -543,31 +561,30 @@ body{
 }
 
 
-/* =========================================
+/* =========================================================
    FULLSCREEN
-========================================= */
+========================================================= */
 
 .fullscreen-btn{
 
     position:absolute;
 
-    top:14px;
+    top:12px;
+    right:16px;
 
-    right:17px;
-
-    z-index:15;
+    z-index:40;
 
     width:38px;
-
     height:38px;
 
-    display:grid;
+    display:flex;
 
-    place-items:center;
+    align-items:center;
+    justify-content:center;
 
-    border:1px solid #ddd;
+    border:1px solid #dddddd;
 
-    border-radius:7px;
+    border-radius:6px;
 
     background:rgba(255,255,255,.95);
 
@@ -575,24 +592,30 @@ body{
 
     cursor:pointer;
 
-    box-shadow:0 2px 8px rgba(0,0,0,.12);
+    box-shadow:0 2px 8px rgba(0,0,0,.10);
 
 }
 
 
 .fullscreen-btn:hover{
-    color:#000;
+
+    color:#111;
+
+    background:#ffffff;
+
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media(max-width:800px){
 
     .sidebar{
-        width:220px;
+
+        width:230px;
+
     }
 
 }
@@ -608,140 +631,167 @@ body{
 <div class="app">
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-<header class="topbar">
+    <header class="header">
 
-    <div class="brand">
 
-        <div class="logo">
-            E
+        <div class="brand">
+
+
+            <div class="logo">
+
+                E
+
+            </div>
+
+
+            <div class="brand-text">
+
+                <span class="brand-title">
+
+                    Effective
+
+                </span>
+
+                <span class="brand-subtitle">
+
+                    Reporte de Competencia · Coppel
+
+                </span>
+
+            </div>
+
+
         </div>
 
-        <div class="brand-info">
 
-            <span class="brand-name">
-                Effective
-            </span>
+        <div class="header-right">
 
-            <span class="brand-sub">
-                Reporte de Competencia Retail · Coppel
-            </span>
+            <span class="status-dot"></span>
+
+            Power BI
 
         </div>
 
-    </div>
 
-
-    <div class="status">
-
-        <span class="status-dot"></span>
-
-        En vivo
-
-    </div>
-
-</header>
+    </header>
 
 
 
-<!-- =========================================
-     CONTENIDO
-========================================= -->
+    <!-- =====================================================
+         WORKSPACE
+    ====================================================== -->
 
-<div class="workspace">
+    <div class="workspace">
 
 
-<!-- =========================================
-     MENU
-========================================= -->
+        <!-- =================================================
+             MENU
+        ================================================== -->
 
-<aside
-    class="sidebar"
-    id="sidebar"
->
-
-    <div class="sidebar-header">
-
-        <span class="sidebar-title">
-            Páginas
-        </span>
-
-        <button
-            class="collapse-btn"
-            id="collapseBtn"
-            title="Contraer menú"
+        <aside
+            class="sidebar"
+            id="sidebar"
         >
 
-            <i class="fa-solid fa-angles-left"></i>
 
-        </button>
-
-    </div>
+            <div class="sidebar-header">
 
 
-    <div
-        class="pages"
-        id="pages"
-    >
-    </div>
+                <span class="sidebar-title">
+
+                    Páginas
+
+                </span>
 
 
-</aside>
+                <button
+                    class="collapse-btn"
+                    id="collapseBtn"
+                    title="Contraer páginas"
+                >
+
+                    <i class="fa-solid fa-angles-left"></i>
+
+                </button>
+
+
+            </div>
 
 
 
-<!-- =========================================
-     POWER BI
-========================================= -->
-
-<main
-    class="report-area"
-    id="reportArea"
->
+            <div
+                class="pages"
+                id="pages"
+            ></div>
 
 
-    <div
-        class="loading"
-        id="loading"
-    >
-
-        <div class="spinner"></div>
-
-        Cargando dashboard...
-
-    </div>
+        </aside>
 
 
-    <button
-        class="fullscreen-btn"
-        id="fullscreenBtn"
-        title="Pantalla completa"
-    >
 
-        <i class="fa-solid fa-expand"></i>
+        <!-- =================================================
+             POWER BI
+        ================================================== -->
 
-    </button>
-
-
-    <div class="iframe-wrap">
-
-        <iframe
-            id="dashboardFrame"
-            title="Dashboard Coppel"
-            allowfullscreen="true"
+        <main
+            class="report-area"
+            id="reportArea"
         >
-        </iframe>
+
+
+            <!-- LOADING -->
+
+            <div
+                class="loading"
+                id="loading"
+            >
+
+                <div class="spinner"></div>
+
+                Cargando reporte...
+
+            </div>
+
+
+
+            <!-- FULLSCREEN -->
+
+            <button
+                class="fullscreen-btn"
+                id="fullscreenBtn"
+                title="Pantalla completa"
+            >
+
+                <i class="fa-solid fa-expand"></i>
+
+            </button>
+
+
+
+            <!-- IFRAME -->
+
+            <div class="iframe-container">
+
+
+                <iframe
+                    id="powerbiFrame"
+                    title="Reporte Power BI"
+                    allowfullscreen="true"
+                ></iframe>
+
+
+            </div>
+
+
+        </main>
+
 
     </div>
 
-
-</main>
-
-
-</div>
 
 </div>
 
@@ -751,21 +801,27 @@ body{
 
 
 /* ============================================================
-   POWER BI
-
-   ESTA ES TU URL ACTUAL
+   CONFIGURACION POWER BI
 ============================================================ */
 
 
-const POWERBI_URL =
+const REPORT_ID =
+    "7647a9ef-ef89-45fa-9689-2d64e55c5637";
+
+
+const TENANT_ID =
+    "1b635d23-d7cd-46f8-a33b-d081f11e0d7d";
+
+
+const POWERBI_BASE_URL =
 
     "https://app.powerbi.com/reportEmbed" +
 
-    "?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637" +
+    "?reportId=" + REPORT_ID +
 
     "&autoAuth=true" +
 
-    "&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d" +
+    "&ctid=" + TENANT_ID +
 
     "&navContentPaneEnabled=false" +
 
@@ -774,126 +830,284 @@ const POWERBI_URL =
 
 
 /* ============================================================
-   PAGINAS VISIBLES
+   PAGINAS
 
-   SOLO ESTAS APARECEN EN EL MENU.
+   IDs REALES QUE ME PASASTE.
 
-   IMPORTANTE:
-
-   pageName DEBE SER EL ReportSection REAL.
-
-   Ejemplo:
-
-   ReportSection82ab2937d11779d
-   
+   ROW DATA NO ESTA INCLUIDO.
 ============================================================ */
 
 
 const paginas = [
 
 
+    /* ==============================
+       REPORTES
+    ============================== */
+
     {
+
+        titulo:"Reportes",
+
+        pageId:"0bd590e09ce705740dbb",
+
+        icono:"fa-table-columns"
+
+    },
+
+
+    /* ==============================
+       COPPEL PORTADA
+    ============================== */
+
+    {
+
         titulo:"Coppel PORTADA",
-        pageName:"ReportSection_PORTADA",
+
+        pageId:"881bff93b9de002cba6a",
+
         icono:"fa-house"
+
     },
 
 
+    /* ==============================
+       GLOSARIO
+    ============================== */
+
     {
+
+        titulo:"Coppel GLOSARIO-TERMINOS",
+
+        pageId:"0a85d6136e4d5605b004",
+
+        icono:"fa-book"
+
+    },
+
+
+    /* ==============================
+       EIC CONFIDENCIAL
+    ============================== */
+
+    {
+
+        titulo:"Coppel EIC-CONFIDENCIAL",
+
+        pageId:"8db29d4c626d4a60dbb6",
+
+        icono:"fa-lock"
+
+    },
+
+
+    /* ==============================
+       CONTENIDO
+    ============================== */
+
+    {
+
         titulo:"Coppel CONTENIDO",
-        pageName:"ReportSection_CONTENIDO",
+
+        pageId:"e3167165bdb45881e1cd",
+
         icono:"fa-list"
+
     },
 
 
+    /* ==============================
+       SOI MARCA MEDIO
+    ============================== */
+
     {
+
         titulo:"Coppel SOI marca-medio",
-        pageName:"ReportSection_SOI_MARCA_MEDIO",
+
+        pageId:"d7cff51812c40c095684",
+
         icono:"fa-chart-bar"
+
     },
 
 
+    /* ==============================
+       SOI IMPRESIONES
+    ============================== */
+
     {
+
         titulo:"Coppel SOI marca-medio impresiones",
-        pageName:"ReportSection_SOI_IMPRESIONES",
+
+        pageId:"80f8296d8837b75ec863",
+
         icono:"fa-chart-column"
+
     },
 
 
+    /* ==============================
+       TIPO TIENDAS
+    ============================== */
+
     {
+
         titulo:"Coppel SOI por tipo de tiendas YTD",
-        pageName:"ReportSection_TIPO_TIENDAS",
-        icono:"fa-chart-pie"
+
+        pageId:"05b6a8037608c3395038",
+
+        icono:"fa-store"
+
     },
 
 
+    /* ==============================
+       INVERSION
+    ============================== */
+
     {
+
         titulo:"Coppel Inversión por Medio",
-        pageName:"ReportSection_INVERSION_MEDIO",
+
+        pageId:"b004a9ed7cd4b9e00453",
+
         icono:"fa-dollar-sign"
+
     },
 
 
+    /* ==============================
+       TEMPORALIDAD
+    ============================== */
+
     {
+
         titulo:"Coppel SOI por temporalidad YTD",
-        pageName:"ReportSection_TEMPORALIDAD",
+
+        pageId:"63ac364b5e80876e3764",
+
         icono:"fa-chart-line"
+
     },
 
 
+    /* ==============================
+       TV ABIERTA
+    ============================== */
+
     {
+
         titulo:"Coppel Actividad Tv Abierta Nacional",
-        pageName:"ReportSection_TV_ABIERTA",
+
+        pageId:"3476180640a1e911b741",
+
         icono:"fa-tv"
+
     },
 
 
+    /* ==============================
+       TV ABIERTA SOV / SOI
+    ============================== */
+
     {
+
         titulo:"Coppel Tv abierta, SOV / SOI",
-        pageName:"ReportSection_TV_SOV_SOI",
+
+        pageId:"0fcdc9064c0be0be5026",
+
         icono:"fa-tv"
+
     },
 
 
+    /* ==============================
+       TV MES ACTUAL
+    ============================== */
+
     {
+
         titulo:"Coppel Tv abierta SOV / SOI mes actual",
-        pageName:"ReportSection_TV_SOV_SOI_MES",
+
+        pageId:"7dc1d0dccd8ee123d40d",
+
         icono:"fa-calendar"
+
     },
 
 
+    /* ==============================
+       TV LOCAL
+    ============================== */
+
     {
+
         titulo:"Coppel Tv local",
-        pageName:"ReportSection_TV_LOCAL",
+
+        pageId:"883600c3ab088535b05d",
+
         icono:"fa-location-dot"
+
     },
 
 
+    /* ==============================
+       TV PAGA
+    ============================== */
+
     {
+
         titulo:"Coppel Tv de Paga",
-        pageName:"ReportSection_TV_PAGA",
+
+        pageId:"0b40b97a3d74da3dda03",
+
         icono:"fa-satellite-dish"
+
     },
 
 
+    /* ==============================
+       RADIO
+    ============================== */
+
     {
+
         titulo:"Coppel Radio 49 Plazas",
-        pageName:"ReportSection_RADIO_49",
+
+        pageId:"033aca8780bdb0300b06",
+
         icono:"fa-radio"
+
     },
 
 
+    /* ==============================
+       RADIO FOOTPRINT
+    ============================== */
+
     {
+
         titulo:"Coppel Radio Footprint",
-        pageName:"ReportSection_RADIO_FOOTPRINT",
+
+        pageId:"de5aad3ea5869580840d",
+
         icono:"fa-tower-broadcast"
+
     },
 
 
+    /* ==============================
+       DIGITAL
+    ============================== */
+
     {
+
         titulo:"Coppel DIGITAL",
-        pageName:"ReportSection_DIGITAL",
+
+        pageId:"4af16653c4d4bb0208",
+
         icono:"fa-globe"
+
     }
 
 
@@ -907,7 +1121,7 @@ const paginas = [
 
 
 const iframe =
-    document.getElementById("dashboardFrame");
+    document.getElementById("powerbiFrame");
 
 
 const pagesContainer =
@@ -946,78 +1160,96 @@ function crearMenu(){
     pagesContainer.innerHTML = "";
 
 
-    paginas.forEach(
-
-        (pagina,index) => {
+    paginas.forEach((pagina,index)=>{
 
 
-            const boton =
-                document.createElement("button");
+        const boton =
+            document.createElement("button");
 
 
-            boton.className =
-                "page-btn";
+        boton.className =
+            "page-btn";
 
 
-            boton.title =
-                pagina.titulo;
+        boton.dataset.page =
+            pagina.pageId;
 
 
-            boton.innerHTML = `
-
-                <i class="fa-solid ${pagina.icono}"></i>
-
-                <span class="page-text">
-
-                    ${pagina.titulo}
-
-                </span>
-
-            `;
+        boton.title =
+            pagina.titulo;
 
 
-            boton.addEventListener(
+        boton.innerHTML = `
 
-                "click",
+            <i class="fa-solid ${pagina.icono}"></i>
 
-                function(){
+            <span class="page-text">
 
+                ${pagina.titulo}
 
-                    cambiarPagina(
+            </span>
 
-                        pagina,
-
-                        boton
-
-                    );
-
-
-                }
-
-            );
-
-
-            pagesContainer.appendChild(
-                boton
-            );
+        `;
 
 
 
-            /* PRIMERA PAGINA */
+        /* CLICK */
 
 
-            if(index === 0){
+        boton.addEventListener(
+            "click",
+            function(){
 
-
-                boton.classList.add(
-                    "active"
+                cambiarPagina(
+                    pagina,
+                    boton
                 );
 
-
             }
+        );
 
+
+
+        /* PRIMERA ACTIVA */
+
+
+        if(index === 0){
+
+            boton.classList.add(
+                "active"
+            );
 
         }
+
+
+
+        pagesContainer.appendChild(
+            boton
+        );
+
+
+    });
+
+
+}
+
+
+
+/* ============================================================
+   GENERAR URL DE PAGINA
+============================================================ */
+
+
+function generarURL(pageId){
+
+
+    return (
+
+        POWERBI_BASE_URL +
+
+        "&pageName=" +
+
+        encodeURIComponent(pageId)
 
     );
 
@@ -1027,11 +1259,11 @@ function crearMenu(){
 
 
 /* ============================================================
-   CARGAR PRIMERA PAGINA
+   CARGAR REPORTE INICIAL
 ============================================================ */
 
 
-function cargarReporteInicial(){
+function cargarInicial(){
 
 
     if(paginas.length === 0){
@@ -1041,23 +1273,14 @@ function cargarReporteInicial(){
     }
 
 
-    const paginaInicial =
-        paginas[0];
-
-
     loading.classList.remove(
         "hidden"
     );
 
 
     iframe.src =
-
-        POWERBI_URL +
-
-        "&pageName=" +
-
-        encodeURIComponent(
-            paginaInicial.pageName
+        generarURL(
+            paginas[0].pageId
         );
 
 
@@ -1071,15 +1294,15 @@ function cargarReporteInicial(){
 
 
 function cambiarPagina(
-
     pagina,
-
     boton
-
 ){
 
 
-    /* Si ya está seleccionada */
+    /* =====================================
+       EVITAR CLICK EN LA MISMA PAGINA
+    ===================================== */
+
 
     if(
         boton.classList.contains("active")
@@ -1091,27 +1314,20 @@ function cambiarPagina(
 
 
 
-    /* Mostrar cargando */
+    /* =====================================
+       CAMBIAR BOTON ACTIVO
+    ===================================== */
 
-    loading.classList.remove(
-        "hidden"
-    );
-
-
-
-    /* Cambiar selección */
 
     document
-
         .querySelectorAll(".page-btn")
+        .forEach(btn=>{
 
-        .forEach(
+            btn.classList.remove(
+                "active"
+            );
 
-            btn =>
-
-            btn.classList.remove("active")
-
-        );
+        });
 
 
     boton.classList.add(
@@ -1120,25 +1336,37 @@ function cambiarPagina(
 
 
 
-    /* NUEVA URL */
+    /* =====================================
+       MOSTRAR LOADING
+    ===================================== */
+
+
+    loading.classList.remove(
+        "hidden"
+    );
+
+
+
+    /* =====================================
+       CAMBIAR POWER BI
+    ===================================== */
 
 
     const nuevaURL =
-
-        POWERBI_URL +
-
-        "&pageName=" +
-
-        encodeURIComponent(
-            pagina.pageName
+        generarURL(
+            pagina.pageId
         );
 
 
+    console.log(
+        "Abriendo:",
+        pagina.titulo,
+        pagina.pageId
+    );
 
-    /* CAMBIAR POWER BI */
 
-
-    iframe.src = nuevaURL;
+    iframe.src =
+        nuevaURL;
 
 
 }
@@ -1146,24 +1374,30 @@ function cambiarPagina(
 
 
 /* ============================================================
-   CUANDO EL IFRAME TERMINE DE CARGAR
+   CUANDO POWER BI CARGA
 ============================================================ */
 
 
 iframe.addEventListener(
-
     "load",
-
     function(){
 
 
-        loading.classList.add(
-            "hidden"
+        /* Pequeño delay visual */
+
+        setTimeout(
+            function(){
+
+                loading.classList.add(
+                    "hidden"
+                );
+
+            },
+            150
         );
 
 
     }
-
 );
 
 
@@ -1174,9 +1408,7 @@ iframe.addEventListener(
 
 
 collapseBtn.addEventListener(
-
     "click",
-
     function(){
 
 
@@ -1200,6 +1432,10 @@ collapseBtn.addEventListener(
                 "fa-solid fa-angles-right";
 
 
+            collapseBtn.title =
+                "Mostrar páginas";
+
+
         }
 
         else{
@@ -1209,24 +1445,25 @@ collapseBtn.addEventListener(
                 "fa-solid fa-angles-left";
 
 
+            collapseBtn.title =
+                "Contraer páginas";
+
+
         }
 
 
     }
-
 );
 
 
 
 /* ============================================================
-   PANTALLA COMPLETA
+   FULLSCREEN
 ============================================================ */
 
 
 fullscreenBtn.addEventListener(
-
     "click",
-
     async function(){
 
 
@@ -1260,6 +1497,7 @@ fullscreenBtn.addEventListener(
 
 
             console.error(
+                "Error fullscreen:",
                 error
             );
 
@@ -1268,23 +1506,63 @@ fullscreenBtn.addEventListener(
 
 
     }
-
 );
 
 
 
 /* ============================================================
-   INICIO
+   ACTUALIZAR ICONO FULLSCREEN
+============================================================ */
+
+
+document.addEventListener(
+    "fullscreenchange",
+    function(){
+
+
+        const icon =
+            fullscreenBtn.querySelector("i");
+
+
+        if(
+            document.fullscreenElement
+        ){
+
+
+            icon.className =
+                "fa-solid fa-compress";
+
+
+        }
+
+        else{
+
+
+            icon.className =
+                "fa-solid fa-expand";
+
+
+        }
+
+
+    }
+);
+
+
+
+/* ============================================================
+   INICIAR
 ============================================================ */
 
 
 crearMenu();
 
-cargarReporteInicial();
+cargarInicial();
 
 
 </script>
 
 
 </body>
+
 </html>
