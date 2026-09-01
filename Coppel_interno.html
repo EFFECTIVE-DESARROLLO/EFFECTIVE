@@ -1,1330 +1,814 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
+<title>Effective | Coppel</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <title>Effective | Reporte Coppel</title>
+<!-- POWER BI SDK -->
+<script src="https://cdn.jsdelivr.net/npm/powerbi-client@2.23.1/dist/powerbi.min.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    font-family:Inter,sans-serif;
+    background:#fff;
+    overflow:hidden;
+}
+
+.app{
+    width:100%;
+    height:100vh;
+    display:flex;
+}
 
 
-  <!-- ICONOS -->
+/* =========================================
+   MENU IZQUIERDO
+========================================= */
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  >
+.sidebar{
+    width:270px;
+    height:100%;
+    background:#fff;
+    border-right:1px solid #ddd;
+    display:flex;
+    flex-direction:column;
+    flex-shrink:0;
+    transition:width .2s ease;
+}
+
+.sidebar.collapsed{
+    width:55px;
+}
 
 
-  <!-- FUENTE -->
+/* CABECERA */
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  >
+.sidebar-header{
+    height:62px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    border-bottom:1px solid #eee;
+}
+
+.sidebar-title{
+    font-size:18px;
+    font-weight:600;
+    color:#222;
+}
+
+.sidebar.collapsed .sidebar-title{
+    display:none;
+}
+
+.collapse{
+    border:0;
+    background:transparent;
+    cursor:pointer;
+    color:#777;
+    font-size:16px;
+}
+
+.collapse:hover{
+    color:#008272;
+}
 
 
-  <style>
+/* =========================================
+   PAGINAS
+========================================= */
 
-    :root {
+.pages{
+    flex:1;
+    overflow-y:auto;
+    padding:8px 7px;
+}
 
-      --gold: #d4a843;
+.page{
+    width:100%;
+    min-height:40px;
 
-      --gold-light: #f0d078;
+    border:0;
+    background:#fff;
 
-      --dark: #0a0a0a;
+    display:flex;
+    align-items:center;
+    gap:10px;
 
-      --dark2: #101010;
+    padding:9px 11px;
 
-      --dark3: #171717;
+    cursor:pointer;
 
-      --text: #ffffff;
+    font-family:Inter,sans-serif;
+    font-size:13px;
 
-      --muted: rgba(255,255,255,.55);
+    color:#222;
 
-      --border: rgba(255,255,255,.08);
+    text-align:left;
 
+    border-radius:2px;
+
+    margin-bottom:2px;
+
+    position:relative;
+}
+
+.page:hover{
+    background:#f3f3f3;
+}
+
+.page.active{
+    background:#e9e9e9;
+    font-weight:600;
+}
+
+.page.active::before{
+    content:"";
+    position:absolute;
+
+    left:0;
+    top:7px;
+    bottom:7px;
+
+    width:4px;
+
+    border-radius:3px;
+
+    background:#008272;
+}
+
+.page i{
+    width:18px;
+    text-align:center;
+    color:#777;
+}
+
+.page.active i{
+    color:#008272;
+}
+
+.sidebar.collapsed .page span{
+    display:none;
+}
+
+.sidebar.collapsed .page{
+    justify-content:center;
+    padding:10px 0;
+}
+
+
+/* SCROLL */
+
+.pages::-webkit-scrollbar{
+    width:6px;
+}
+
+.pages::-webkit-scrollbar-thumb{
+    background:#ccc;
+    border-radius:10px;
+}
+
+
+/* =========================================
+   POWER BI
+========================================= */
+
+.report-area{
+    flex:1;
+    height:100%;
+    min-width:0;
+    position:relative;
+    background:#f5f5f5;
+}
+
+#reportContainer{
+    width:100%;
+    height:100%;
+}
+
+
+/* =========================================
+   CARGANDO
+========================================= */
+
+.loading{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#fff;
+
+    z-index:20;
+
+    font-size:14px;
+    color:#555;
+}
+
+.loading.hidden{
+    display:none;
+}
+
+.spinner{
+    width:22px;
+    height:22px;
+
+    border:3px solid #ddd;
+    border-top-color:#008272;
+
+    border-radius:50%;
+
+    animation:spin .7s linear infinite;
+
+    margin-right:10px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
     }
+}
 
 
-    * {
+/* =========================================
+   FULLSCREEN
+========================================= */
 
-      margin: 0;
+.fullscreen{
+    position:absolute;
 
-      padding: 0;
+    right:18px;
+    top:15px;
 
-      box-sizing: border-box;
+    z-index:10;
 
-    }
+    width:38px;
+    height:38px;
 
+    border:1px solid #ddd;
+    border-radius:6px;
 
-    html,
-    body {
+    background:#fff;
 
-      width: 100%;
+    color:#555;
 
-      height: 100%;
+    cursor:pointer;
 
-    }
+    box-shadow:0 2px 7px rgba(0,0,0,.1);
+}
 
+.fullscreen:hover{
+    color:#008272;
+}
 
-    body {
-
-      background: var(--dark);
-
-      color: white;
-
-      font-family: "Inter", sans-serif;
-
-      overflow: hidden;
-
-    }
-
-
-
-    /* =====================================================
-       APP
-    ===================================================== */
-
-
-    .app {
-
-      width: 100%;
-
-      height: 100vh;
-
-      display: flex;
-
-      flex-direction: column;
-
-      background: #090909;
-
-    }
-
-
-
-    /* =====================================================
-       HEADER
-    ===================================================== */
-
-
-    .topbar {
-
-      height: 68px;
-
-      flex-shrink: 0;
-
-      background: #101010;
-
-      border-bottom: 1px solid var(--border);
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      padding: 0 24px;
-
-    }
-
-
-    .brand {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 13px;
-
-    }
-
-
-    .brand-icon {
-
-      width: 40px;
-
-      height: 40px;
-
-      border-radius: 11px;
-
-      display: grid;
-
-      place-items: center;
-
-      font-weight: 900;
-
-      color: #000;
-
-      background:
-
-        linear-gradient(
-          135deg,
-          var(--gold),
-          var(--gold-light)
-        );
-
-    }
-
-
-    .brand-info {
-
-      display: flex;
-
-      flex-direction: column;
-
-    }
-
-
-    .brand-name {
-
-      color: var(--gold);
-
-      font-size: 19px;
-
-      font-weight: 800;
-
-    }
-
-
-    .brand-subtitle {
-
-      color: var(--muted);
-
-      font-size: 11px;
-
-      margin-top: 2px;
-
-    }
-
-
-
-    .topbar-right {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 12px;
-
-    }
-
-
-    .status {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-
-    }
-
-
-    .status-dot {
-
-      width: 8px;
-
-      height: 8px;
-
-      background: #35d07f;
-
-      border-radius: 50%;
-
-    }
-
-
-
-    /* =====================================================
-       WORKSPACE
-    ===================================================== */
-
-
-    .workspace {
-
-      flex: 1;
-
-      min-height: 0;
-
-      display: flex;
-
-    }
-
-
-
-    /* =====================================================
-       MENU LATERAL
-    ===================================================== */
-
-
-    .sidebar {
-
-      width: 300px;
-
-      flex-shrink: 0;
-
-      background: #101010;
-
-      border-right: 1px solid var(--border);
-
-      display: flex;
-
-      flex-direction: column;
-
-      transition: width .3s ease;
-
-    }
-
-
-    .sidebar.collapsed {
-
-      width: 64px;
-
-    }
-
-
-
-    /* HEADER MENU */
-
-
-    .sidebar-header {
-
-      height: 62px;
-
-      padding: 0 18px;
-
-      border-bottom: 1px solid var(--border);
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-    }
-
-
-    .sidebar-title {
-
-      font-size: 17px;
-
-      font-weight: 700;
-
-      white-space: nowrap;
-
-    }
-
-
-    .sidebar.collapsed .sidebar-title {
-
-      display: none;
-
-    }
-
-
-    .collapse-btn {
-
-      width: 32px;
-
-      height: 32px;
-
-      border: none;
-
-      border-radius: 8px;
-
-      background: transparent;
-
-      color: var(--gold);
-
-      cursor: pointer;
-
-      display: grid;
-
-      place-items: center;
-
-    }
-
-
-    .collapse-btn:hover {
-
-      background: rgba(212,168,67,.12);
-
-    }
-
-
-
-    /* =====================================================
-       LISTA PAGINAS
-    ===================================================== */
-
-
-    .pages-list {
-
-      flex: 1;
-
-      overflow-y: auto;
-
-      padding: 10px;
-
-    }
-
-
-    .page-btn {
-
-      width: 100%;
-
-      min-height: 45px;
-
-      border: none;
-
-      border-radius: 9px;
-
-      background: transparent;
-
-      color: rgba(255,255,255,.78);
-
-      font-family: inherit;
-
-      cursor: pointer;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 12px;
-
-      text-align: left;
-
-      padding: 10px 13px;
-
-      margin-bottom: 4px;
-
-      transition: all .2s ease;
-
-      position: relative;
-
-    }
-
-
-    .page-btn:hover {
-
-      color: white;
-
-      background: rgba(212,168,67,.08);
-
-    }
-
-
-    .page-btn.active {
-
-      color: white;
-
-      background:
-
-        linear-gradient(
-          90deg,
-          rgba(212,168,67,.18),
-          rgba(212,168,67,.04)
-        );
-
-    }
-
-
-    .page-btn.active::before {
-
-      content: "";
-
-      width: 3px;
-
-      border-radius: 10px;
-
-      background: var(--gold);
-
-      position: absolute;
-
-      left: 0;
-
-      top: 8px;
-
-      bottom: 8px;
-
-    }
-
-
-    .page-btn i {
-
-      width: 20px;
-
-      flex-shrink: 0;
-
-      text-align: center;
-
-      color: rgba(255,255,255,.38);
-
-    }
-
-
-    .page-btn.active i,
-    .page-btn:hover i {
-
-      color: var(--gold);
-
-    }
-
-
-    .page-label {
-
-      white-space: nowrap;
-
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-
-      font-size: 13px;
-
-    }
-
-
-    .sidebar.collapsed .page-label {
-
-      display: none;
-
-    }
-
-
-    .sidebar.collapsed .page-btn {
-
-      justify-content: center;
-
-      padding-left: 0;
-
-      padding-right: 0;
-
-    }
-
-
-
-    /* SCROLL */
-
-
-    .pages-list::-webkit-scrollbar {
-
-      width: 5px;
-
-    }
-
-
-    .pages-list::-webkit-scrollbar-track {
-
-      background: transparent;
-
-    }
-
-
-    .pages-list::-webkit-scrollbar-thumb {
-
-      background: rgba(255,255,255,.16);
-
-      border-radius: 10px;
-
-    }
-
-
-
-    /* =====================================================
-       REPORTE
-    ===================================================== */
-
-
-    .report-container {
-
-      flex: 1;
-
-      min-width: 0;
-
-      position: relative;
-
-      background: #070707;
-
-    }
-
-
-    #dashboardFrame {
-
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-
-      height: 100%;
-
-      border: none;
-
-      background: white;
-
-    }
-
-
-
-    /* =====================================================
-       PANTALLA COMPLETA
-    ===================================================== */
-
-
-    .fullscreen-btn {
-
-      position: absolute;
-
-      right: 17px;
-
-      top: 15px;
-
-      z-index: 30;
-
-      width: 40px;
-
-      height: 40px;
-
-      border: 1px solid rgba(255,255,255,.14);
-
-      border-radius: 10px;
-
-      background: rgba(10,10,10,.82);
-
-      color: white;
-
-      cursor: pointer;
-
-      display: grid;
-
-      place-items: center;
-
-      backdrop-filter: blur(8px);
-
-    }
-
-
-    .fullscreen-btn:hover {
-
-      color: var(--gold);
-
-      border-color: rgba(212,168,67,.45);
-
-    }
-
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-
-    @media(max-width:900px) {
-
-      .sidebar {
-
-        width: 240px;
-
-      }
-
-    }
-
-
-  </style>
-
+</style>
 </head>
-
 
 
 <body>
 
-
 <div class="app">
 
 
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
+    <!-- =====================================
+         MENU
+    ====================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="sidebar-title">
+                Páginas
+            </div>
+
+            <button
+                class="collapse"
+                id="collapseBtn"
+            >
+                <i class="fa-solid fa-angles-left"></i>
+            </button>
+
+        </div>
 
 
-  <header class="topbar">
+        <div class="pages" id="pages">
 
-
-    <div class="brand">
-
-
-      <div class="brand-icon">
-
-        E
-
-      </div>
-
-
-      <div class="brand-info">
-
-        <span class="brand-name">
-
-          Effective
-
-        </span>
-
-        <span class="brand-subtitle">
-
-          Reporte de Competencia Retail · Coppel
-
-        </span>
-
-      </div>
-
-
-    </div>
-
-
-
-    <div class="topbar-right">
-
-
-      <div class="status">
-
-        <span class="status-dot"></span>
-
-        Power BI conectado
-
-      </div>
-
-
-    </div>
-
-
-  </header>
-
-
-
-  <!-- =====================================================
-       AREA PRINCIPAL
-  ====================================================== -->
-
-
-  <div class="workspace">
-
-
-
-    <!-- =====================================================
-         MENU PAGINAS
-    ====================================================== -->
-
-
-    <aside
-      class="sidebar"
-      id="sidebar"
-    >
-
-
-      <div class="sidebar-header">
-
-
-        <span class="sidebar-title">
-
-          Páginas
-
-        </span>
-
-
-        <button
-          class="collapse-btn"
-          id="collapseBtn"
-          title="Contraer menú"
-        >
-
-          <i class="fas fa-angles-left"></i>
-
-        </button>
-
-
-      </div>
-
-
-
-      <div
-        class="pages-list"
-        id="pagesList"
-      >
-
-      </div>
-
+        </div>
 
     </aside>
 
 
 
-    <!-- =====================================================
+    <!-- =====================================
          POWER BI
-    ====================================================== -->
+    ====================================== -->
+
+    <main class="report-area" id="reportArea">
 
 
-    <main
-      class="report-container"
-      id="reportContainer"
-    >
+        <div class="loading" id="loading">
+
+            <div class="spinner"></div>
+
+            Cargando reporte...
+
+        </div>
 
 
-      <button
-        class="fullscreen-btn"
-        id="fullscreenBtn"
-        title="Pantalla completa"
-      >
-
-        <i class="fas fa-expand"></i>
-
-      </button>
+        <button
+            class="fullscreen"
+            id="fullscreenBtn"
+        >
+            <i class="fa-solid fa-expand"></i>
+        </button>
 
 
-      <iframe
-        id="dashboardFrame"
-        title="Reporte Power BI Coppel"
-        allowfullscreen="true"
-      >
-
-      </iframe>
+        <div id="reportContainer"></div>
 
 
     </main>
 
 
-  </div>
-
-
 </div>
-
 
 
 <script>
 
+/* ============================================================
+   CONFIGURACION POWER BI
+============================================================ */
 
-/* ==========================================================
-   URL POWER BI
-========================================================== */
-
-
-const POWERBI_BASE_URL =
-
-"https://app.powerbi.com/reportEmbed?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d&navContentPaneEnabled=false&filterPaneEnabled=false";
+const models = window["powerbi-client"].models;
 
 
+/* TU REPORTE */
 
-/* ==========================================================
-   PAGINAS QUE EL USUARIO PODRA VER
+const config = {
 
-   SOLO ESTAS APARECERAN EN EL MENU.
+    type: "report",
+
+    id: "7647a9ef-ef89-45fa-9689-2d64e55c5637",
+
+    embedUrl:
+        "https://app.powerbi.com/reportEmbed" +
+        "?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637" +
+        "&autoAuth=true" +
+        "&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d",
+
+    tokenType: models.TokenType.Aad,
+
+    permissions: models.Permissions.Read,
+
+    settings: {
+
+        panes: {
+
+            filters: {
+                visible: false
+            },
+
+            pageNavigation: {
+                visible: false
+            }
+
+        },
+
+        bars: {
+
+            statusBar: {
+                visible: false
+            }
+
+        }
+
+    }
+
+};
+
+
+/* ============================================================
+   PAGINAS QUE QUIERES MOSTRAR
 
    IMPORTANTE:
-   Cambia cada ReportSectionXXXX
-   por el Page Name verdadero de Power BI.
-========================================================== */
+   El titulo puede ser exactamente el nombre visible.
+
+   El código buscará automáticamente las páginas reales
+   del reporte por displayName.
+
+   YA NO NECESITAS ESCRIBIR REPORTSECTION A MANO.
+============================================================ */
 
 
 const paginasPermitidas = [
 
+    "Coppel PORTADA",
 
-  {
+    "Coppel CONTENIDO",
 
-    titulo: "Coppel PORTADA",
+    "Coppel SOI marca-medio",
 
-    pageName: "ReportSection_PORTADA",
+    "Coppel SOI marca-medio impresiones",
 
-    icono: "fa-house"
+    "Coppel SOI por tipo de tiendas YTD",
 
-  },
+    "Coppel Inversión por Medio",
 
+    "Coppel SOI por temporalidad YTD",
 
-  {
+    "Coppel Actividad Tv Abierta Nacional",
 
-    titulo: "Coppel CONTENIDO",
+    "Coppel Tv abierta, SOV / SOI",
 
-    pageName: "ReportSection_CONTENIDO",
+    "Coppel Tv abierta SOV / SOI mes actual",
 
-    icono: "fa-list"
+    "Coppel Tv local",
 
-  },
+    "Coppel Tv de Paga",
 
+    "Coppel Radio 49 Plazas",
 
-  {
+    "Coppel Radio Footprint",
 
-    titulo: "Coppel SOI marca-medio",
-
-    pageName: "ReportSection_SOI_MARCA_MEDIO",
-
-    icono: "fa-chart-bar"
-
-  },
-
-
-  {
-
-    titulo: "Coppel SOI marca-medio impresiones",
-
-    pageName: "ReportSection_SOI_IMPRESIONES",
-
-    icono: "fa-chart-column"
-
-  },
-
-
-  {
-
-    titulo: "Coppel SOI por tipo de tiendas YTD",
-
-    pageName: "ReportSection_SOI_TIPO_TIENDAS",
-
-    icono: "fa-chart-pie"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Inversión por Medio",
-
-    pageName: "ReportSection_INVERSION_MEDIO",
-
-    icono: "fa-dollar-sign"
-
-  },
-
-
-  {
-
-    titulo: "Coppel SOI por temporalidad YTD",
-
-    pageName: "ReportSection_SOI_TEMPORALIDAD",
-
-    icono: "fa-chart-line"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Actividad Tv Abierta Nacional",
-
-    pageName: "ReportSection_ACTIVIDAD_TV",
-
-    icono: "fa-tv"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Tv abierta, SOV / SOI",
-
-    pageName: "ReportSection_TV_SOV_SOI",
-
-    icono: "fa-tv"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Tv abierta SOV / SOI mes actual",
-
-    pageName: "ReportSection_TV_SOV_SOI_MES",
-
-    icono: "fa-calendar"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Tv local",
-
-    pageName: "ReportSection_TV_LOCAL",
-
-    icono: "fa-location-dot"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Tv de Paga",
-
-    pageName: "ReportSection_TV_PAGA",
-
-    icono: "fa-satellite-dish"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Radio 49 Plazas",
-
-    pageName: "ReportSection_RADIO_49",
-
-    icono: "fa-radio"
-
-  },
-
-
-  {
-
-    titulo: "Coppel Radio Footprint",
-
-    pageName: "ReportSection_RADIO_FOOTPRINT",
-
-    icono: "fa-tower-broadcast"
-
-  },
-
-
-  {
-
-    titulo: "Coppel DIGITAL",
-
-    pageName: "ReportSection_DIGITAL",
-
-    icono: "fa-globe"
-
-  }
-
+    "Coppel DIGITAL"
 
 ];
 
 
-
-/* ==========================================================
+/* ============================================================
    ELEMENTOS
-========================================================== */
+============================================================ */
 
+const container =
+    document.getElementById("reportContainer");
 
-const iframe =
+const pagesContainer =
+    document.getElementById("pages");
 
-document.getElementById("dashboardFrame");
-
-
-const pagesList =
-
-document.getElementById("pagesList");
-
+const loading =
+    document.getElementById("loading");
 
 const sidebar =
-
-document.getElementById("sidebar");
-
+    document.getElementById("sidebar");
 
 const collapseBtn =
-
-document.getElementById("collapseBtn");
-
+    document.getElementById("collapseBtn");
 
 const fullscreenBtn =
+    document.getElementById("fullscreenBtn");
 
-document.getElementById("fullscreenBtn");
-
-
-const reportContainer =
-
-document.getElementById("reportContainer");
+const reportArea =
+    document.getElementById("reportArea");
 
 
+/* ============================================================
+   CARGAR POWER BI UNA SOLA VEZ
+============================================================ */
 
-/* ==========================================================
-   CREAR MENU
-========================================================== */
+powerbi.reset(container);
 
-
-function crearMenu() {
-
-
-  pagesList.innerHTML = "";
+const report =
+    powerbi.embed(container, config);
 
 
-  paginasPermitidas.forEach(
+/* ============================================================
+   CUANDO POWER BI TERMINE DE CARGAR
+============================================================ */
 
-    (pagina, index) => {
+report.on("loaded", async function(){
 
+    console.log("Power BI cargado");
 
-      const boton =
+    try{
 
-      document.createElement("button");
+        await crearMenu();
 
-
-      boton.className = "page-btn";
-
-
-      boton.title = pagina.titulo;
-
-
-      boton.innerHTML = `
-
-        <i class="fas ${pagina.icono}"></i>
-
-        <span class="page-label">
-
-          ${pagina.titulo}
-
-        </span>
-
-      `;
-
-
-      boton.addEventListener(
-
-        "click",
-
-        () => {
-
-
-          abrirPagina(
-
-            pagina.pageName,
-
-            boton
-
-          );
-
-
-        }
-
-      );
-
-
-      pagesList.appendChild(boton);
-
-
-
-      /* ==========================================
-         PRIMERA PAGINA
-      ========================================== */
-
-
-      if(index === 0) {
-
-
-        abrirPagina(
-
-          pagina.pageName,
-
-          boton
-
-        );
-
-
-      }
-
+        loading.classList.add("hidden");
 
     }
 
-  );
+    catch(error){
+
+        console.error(
+            "Error obteniendo páginas:",
+            error
+        );
+
+        loading.innerHTML =
+            "No se pudieron cargar las páginas.";
+
+    }
+
+});
 
 
-}
+/* ============================================================
+   ERRORES POWER BI
+============================================================ */
+
+report.on("error", function(event){
+
+    console.error(
+        "Power BI error:",
+        event.detail
+    );
+
+});
 
 
+/* ============================================================
+   CREAR MENU
 
-/* ==========================================================
-   CAMBIAR PAGINA POWER BI
-========================================================== */
+   Power BI nos devuelve TODAS sus páginas.
 
+   Nosotros filtramos únicamente las autorizadas.
+============================================================ */
 
-function abrirPagina(
+async function crearMenu(){
 
-  pageName,
-
-  boton
-
-) {
-
-
-  /* Quitar página activa anterior */
+    const paginasPowerBI =
+        await report.getPages();
 
 
-  document
-
-    .querySelectorAll(".page-btn")
-
-    .forEach(
-
-      elemento =>
-
-      elemento.classList.remove("active")
-
+    console.log(
+        "Páginas Power BI:",
+        paginasPowerBI
     );
 
 
-
-  /* Activar nueva */
-
-
-  if(boton) {
+    pagesContainer.innerHTML = "";
 
 
-    boton.classList.add("active");
+    /* RECORRER SOLO LAS PERMITIDAS */
+
+    paginasPermitidas.forEach(nombrePermitido => {
 
 
-  }
+        const paginaReal =
+            paginasPowerBI.find(p =>
+
+                p.displayName
+                    .trim()
+                    .toLowerCase()
+
+                ===
+
+                nombrePermitido
+                    .trim()
+                    .toLowerCase()
+
+            );
 
 
+        /* SI NO EXISTE */
 
-  /* Cambiar Power BI */
+        if(!paginaReal){
 
+            console.warn(
+                "Página no encontrada:",
+                nombrePermitido
+            );
 
-  const nuevaURL =
+            return;
 
-    POWERBI_BASE_URL
-
-    +
-
-    "&pageName="
-
-    +
-
-    encodeURIComponent(pageName);
+        }
 
 
+        /* CREAR BOTON */
 
-  iframe.src = nuevaURL;
+        const button =
+            document.createElement("button");
 
+
+        button.className = "page";
+
+
+        button.dataset.page =
+            paginaReal.name;
+
+
+        button.innerHTML = `
+
+            <i class="fa-regular fa-file"></i>
+
+            <span>
+                ${paginaReal.displayName}
+            </span>
+
+        `;
+
+
+        /* CLICK */
+
+        button.addEventListener(
+            "click",
+            async function(){
+
+                await cambiarPagina(
+                    paginaReal,
+                    button
+                );
+
+            }
+        );
+
+
+        pagesContainer.appendChild(button);
+
+
+        /* MARCAR ACTIVA */
+
+        if(paginaReal.isActive){
+
+            button.classList.add("active");
+
+        }
+
+
+    });
 
 }
 
 
+/* ============================================================
+   CAMBIAR PAGINA
 
-/* ==========================================================
+   ESTA ES LA PARTE IMPORTANTE.
+
+   NO RECARGAMOS POWER BI.
+
+   setActive() cambia directamente de slide.
+============================================================ */
+
+async function cambiarPagina(
+    pagina,
+    boton
+){
+
+    try{
+
+
+        /* Cambiar página */
+
+        await pagina.setActive();
+
+
+        /* quitar activo */
+
+        document
+            .querySelectorAll(".page")
+            .forEach(btn => {
+
+                btn.classList.remove("active");
+
+            });
+
+
+        /* nuevo activo */
+
+        boton.classList.add("active");
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Error cambiando página:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   SI POWER BI CAMBIA PAGINA INTERNAMENTE
+============================================================ */
+
+report.on(
+    "pageChanged",
+    function(event){
+
+        const pagina =
+            event.detail.newPage;
+
+
+        document
+            .querySelectorAll(".page")
+            .forEach(btn => {
+
+
+                btn.classList.toggle(
+
+                    "active",
+
+                    btn.dataset.page === pagina.name
+
+                );
+
+
+            });
+
+    }
+);
+
+
+/* ============================================================
    CONTRAER MENU
-========================================================== */
-
+============================================================ */
 
 collapseBtn.addEventListener(
+    "click",
+    function(){
 
-  "click",
-
-  () => {
-
-
-    sidebar.classList.toggle("collapsed");
-
-
-    const icono =
-
-    collapseBtn.querySelector("i");
+        sidebar.classList.toggle(
+            "collapsed"
+        );
 
 
-
-    if(
-
-      sidebar.classList.contains("collapsed")
-
-    ) {
+        const icon =
+            collapseBtn.querySelector("i");
 
 
-      icono.className =
+        if(
+            sidebar.classList.contains(
+                "collapsed"
+            )
+        ){
 
-      "fas fa-angles-right";
+            icon.className =
+                "fa-solid fa-angles-right";
 
+        }
 
-    }
+        else{
 
-    else {
+            icon.className =
+                "fa-solid fa-angles-left";
 
-
-      icono.className =
-
-      "fas fa-angles-left";
-
+        }
 
     }
-
-
-  }
-
 );
 
 
-
-/* ==========================================================
-   PANTALLA COMPLETA
-========================================================== */
-
+/* ============================================================
+   FULLSCREEN
+============================================================ */
 
 fullscreenBtn.addEventListener(
+    "click",
+    async function(){
 
-  "click",
+        try{
 
-  async () => {
+            if(!document.fullscreenElement){
 
+                await reportArea.requestFullscreen();
 
-    try {
+            }
 
+            else{
 
-      if(
+                await document.exitFullscreen();
 
-        !document.fullscreenElement
+            }
 
-      ) {
+        }
 
+        catch(error){
 
-        await reportContainer.requestFullscreen();
+            console.error(
+                "Fullscreen:",
+                error
+            );
 
-
-      }
-
-      else {
-
-
-        await document.exitFullscreen();
-
-
-      }
-
+        }
 
     }
-
-    catch(error) {
-
-
-      console.error(
-
-        "Error pantalla completa:",
-
-        error
-
-      );
-
-
-    }
-
-
-  }
-
 );
-
-
-
-/* ==========================================================
-   INICIAR
-========================================================== */
-
-
-crearMenu();
 
 
 </script>
 
-
 </body>
-
 </html>
