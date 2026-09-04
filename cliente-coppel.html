@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,21 +11,18 @@
 >
 
 <title>
-Coppel | Centro de Inteligencia de Medios
+    Coppel | Centro de Inteligencia de Medios
 </title>
-
 
 <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 >
 
-
 <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
 >
-
 
 <style>
 
@@ -33,23 +31,14 @@ Coppel | Centro de Inteligencia de Medios
 ========================================================= */
 
 :root {
-
     --blue: #0b4ea2;
-
     --blue-dark: #073b7c;
-
     --blue-soft: #eaf2ff;
-
     --yellow: #ffdd22;
-
     --yellow-soft: #fff8c7;
-
     --text: #152033;
-
     --muted: #64748b;
-
     --line: #dce5f1;
-
 }
 
 
@@ -58,111 +47,58 @@ Coppel | Centro de Inteligencia de Medios
 ========================================================= */
 
 * {
-
     box-sizing: border-box;
-
     margin: 0;
-
     padding: 0;
-
 }
-
 
 html,
 body {
-
     width: 100%;
-
     height: 100%;
-
     overflow: hidden;
-
 }
 
-
 body {
-
     font-family:
-
         "Inter",
-
         Arial,
-
         sans-serif;
 
-
     background:
-
         radial-gradient(
-
             circle at 5% 10%,
-
             rgba(255,221,34,.14),
-
             transparent 24%
-
         ),
-
         radial-gradient(
-
             circle at 95% 5%,
-
             rgba(11,78,162,.10),
-
             transparent 25%
-
         ),
-
         #eef5ff;
-
 }
 
 
 /* =========================================================
    APP
-
-   Se reduce el alto deliberadamente
-   para que nunca sobrepase pantalla.
 ========================================================= */
 
 .app {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 20px);
 
-    width:
+    margin: 10px;
 
-        calc(100vw - 20px);
-
-
-    height:
-
-        calc(100vh - 20px);
-
-
-    margin:
-
-        10px;
-
-
-    display:
-
-        grid;
-
+    display: grid;
 
     grid-template-rows:
-
         68px
-
         minmax(0, 1fr);
 
+    gap: 8px;
 
-    gap:
-
-        8px;
-
-
-    overflow:
-
-        hidden;
-
+    overflow: hidden;
 }
 
 
@@ -171,55 +107,26 @@ body {
 ========================================================= */
 
 .header {
-
     width: 100%;
-
     height: 68px;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    display:
+    padding: 0 22px;
 
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    justify-content:
-
-        space-between;
-
-
-    padding:
-
-        0 22px;
-
-
-    background:
-
-        #ffffff;
-
+    background: #ffffff;
 
     border:
-
         1px solid
-
         rgba(11,78,162,.10);
 
-
-    border-radius:
-
-        18px;
-
+    border-radius: 18px;
 
     box-shadow:
-
         0 8px 25px
-
         rgba(7,59,124,.07);
-
 }
 
 
@@ -228,143 +135,33 @@ body {
 ========================================================= */
 
 .header-left {
+    display: flex;
+    align-items: center;
 
-    display:
+    gap: 17px;
 
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    gap:
-
-        17px;
-
-
-    min-width:
-
-        0;
-
+    min-width: 0;
 }
 
 
 /* =========================================================
-   LOGO COPPEL
+   LOGO
 ========================================================= */
 
 .coppel-logo {
+    display: flex;
+    align-items: center;
 
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    gap:
-
-        9px;
-
-
-    color:
-
-        var(--blue);
-
-
-    flex-shrink:
-
-        0;
-
+    flex-shrink: 0;
 }
 
+.coppel-logo-img {
+    height: 48px;
+    width: auto;
 
-.coppel-symbol {
+    display: block;
 
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    gap:
-
-        4px;
-
-}
-
-
-.coppel-symbol span {
-
-    display:
-
-        block;
-
-
-    border-radius:
-
-        50%;
-
-
-    background:
-
-        var(--yellow);
-
-}
-
-
-.circle-lg {
-
-    width: 24px;
-
-    height: 24px;
-
-}
-
-
-.circle-md {
-
-    width: 15px;
-
-    height: 15px;
-
-}
-
-
-.circle-sm {
-
-    width: 12px;
-
-    height: 12px;
-
-}
-
-
-.coppel-name {
-
-    font-size:
-
-        29px;
-
-
-    font-weight:
-
-        800;
-
-
-    letter-spacing:
-
-        -1.5px;
-
+    object-fit: contain;
 }
 
 
@@ -373,26 +170,12 @@ body {
 ========================================================= */
 
 .divider {
+    width: 1px;
+    height: 36px;
 
-    width:
+    background: var(--line);
 
-        1px;
-
-
-    height:
-
-        36px;
-
-
-    background:
-
-        var(--line);
-
-
-    flex-shrink:
-
-        0;
-
+    flex-shrink: 0;
 }
 
 
@@ -401,69 +184,30 @@ body {
 ========================================================= */
 
 .header-copy {
-
-    min-width:
-
-        0;
-
+    min-width: 0;
 }
-
 
 .header-copy strong {
+    display: block;
 
-    display:
+    color: var(--text);
 
-        block;
+    font-size: 14px;
+    font-weight: 800;
 
-
-    color:
-
-        var(--text);
-
-
-    font-size:
-
-        14px;
-
-
-    font-weight:
-
-        800;
-
-
-    white-space:
-
-        nowrap;
-
+    white-space: nowrap;
 }
 
-
 .header-copy span {
+    display: block;
 
-    display:
+    margin-top: 3px;
 
-        block;
+    color: var(--muted);
 
+    font-size: 10px;
 
-    margin-top:
-
-        3px;
-
-
-    color:
-
-        var(--muted);
-
-
-    font-size:
-
-        10px;
-
-
-    white-space:
-
-        nowrap;
-
+    white-space: nowrap;
 }
 
 
@@ -472,134 +216,53 @@ body {
 ========================================================= */
 
 .header-right {
+    display: flex;
+    align-items: center;
 
-    display:
+    gap: 10px;
 
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    gap:
-
-        10px;
-
-
-    flex-shrink:
-
-        0;
-
+    flex-shrink: 0;
 }
-
 
 .pill {
+    height: 34px;
 
-    height:
+    padding: 0 12px;
 
-        34px;
+    display: flex;
+    align-items: center;
 
+    gap: 7px;
 
-    padding:
+    border-radius: 10px;
 
-        0 12px;
+    font-size: 10.5px;
+    font-weight: 700;
 
-
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    gap:
-
-        7px;
-
-
-    border-radius:
-
-        10px;
-
-
-    font-size:
-
-        10.5px;
-
-
-    font-weight:
-
-        700;
-
-
-    white-space:
-
-        nowrap;
-
+    white-space: nowrap;
 }
-
 
 .date-pill {
-
-    color:
-
-        var(--blue-dark);
-
-
-    background:
-
-        var(--blue-soft);
-
+    color: var(--blue-dark);
+    background: var(--blue-soft);
 }
-
 
 .status-pill {
-
-    color:
-
-        #166534;
-
-
-    background:
-
-        #ecfdf3;
-
+    color: #166534;
+    background: #ecfdf3;
 }
 
-
 .status-dot {
+    width: 8px;
+    height: 8px;
 
-    width:
+    border-radius: 50%;
 
-        8px;
-
-
-    height:
-
-        8px;
-
-
-    border-radius:
-
-        50%;
-
-
-    background:
-
-        #22c55e;
-
+    background: #22c55e;
 
     box-shadow:
-
         0 0 0 4px
-
         rgba(34,197,94,.10);
-
 }
 
 
@@ -608,73 +271,36 @@ body {
 ========================================================= */
 
 .dashboard {
+    width: 100%;
+    height: 100%;
 
-    width:
+    min-height: 0;
 
-        100%;
-
-
-    height:
-
-        100%;
-
-
-    min-height:
-
-        0;
-
-
-    display:
-
-        grid;
-
+    display: grid;
 
     grid-template-columns:
-
         290px
-
         minmax(0, 1fr);
 
+    overflow: hidden;
 
-    overflow:
-
-        hidden;
-
-
-    background:
-
-        #ffffff;
-
+    background: #ffffff;
 
     border:
-
         1px solid
-
         rgba(11,78,162,.12);
 
-
-    border-radius:
-
-        18px;
-
+    border-radius: 18px;
 
     box-shadow:
-
         0 16px 45px
-
         rgba(7,59,124,.10);
-
 }
 
-
 .dashboard.collapsed {
-
     grid-template-columns:
-
         60px
-
         minmax(0,1fr);
-
 }
 
 
@@ -683,53 +309,27 @@ body {
 ========================================================= */
 
 .sidebar {
+    min-width: 0;
+    min-height: 0;
 
-    min-width:
-
-        0;
-
-
-    min-height:
-
-        0;
-
-
-    display:
-
-        grid;
-
+    display: grid;
 
     grid-template-rows:
-
         58px
-
         minmax(0,1fr);
 
-
-    overflow:
-
-        hidden;
-
+    overflow: hidden;
 
     border-right:
-
         1px solid
-
         var(--line);
 
-
     background:
-
         linear-gradient(
-
             180deg,
-
             #ffffff 0%,
-
             #f8fbff 100%
-
         );
-
 }
 
 
@@ -738,98 +338,43 @@ body {
 ========================================================= */
 
 .sidebar-header {
+    height: 58px;
 
-    height:
-
-        58px;
-
-
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    justify-content:
-
-        space-between;
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     padding:
-
         0 13px
-
         0 17px;
 
-
     border-bottom:
-
         1px solid
-
         var(--line);
-
 }
-
 
 .sidebar-copy strong {
+    display: block;
 
-    display:
+    color: var(--blue-dark);
 
-        block;
-
-
-    color:
-
-        var(--blue-dark);
-
-
-    font-size:
-
-        13px;
-
-
-    font-weight:
-
-        800;
-
+    font-size: 13px;
+    font-weight: 800;
 }
-
 
 .sidebar-copy span {
+    display: block;
 
-    display:
+    margin-top: 2px;
 
-        block;
+    color: var(--muted);
 
-
-    margin-top:
-
-        2px;
-
-
-    color:
-
-        var(--muted);
-
-
-    font-size:
-
-        9.5px;
-
+    font-size: 9.5px;
 }
-
 
 .dashboard.collapsed
 .sidebar-copy {
-
-    display:
-
-        none;
-
+    display: none;
 }
 
 
@@ -838,160 +383,67 @@ body {
 ========================================================= */
 
 .collapse-btn {
+    width: 32px;
+    height: 32px;
 
-    width:
+    display: grid;
+    place-items: center;
 
-        32px;
+    flex-shrink: 0;
 
+    border: 0;
+    border-radius: 9px;
 
-    height:
+    background: var(--blue-soft);
 
-        32px;
+    color: var(--blue);
 
+    cursor: pointer;
 
-    display:
-
-        grid;
-
-
-    place-items:
-
-        center;
-
-
-    flex-shrink:
-
-        0;
-
-
-    border:
-
-        0;
-
-
-    border-radius:
-
-        9px;
-
-
-    background:
-
-        var(--blue-soft);
-
-
-    color:
-
-        var(--blue);
-
-
-    cursor:
-
-        pointer;
-
-
-    transition:
-
-        .2s ease;
-
+    transition: .2s ease;
 }
 
-
 .collapse-btn:hover {
-
-    color:
-
-        #ffffff;
-
-
-    background:
-
-        var(--blue);
-
+    color: #ffffff;
+    background: var(--blue);
 }
 
 
 /* =========================================================
    LISTA
-
-   SOLO ESTA PARTE TIENE SCROLL
 ========================================================= */
 
 .pages {
+    min-height: 0;
 
-    min-height:
+    overflow-y: auto;
+    overflow-x: hidden;
 
-        0;
-
-
-    overflow-y:
-
-        auto;
-
-
-    overflow-x:
-
-        hidden;
-
-
-    overscroll-behavior:
-
-        contain;
-
+    overscroll-behavior: contain;
 
     padding:
-
         8px
-
         7px
-
         12px;
 
-
-    scrollbar-gutter:
-
-        stable;
-
+    scrollbar-gutter: stable;
 }
-
 
 .pages::-webkit-scrollbar {
-
-    width:
-
-        6px;
-
+    width: 6px;
 }
-
 
 .pages::-webkit-scrollbar-track {
-
-    background:
-
-        transparent;
-
+    background: transparent;
 }
-
 
 .pages::-webkit-scrollbar-thumb {
-
-    background:
-
-        #cbd9ea;
-
-
-    border-radius:
-
-        999px;
-
+    background: #cbd9ea;
+    border-radius: 999px;
 }
 
-
 .pages::-webkit-scrollbar-thumb:hover {
-
-    background:
-
-        #9fb9d9;
-
+    background: #9fb9d9;
 }
 
 
@@ -1000,178 +452,71 @@ body {
 ========================================================= */
 
 .page-btn {
+    position: relative;
 
-    position:
+    width: 100%;
+    min-height: 40px;
 
-        relative;
-
-
-    width:
-
-        100%;
-
-
-    min-height:
-
-        40px;
-
-
-    margin-bottom:
-
-        3px;
-
+    margin-bottom: 3px;
 
     padding:
-
         6px
-
         10px;
 
+    display: flex;
+    align-items: center;
 
-    display:
+    gap: 10px;
 
-        flex;
+    border: 0;
+    border-radius: 10px;
 
+    background: transparent;
 
-    align-items:
+    color: #40516a;
 
-        center;
+    font-family: inherit;
 
+    font-size: 10.5px;
+    font-weight: 600;
 
-    gap:
+    text-align: left;
 
-        10px;
+    cursor: pointer;
 
-
-    border:
-
-        0;
-
-
-    border-radius:
-
-        10px;
-
-
-    background:
-
-        transparent;
-
-
-    color:
-
-        #40516a;
-
-
-    font-family:
-
-        inherit;
-
-
-    font-size:
-
-        10.5px;
-
-
-    font-weight:
-
-        600;
-
-
-    text-align:
-
-        left;
-
-
-    cursor:
-
-        pointer;
-
-
-    transition:
-
-        .15s ease;
-
+    transition: .15s ease;
 }
-
 
 .page-btn:hover {
-
-    color:
-
-        var(--blue-dark);
-
-
-    background:
-
-        var(--blue-soft);
-
+    color: var(--blue-dark);
+    background: var(--blue-soft);
 }
-
 
 .page-btn.active {
-
-    color:
-
-        var(--blue-dark);
-
+    color: var(--blue-dark);
 
     background:
-
         linear-gradient(
-
             90deg,
-
             var(--yellow-soft),
-
             #eef5ff
-
         );
-
 }
 
-
 .page-btn.active::before {
+    content: "";
 
-    content:
+    position: absolute;
 
-        "";
+    left: 0;
+    top: 7px;
+    bottom: 7px;
 
+    width: 4px;
 
-    position:
+    border-radius: 4px;
 
-        absolute;
-
-
-    left:
-
-        0;
-
-
-    top:
-
-        7px;
-
-
-    bottom:
-
-        7px;
-
-
-    width:
-
-        4px;
-
-
-    border-radius:
-
-        4px;
-
-
-    background:
-
-        var(--blue);
-
+    background: var(--blue);
 }
 
 
@@ -1180,61 +525,25 @@ body {
 ========================================================= */
 
 .page-icon {
+    width: 28px;
+    height: 28px;
 
-    width:
+    display: grid;
+    place-items: center;
 
-        28px;
+    flex-shrink: 0;
 
+    border-radius: 8px;
 
-    height:
+    color: var(--blue);
 
-        28px;
-
-
-    display:
-
-        grid;
-
-
-    place-items:
-
-        center;
-
-
-    flex-shrink:
-
-        0;
-
-
-    border-radius:
-
-        8px;
-
-
-    color:
-
-        var(--blue);
-
-
-    background:
-
-        #eff5fd;
-
+    background: #eff5fd;
 }
-
 
 .page-btn.active
 .page-icon {
-
-    color:
-
-        var(--blue-dark);
-
-
-    background:
-
-        var(--yellow);
-
+    color: var(--blue-dark);
+    background: var(--yellow);
 }
 
 
@@ -1243,51 +552,24 @@ body {
 ========================================================= */
 
 .page-label {
+    white-space: nowrap;
 
-    white-space:
+    overflow: hidden;
 
-        nowrap;
-
-
-    overflow:
-
-        hidden;
-
-
-    text-overflow:
-
-        ellipsis;
-
+    text-overflow: ellipsis;
 }
-
 
 .dashboard.collapsed
 .page-label {
-
-    display:
-
-        none;
-
+    display: none;
 }
-
 
 .dashboard.collapsed
 .page-btn {
+    justify-content: center;
 
-    justify-content:
-
-        center;
-
-
-    padding-left:
-
-        0;
-
-
-    padding-right:
-
-        0;
-
+    padding-left: 0;
+    padding-right: 0;
 }
 
 
@@ -1296,38 +578,18 @@ body {
 ========================================================= */
 
 .report-area {
+    min-width: 0;
+    min-height: 0;
 
-    min-width:
-
-        0;
-
-
-    min-height:
-
-        0;
-
-
-    display:
-
-        grid;
-
+    display: grid;
 
     grid-template-rows:
-
         58px
-
         minmax(0,1fr);
 
+    overflow: hidden;
 
-    overflow:
-
-        hidden;
-
-
-    background:
-
-        #ffffff;
-
+    background: #ffffff;
 }
 
 
@@ -1336,280 +598,80 @@ body {
 ========================================================= */
 
 .report-toolbar {
+    height: 58px;
 
-    height:
-
-        58px;
-
-
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    justify-content:
-
-        space-between;
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     padding:
-
         0 13px
-
         0 17px;
 
-
     border-bottom:
-
         1px solid
-
         var(--line);
 
-
     background:
-
         linear-gradient(
-
             180deg,
-
             #ffffff,
-
             #f8fbff
-
         );
-
 }
-
 
 .toolbar-left {
+    min-width: 0;
 
-    min-width:
+    display: flex;
+    align-items: center;
 
-        0;
-
-
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    gap:
-
-        10px;
-
+    gap: 10px;
 }
-
 
 .toolbar-icon {
+    width: 35px;
+    height: 35px;
 
-    width:
+    display: grid;
+    place-items: center;
 
-        35px;
+    flex-shrink: 0;
 
+    border-radius: 10px;
 
-    height:
+    color: var(--blue);
 
-        35px;
-
-
-    display:
-
-        grid;
-
-
-    place-items:
-
-        center;
-
-
-    flex-shrink:
-
-        0;
-
-
-    border-radius:
-
-        10px;
-
-
-    color:
-
-        var(--blue);
-
-
-    background:
-
-        var(--yellow-soft);
-
+    background: var(--yellow-soft);
 }
-
 
 .toolbar-copy {
-
-    min-width:
-
-        0;
-
+    min-width: 0;
 }
-
 
 .toolbar-copy strong {
+    display: block;
 
-    display:
+    overflow: hidden;
 
-        block;
+    color: var(--text);
 
+    font-size: 12px;
+    font-weight: 800;
 
-    overflow:
+    white-space: nowrap;
 
-        hidden;
-
-
-    color:
-
-        var(--text);
-
-
-    font-size:
-
-        12px;
-
-
-    font-weight:
-
-        800;
-
-
-    white-space:
-
-        nowrap;
-
-
-    text-overflow:
-
-        ellipsis;
-
+    text-overflow: ellipsis;
 }
-
 
 .toolbar-copy span {
+    display: block;
 
-    display:
+    margin-top: 2px;
 
-        block;
+    color: var(--muted);
 
-
-    margin-top:
-
-        2px;
-
-
-    color:
-
-        var(--muted);
-
-
-    font-size:
-
-        9.5px;
-
-}
-
-
-/* =========================================================
-   FULLSCREEN
-========================================================= */
-
-.fullscreen-btn {
-
-    height:
-
-        36px;
-
-
-    padding:
-
-        0 13px;
-
-
-    display:
-
-        inline-flex;
-
-
-    align-items:
-
-        center;
-
-
-    justify-content:
-
-        center;
-
-
-    gap:
-
-        7px;
-
-
-    border:
-
-        0;
-
-
-    border-radius:
-
-        9px;
-
-
-    background:
-
-        var(--blue);
-
-
-    color:
-
-        #ffffff;
-
-
-    font-family:
-
-        inherit;
-
-
-    font-size:
-
-        10.5px;
-
-
-    font-weight:
-
-        800;
-
-
-    cursor:
-
-        pointer;
-
-}
-
-
-.fullscreen-btn:hover {
-
-    background:
-
-        var(--blue-dark);
-
+    font-size: 9.5px;
 }
 
 
@@ -1618,80 +680,32 @@ body {
 ========================================================= */
 
 .iframe-wrap {
+    position: relative;
 
-    position:
+    min-width: 0;
+    min-height: 0;
 
-        relative;
+    width: 100%;
+    height: 100%;
 
+    overflow: hidden;
 
-    min-width:
-
-        0;
-
-
-    min-height:
-
-        0;
-
-
-    width:
-
-        100%;
-
-
-    height:
-
-        100%;
-
-
-    overflow:
-
-        hidden;
-
-
-    background:
-
-        #ffffff;
-
+    background: #ffffff;
 }
 
-
 #dashboardFrame {
+    position: absolute;
 
-    position:
+    inset: 0;
 
-        absolute;
+    width: 100%;
+    height: 100%;
 
+    border: 0;
 
-    inset:
+    display: block;
 
-        0;
-
-
-    width:
-
-        100%;
-
-
-    height:
-
-        100%;
-
-
-    border:
-
-        0;
-
-
-    display:
-
-        block;
-
-
-    background:
-
-        #ffffff;
-
+    background: #ffffff;
 }
 
 
@@ -1700,127 +714,52 @@ body {
 ========================================================= */
 
 .loading {
+    position: absolute;
 
-    position:
+    inset: 0;
 
-        absolute;
+    z-index: 60;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    inset:
+    background: rgba(255,255,255,.96);
 
-        0;
+    color: var(--blue-dark);
 
-
-    z-index:
-
-        60;
-
-
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    justify-content:
-
-        center;
-
-
-    background:
-
-        rgba(255,255,255,.96);
-
-
-    color:
-
-        var(--blue-dark);
-
-
-    font-size:
-
-        11px;
-
-
-    font-weight:
-
-        700;
-
+    font-size: 11px;
+    font-weight: 700;
 }
-
 
 .loading.hidden {
+    opacity: 0;
+    visibility: hidden;
 
-    opacity:
-
-        0;
-
-
-    visibility:
-
-        hidden;
-
-
-    pointer-events:
-
-        none;
-
+    pointer-events: none;
 }
-
 
 .spinner {
+    width: 20px;
+    height: 20px;
 
-    width:
-
-        20px;
-
-
-    height:
-
-        20px;
-
-
-    margin-right:
-
-        9px;
-
+    margin-right: 9px;
 
     border:
-
         3px solid
-
         #dce5f1;
 
+    border-top-color: var(--blue);
 
-    border-top-color:
+    border-radius: 50%;
 
-        var(--blue);
-
-
-    border-radius:
-
-        50%;
-
-
-    animation:
-
-        spin .65s linear infinite;
-
+    animation: spin .65s linear infinite;
 }
-
 
 @keyframes spin {
 
     to {
-
-        transform:
-
-            rotate(360deg);
-
+        transform: rotate(360deg);
     }
 
 }
@@ -1828,88 +767,50 @@ body {
 
 /* =========================================================
    ACTION BAR POWER BI
-
-   Dejamos libre EXPORTAR
 ========================================================= */
-
 
 .powerbi-mask {
     position: absolute;
+
     top: 0;
+
     height: 38px;
+
     z-index: 25;
+
     background: #ffffff;
+
     pointer-events: auto;
 }
+
 
 /* TAPA ARCHIVO */
 
 .mask-left {
-
-    left:
-
-        0;
-
-
-    width:
-
-        100px;
-
+    left: 0;
+    width: 100px;
 }
 
 
 /* TAPA COMPARTIR / SUSCRIBIRSE / ... */
 
 .mask-right {
-
-    left:
-
-        226px;
-
-
-    right:
-
-        0;
-
+    left: 226px;
+    right: 0;
 }
 
-
 .powerbi-mask::after {
+    content: "";
 
-    content:
+    position: absolute;
 
-        "";
+    left: 0;
+    right: 0;
+    bottom: 0;
 
+    height: 1px;
 
-    position:
-
-        absolute;
-
-
-    left:
-
-        0;
-
-
-    right:
-
-        0;
-
-
-    bottom:
-
-        0;
-
-
-    height:
-
-        1px;
-
-
-    background:
-
-        #e5e7eb;
-
+    background: #e5e7eb;
 }
 
 
@@ -1917,225 +818,81 @@ body {
    LAPTOP
 ========================================================= */
 
-@media
-(max-width: 1450px) {
+@media (max-width: 1450px) {
 
     .app {
+        width: calc(100vw - 14px);
+        height: calc(100vh - 14px);
 
-        width:
-
-            calc(100vw - 14px);
-
-
-        height:
-
-            calc(100vh - 14px);
-
-
-        margin:
-
-            7px;
-
+        margin: 7px;
 
         grid-template-rows:
-
             62px
-
             minmax(0,1fr);
 
-
-        gap:
-
-            6px;
-
+        gap: 6px;
     }
-
 
     .header {
+        height: 62px;
 
-        height:
-
-            62px;
-
-
-        padding:
-
-            0 16px;
-
+        padding: 0 16px;
     }
 
-
-    .coppel-name {
-
-        font-size:
-
-            26px;
-
+    .coppel-logo-img {
+        height: 44px;
     }
-
-
-    .circle-lg {
-
-        width:
-
-            21px;
-
-
-        height:
-
-            21px;
-
-    }
-
-
-    .circle-md {
-
-        width:
-
-            14px;
-
-
-        height:
-
-            14px;
-
-    }
-
-
-    .circle-sm {
-
-        width:
-
-            11px;
-
-
-        height:
-
-            11px;
-
-    }
-
 
     .dashboard {
-
         grid-template-columns:
-
             270px
-
             minmax(0,1fr);
-
     }
-
 
     .dashboard.collapsed {
-
         grid-template-columns:
-
             56px
-
             minmax(0,1fr);
-
     }
-
 
     .sidebar {
-
         grid-template-rows:
-
             54px
-
             minmax(0,1fr);
-
     }
-
 
     .report-area {
-
         grid-template-rows:
-
             54px
-
             minmax(0,1fr);
-
     }
-
 
     .sidebar-header,
     .report-toolbar {
-
-        height:
-
-            54px;
-
+        height: 54px;
     }
-
 
     .page-btn {
-
-        min-height:
-
-            37px;
-
-
-        margin-bottom:
-
-            2px;
-
+        min-height: 37px;
+        margin-bottom: 2px;
     }
-
 
     .page-icon {
-
-        width:
-
-            26px;
-
-
-        height:
-
-            26px;
-
+        width: 26px;
+        height: 26px;
     }
-
 
     .toolbar-icon {
-
-        width:
-
-            32px;
-
-
-        height:
-
-            32px;
-
+        width: 32px;
+        height: 32px;
     }
-
-
-    .fullscreen-btn {
-
-        height:
-
-            34px;
-
-    }
-
 
     .mask-left {
-
-        width:
-
-            98px;
-
+        width: 98px;
     }
 
-
     .mask-right {
-
-        left:
-
-            222px;
-
+        left: 222px;
     }
 
 }
@@ -2145,131 +902,65 @@ body {
    PANTALLAS BAJAS
 ========================================================= */
 
-@media
-(max-height: 800px) {
+@media (max-height: 800px) {
 
     .app {
+        width: calc(100vw - 10px);
+        height: calc(100vh - 10px);
 
-        width:
-
-            calc(100vw - 10px);
-
-
-        height:
-
-            calc(100vh - 10px);
-
-
-        margin:
-
-            5px;
-
+        margin: 5px;
 
         grid-template-rows:
-
             58px
-
             minmax(0,1fr);
 
-
-        gap:
-
-            5px;
-
+        gap: 5px;
     }
-
 
     .header {
-
-        height:
-
-            58px;
-
+        height: 58px;
     }
 
+    .coppel-logo-img {
+        height: 40px;
+    }
 
     .dashboard {
-
         grid-template-columns:
-
             260px
-
             minmax(0,1fr);
-
     }
-
 
     .sidebar {
-
         grid-template-rows:
-
             50px
-
             minmax(0,1fr);
-
     }
-
 
     .report-area {
-
         grid-template-rows:
-
             50px
-
             minmax(0,1fr);
-
     }
-
 
     .sidebar-header,
     .report-toolbar {
-
-        height:
-
-            50px;
-
+        height: 50px;
     }
-
 
     .page-btn {
-
-        min-height:
-
-            35px;
-
-
-        font-size:
-
-            10px;
-
+        min-height: 35px;
+        font-size: 10px;
     }
-
 
     .page-icon {
-
-        width:
-
-            25px;
-
-
-        height:
-
-            25px;
-
+        width: 25px;
+        height: 25px;
     }
 
-
     .toolbar-icon {
-
-        width:
-
-            30px;
-
-
-        height:
-
-            30px;
-
+        width: 30px;
+        height: 30px;
     }
 
 }
@@ -2279,65 +970,29 @@ body {
    MONITORES GRANDES
 ========================================================= */
 
-@media
-(min-width: 1700px) {
+@media (min-width: 1700px) {
 
     .app {
+        width: calc(100vw - 28px);
+        height: calc(100vh - 28px);
 
-        width:
+        margin: 14px;
 
-            calc(100vw - 28px);
-
-
-        height:
-
-            calc(100vh - 28px);
-
-
-        margin:
-
-            14px;
-
-
-        max-width:
-
-            none;
-
+        max-width: none;
     }
-
 
     .dashboard {
-
         grid-template-columns:
-
             300px
-
             minmax(0,1fr);
-
     }
-
-
-    /*
-      IMPORTANTE:
-      Los elementos NO crecen demasiado.
-      Se conserva escala similar a laptop.
-    */
 
     .header {
-
-        height:
-
-            68px;
-
+        height: 68px;
     }
 
-
     .page-btn {
-
-        font-size:
-
-            11px;
-
+        font-size: 11px;
     }
 
 }
@@ -2347,35 +1002,20 @@ body {
    TABLET
 ========================================================= */
 
-@media
-(max-width: 900px) {
+@media (max-width: 900px) {
 
     .dashboard {
-
         grid-template-columns:
-
             215px
-
             minmax(0,1fr);
-
     }
-
 
     .date-pill {
-
-        display:
-
-            none;
-
+        display: none;
     }
 
-
     .header-copy span {
-
-        display:
-
-            none;
-
+        display: none;
     }
 
 }
@@ -2385,111 +1025,46 @@ body {
    MOBILE
 ========================================================= */
 
-@media
-(max-width: 650px) {
+@media (max-width: 650px) {
 
     .app {
+        width: calc(100vw - 6px);
+        height: calc(100vh - 6px);
 
-        width:
-
-            calc(100vw - 6px);
-
-
-        height:
-
-            calc(100vh - 6px);
-
-
-        margin:
-
-            3px;
-
+        margin: 3px;
     }
-
 
     .divider,
     .header-copy {
-
-        display:
-
-            none;
-
+        display: none;
     }
-
 
     .status-pill {
-
-        display:
-
-            none;
-
+        display: none;
     }
-
 
     .dashboard {
-
         grid-template-columns:
-
             54px
-
             minmax(0,1fr);
-
     }
-
 
     .sidebar-copy,
     .page-label {
-
-        display:
-
-            none !important;
-
+        display: none !important;
     }
-
 
     .collapse-btn {
-
-        display:
-
-            none;
-
+        display: none;
     }
-
 
     .page-btn {
-
-        justify-content:
-
-            center;
-
-
-        padding:
-
-            0;
-
+        justify-content: center;
+        padding: 0;
     }
 
-
-    .fullscreen-btn {
-
-        width:
-
-            34px;
-
-
-        padding:
-
-            0;
-
-    }
-
-
-    .fullscreen-btn span {
-
-        display:
-
-            none;
-
+    .coppel-logo-img {
+        height: 38px;
     }
 
 }
@@ -2515,26 +1090,15 @@ body {
     <div class="header-left">
 
 
+        <!-- LOGO JPG -->
+
         <div class="coppel-logo">
 
-
-            <div class="coppel-symbol">
-
-                <span class="circle-lg"></span>
-
-                <span class="circle-md"></span>
-
-                <span class="circle-sm"></span>
-
-            </div>
-
-
-            <span class="coppel-name">
-
-                Coppel
-
-            </span>
-
+            <img
+                src="logo.jpg"
+                alt="Coppel"
+                class="coppel-logo-img"
+            >
 
         </div>
 
@@ -2543,7 +1107,6 @@ body {
 
 
         <div class="header-copy">
-
         </div>
 
 
@@ -2556,26 +1119,19 @@ body {
 
         <div class="pill date-pill">
 
-
             <i class="far fa-calendar-alt"></i>
 
-
             <span id="currentDate">
-
             </span>
-
 
         </div>
 
 
         <div class="pill status-pill">
 
-
             <span class="status-dot"></span>
 
-
             Servicio activo
-
 
         </div>
 
@@ -2609,20 +1165,13 @@ body {
 
         <div class="sidebar-copy">
 
-
             <strong>
-
                 Contenido del reporte
-
             </strong>
 
-
             <span>
-
                 Selecciona una sección
-
             </span>
-
 
         </div>
 
@@ -2668,9 +1217,7 @@ body {
 
             <div class="toolbar-icon">
 
-
                 <i class="fas fa-chart-column"></i>
-
 
             </div>
 
@@ -2681,16 +1228,12 @@ body {
                 <strong
                     id="currentPageTitle"
                 >
-
                     Coppel PORTADA
-
                 </strong>
 
 
                 <span>
-
                     Vista autorizada para cliente Coppel
-
                 </span>
 
 
@@ -2698,26 +1241,6 @@ body {
 
 
         </div>
-
-
-
-        <button
-            class="fullscreen-btn"
-            id="fullscreenBtn"
-        >
-
-
-            <i class="fas fa-expand"></i>
-
-
-            <span>
-
-                Pantalla completa
-
-            </span>
-
-
-        </button>
 
 
     </div>
@@ -2739,12 +1262,9 @@ body {
         id="loading"
     >
 
-
         <div class="spinner"></div>
 
-
         Cargando sección...
-
 
     </div>
 
@@ -2759,9 +1279,7 @@ body {
 
 
 
-    <!-- ==============================================
-         TAPAR ARCHIVO
-    =============================================== -->
+    <!-- TAPA ARCHIVO -->
 
     <div
         class="powerbi-mask mask-left"
@@ -2770,9 +1288,7 @@ body {
 
 
 
-    <!-- ==============================================
-         TAPAR COMPARTIR / SUSCRIBIRSE / ...
-    =============================================== -->
+    <!-- TAPA COMPARTIR / SUSCRIBIRSE / ... -->
 
     <div
         class="powerbi-mask mask-right"
@@ -2799,14 +1315,11 @@ body {
    POWER BI
 ========================================================= */
 
-
 const REPORT_ID =
-
     "7647a9ef-ef89-45fa-9689-2d64e55c5637";
 
 
 const TENANT_ID =
-
     "1b635d23-d7cd-46f8-a33b-d081f11e0d7d";
 
 
@@ -2815,247 +1328,109 @@ const TENANT_ID =
    PAGINAS CLIENTE
 ========================================================= */
 
-
 const paginas = [
 
-
     {
-
-        titulo:
-            "Coppel PORTADA",
-
-        pageId:
-            "881bff93b9de002cba6a",
-
-        icono:
-            "fa-house"
-
+        titulo: "Coppel PORTADA",
+        pageId: "881bff93b9de002cba6a",
+        icono: "fa-house"
     },
 
-
     {
-
-        titulo:
-            "Coppel GLOSARIO-TERMINOS",
-
-        pageId:
-            "0a85d6136e4d5605b004",
-
-        icono:
-            "fa-book"
-
+        titulo: "Coppel GLOSARIO-TERMINOS",
+        pageId: "0a85d6136e4d5605b004",
+        icono: "fa-book"
     },
 
-
     {
-
-        titulo:
-            "Coppel EIC-CONFIDENCIAL",
-
-        pageId:
-            "8db29d4c626d4a60dbb6",
-
-        icono:
-            "fa-lock"
-
+        titulo: "Coppel EIC-CONFIDENCIAL",
+        pageId: "8db29d4c626d4a60dbb6",
+        icono: "fa-lock"
     },
 
-
     {
-
-        titulo:
-            "Coppel CONTENIDO",
-
-        pageId:
-            "e3167165bdb45881e1cd",
-
-        icono:
-            "fa-list"
-
+        titulo: "Coppel CONTENIDO",
+        pageId: "e3167165bdb45881e1cd",
+        icono: "fa-list"
     },
 
-
     {
-
-        titulo:
-            "Coppel SOI marca-medio",
-
-        pageId:
-            "d7cff51812c40c095684",
-
-        icono:
-            "fa-chart-bar"
-
+        titulo: "Coppel SOI marca-medio",
+        pageId: "d7cff51812c40c095684",
+        icono: "fa-chart-bar"
     },
 
-
     {
-
-        titulo:
-            "Coppel SOI marca-medio impresiones",
-
-        pageId:
-            "80f8296d8837b75ec863",
-
-        icono:
-            "fa-chart-column"
-
+        titulo: "Coppel SOI marca-medio impresiones",
+        pageId: "80f8296d8837b75ec863",
+        icono: "fa-chart-column"
     },
 
-
     {
-
-        titulo:
-            "Coppel SOI por tipo de tiendas YTD",
-
-        pageId:
-            "05b6a8037608c3395038",
-
-        icono:
-            "fa-store"
-
+        titulo: "Coppel SOI por tipo de tiendas YTD",
+        pageId: "05b6a8037608c3395038",
+        icono: "fa-store"
     },
 
-
     {
-
-        titulo:
-            "Coppel Inversión por Medio",
-
-        pageId:
-            "b004a9ed7cd4b9e00453",
-
-        icono:
-            "fa-dollar-sign"
-
+        titulo: "Coppel Inversión por Medio",
+        pageId: "b004a9ed7cd4b9e00453",
+        icono: "fa-dollar-sign"
     },
 
-
     {
-
-        titulo:
-            "Coppel SOI por temporalidad YTD",
-
-        pageId:
-            "63ac364b5e80876e3764",
-
-        icono:
-            "fa-chart-line"
-
+        titulo: "Coppel SOI por temporalidad YTD",
+        pageId: "63ac364b5e80876e3764",
+        icono: "fa-chart-line"
     },
 
-
     {
-
-        titulo:
-            "Coppel Actividad Tv Abierta Nacional",
-
-        pageId:
-            "3476180640a1e911b741",
-
-        icono:
-            "fa-tv"
-
+        titulo: "Coppel Actividad Tv Abierta Nacional",
+        pageId: "3476180640a1e911b741",
+        icono: "fa-tv"
     },
 
-
     {
-
-        titulo:
-            "Coppel Tv abierta, SOV / SOI",
-
-        pageId:
-            "0fcdc9064c0be0be5026",
-
-        icono:
-            "fa-tv"
-
+        titulo: "Coppel Tv abierta, SOV / SOI",
+        pageId: "0fcdc9064c0be0be5026",
+        icono: "fa-tv"
     },
 
-
     {
-
-        titulo:
-            "Coppel Tv abierta SOV / SOI mes actual",
-
-        pageId:
-            "7dc1d0dccd8ee123d40d",
-
-        icono:
-            "fa-calendar"
-
+        titulo: "Coppel Tv abierta SOV / SOI mes actual",
+        pageId: "7dc1d0dccd8ee123d40d",
+        icono: "fa-calendar"
     },
 
-
     {
-
-        titulo:
-            "Coppel Tv local",
-
-        pageId:
-            "883600c3ab088535b05d",
-
-        icono:
-            "fa-location-dot"
-
+        titulo: "Coppel Tv local",
+        pageId: "883600c3ab088535b05d",
+        icono: "fa-location-dot"
     },
 
-
     {
-
-        titulo:
-            "Coppel Tv de Paga",
-
-        pageId:
-            "0b40b97a3d74da3dda03",
-
-        icono:
-            "fa-satellite-dish"
-
+        titulo: "Coppel Tv de Paga",
+        pageId: "0b40b97a3d74da3dda03",
+        icono: "fa-satellite-dish"
     },
 
-
     {
-
-        titulo:
-            "Coppel Radio 49 Plazas",
-
-        pageId:
-            "033aca8780bdb0300b06",
-
-        icono:
-            "fa-radio"
-
+        titulo: "Coppel Radio 49 Plazas",
+        pageId: "033aca8780bdb0300b06",
+        icono: "fa-radio"
     },
 
-
     {
-
-        titulo:
-            "Coppel Radio Footprint",
-
-        pageId:
-            "de5aad3ea5869580840d",
-
-        icono:
-            "fa-tower-broadcast"
-
+        titulo: "Coppel Radio Footprint",
+        pageId: "de5aad3ea5869580840d",
+        icono: "fa-tower-broadcast"
     },
 
-
     {
-
-        titulo:
-            "Coppel DIGITAL",
-
-        pageId:
-            "4af16653c4d4d4bb0208",
-
-        icono:
-            "fa-globe"
-
+        titulo: "Coppel DIGITAL",
+        pageId: "4af16653c4d4d4bb0208",
+        icono: "fa-globe"
     }
-
 
 ];
 
@@ -3065,58 +1440,37 @@ const paginas = [
    DOM
 ========================================================= */
 
-
 const dashboard =
-
     document.getElementById(
         "dashboard"
     );
 
 
 const pagesContainer =
-
     document.getElementById(
         "pages"
     );
 
 
 const frame =
-
     document.getElementById(
         "dashboardFrame"
     );
 
 
 const loading =
-
     document.getElementById(
         "loading"
     );
 
 
 const collapseBtn =
-
     document.getElementById(
         "collapseBtn"
     );
 
 
-const fullscreenBtn =
-
-    document.getElementById(
-        "fullscreenBtn"
-    );
-
-
-const iframeWrap =
-
-    document.getElementById(
-        "iframeWrap"
-    );
-
-
 const currentPageTitle =
-
     document.getElementById(
         "currentPageTitle"
     );
@@ -3127,11 +1481,9 @@ const currentPageTitle =
    URL POWER BI
 ========================================================= */
 
-
 function generarPowerBiURL(
     pageId
 ) {
-
 
     return (
 
@@ -3165,7 +1517,6 @@ function generarPowerBiURL(
 
     );
 
-
 }
 
 
@@ -3173,7 +1524,6 @@ function generarPowerBiURL(
 /* =========================================================
    CREAR MENU
 ========================================================= */
-
 
 function crearMenu() {
 
@@ -3197,12 +1547,10 @@ function crearMenu() {
 
 
             boton.className =
-
                 "page-btn";
 
 
             boton.title =
-
                 pagina.titulo;
 
 
@@ -3228,11 +1576,9 @@ function crearMenu() {
                 index === 0
             ) {
 
-
                 boton.classList.add(
                     "active"
                 );
-
 
             }
 
@@ -3243,12 +1589,10 @@ function crearMenu() {
 
                 () => {
 
-
                     cambiarPagina(
                         pagina,
                         boton
                     );
-
 
                 }
 
@@ -3273,7 +1617,6 @@ function crearMenu() {
    CAMBIAR PAGINA
 ========================================================= */
 
-
 function cambiarPagina(
     pagina,
     boton
@@ -3288,11 +1631,9 @@ function cambiarPagina(
 
             b => {
 
-
                 b.classList.remove(
                     "active"
                 );
-
 
             }
 
@@ -3305,7 +1646,6 @@ function cambiarPagina(
 
 
     currentPageTitle.textContent =
-
         pagina.titulo;
 
 
@@ -3315,7 +1655,6 @@ function cambiarPagina(
 
 
     frame.src =
-
         generarPowerBiURL(
             pagina.pageId
         );
@@ -3329,17 +1668,14 @@ function cambiarPagina(
    INICIO
 ========================================================= */
 
-
 function iniciarReporte() {
 
 
     const primeraPagina =
-
         paginas[0];
 
 
     currentPageTitle.textContent =
-
         primeraPagina.titulo;
 
 
@@ -3349,7 +1685,6 @@ function iniciarReporte() {
 
 
     frame.src =
-
         generarPowerBiURL(
             primeraPagina.pageId
         );
@@ -3363,7 +1698,6 @@ function iniciarReporte() {
    IFRAME CARGADO
 ========================================================= */
 
-
 frame.addEventListener(
 
     "load",
@@ -3375,11 +1709,9 @@ frame.addEventListener(
 
             () => {
 
-
                 loading.classList.add(
                     "hidden"
                 );
-
 
             },
 
@@ -3397,7 +1729,6 @@ frame.addEventListener(
 /* =========================================================
    COLAPSAR MENU
 ========================================================= */
-
 
 collapseBtn.addEventListener(
 
@@ -3428,12 +1759,10 @@ collapseBtn.addEventListener(
 
 
             icon.className =
-
                 "fas fa-angles-right";
 
 
             collapseBtn.title =
-
                 "Mostrar menú";
 
 
@@ -3443,151 +1772,11 @@ collapseBtn.addEventListener(
 
 
             icon.className =
-
                 "fas fa-angles-left";
 
 
             collapseBtn.title =
-
                 "Contraer menú";
-
-
-        }
-
-
-    }
-
-);
-
-
-
-/* =========================================================
-   FULLSCREEN
-========================================================= */
-
-
-fullscreenBtn.addEventListener(
-
-    "click",
-
-    async () => {
-
-
-        try {
-
-
-            if (
-                !document.fullscreenElement
-            ) {
-
-
-                await iframeWrap
-                    .requestFullscreen();
-
-
-            }
-
-            else {
-
-
-                await document
-                    .exitFullscreen();
-
-
-            }
-
-
-        }
-
-        catch (
-            error
-        ) {
-
-
-            console.error(
-                error
-            );
-
-
-        }
-
-
-    }
-
-);
-
-
-
-/* =========================================================
-   FULLSCREEN ICON
-========================================================= */
-
-
-document.addEventListener(
-
-    "fullscreenchange",
-
-    () => {
-
-
-        const icon =
-
-            fullscreenBtn.querySelector(
-                "i"
-            );
-
-
-        const label =
-
-            fullscreenBtn.querySelector(
-                "span"
-            );
-
-
-        if (
-            document.fullscreenElement
-        ) {
-
-
-            icon.className =
-
-                "fas fa-compress";
-
-
-            if (
-                label
-            ) {
-
-
-                label.textContent =
-
-                    "Salir";
-
-
-            }
-
-
-        }
-
-        else {
-
-
-            icon.className =
-
-                "fas fa-expand";
-
-
-            if (
-                label
-            ) {
-
-
-                label.textContent =
-
-                    "Pantalla completa";
-
-
-            }
 
 
         }
@@ -3603,9 +1792,7 @@ document.addEventListener(
    FECHA
 ========================================================= */
 
-
 const currentDate =
-
     document.getElementById(
         "currentDate"
     );
@@ -3618,13 +1805,8 @@ const fecha =
         "es-MX",
 
         {
-
-            month:
-                "long",
-
-            year:
-                "numeric"
-
+            month: "long",
+            year: "numeric"
         }
 
     )
@@ -3651,9 +1833,7 @@ currentDate.textContent =
    START
 ========================================================= */
 
-
 crearMenu();
-
 
 iniciarReporte();
 
@@ -3662,4 +1842,5 @@ iniciarReporte();
 
 
 </body>
+
 </html>
