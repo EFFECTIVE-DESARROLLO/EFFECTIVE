@@ -418,44 +418,6 @@ body{
 
 
 /* =========================================================
-   FULLSCREEN
-========================================================= */
-
-.fullscreen-btn{
-    position:absolute;
-
-    top:12px;
-    right:16px;
-
-    z-index:40;
-
-    width:38px;
-    height:38px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:1px solid #dddddd;
-
-    border-radius:6px;
-
-    background:rgba(255,255,255,.95);
-
-    color:#555;
-
-    cursor:pointer;
-
-    box-shadow:0 2px 8px rgba(0,0,0,.10);
-}
-
-.fullscreen-btn:hover{
-    color:#111;
-    background:#ffffff;
-}
-
-
-/* =========================================================
    MOBILE
 ========================================================= */
 
@@ -577,19 +539,6 @@ body{
             </div>
 
 
-            <!-- FULLSCREEN -->
-
-            <button
-                class="fullscreen-btn"
-                id="fullscreenBtn"
-                title="Pantalla completa"
-            >
-
-                <i class="fa-solid fa-expand"></i>
-
-            </button>
-
-
             <!-- IFRAME -->
 
             <div class="iframe-container">
@@ -631,10 +580,6 @@ const TENANT_ID =
 
 /* ============================================================
    PAGINAS PERMITIDAS
-
-   ROW DATA NO ESTA INCLUIDO
-
-   LOS IDs SON LOS QUE ME PASASTE
 ============================================================ */
 
 const paginas = [
@@ -764,19 +709,10 @@ const sidebar =
 const collapseBtn =
     document.getElementById("collapseBtn");
 
-const fullscreenBtn =
-    document.getElementById("fullscreenBtn");
-
-const reportArea =
-    document.getElementById("reportArea");
-
 
 
 /* ============================================================
    GENERAR URL POWER BI
-
-   IMPORTANTE:
-   ESTA ES LA MISMA ESTRUCTURA QUE PROBASTE CON DIGITAL
 ============================================================ */
 
 function generarURL(pageId){
@@ -876,8 +812,6 @@ function crearMenu(){
 
 /* ============================================================
    CARGAR PRIMERA PAGINA
-
-   ABRE DIRECTAMENTE COPPEL PORTADA
 ============================================================ */
 
 function cargarInicial(){
@@ -914,9 +848,7 @@ function cambiarPagina(
     boton
 ){
 
-    /* ==========================================
-       CAMBIAR BOTON ACTIVO
-    ========================================== */
+    /* CAMBIAR BOTON ACTIVO */
 
     document
         .querySelectorAll(".page-btn")
@@ -934,18 +866,14 @@ function cambiarPagina(
     );
 
 
-    /* ==========================================
-       MOSTRAR CARGANDO
-    ========================================== */
+    /* MOSTRAR CARGANDO */
 
     loading.classList.remove(
         "hidden"
     );
 
 
-    /* ==========================================
-       CREAR URL
-    ========================================== */
+    /* CREAR URL */
 
     const nuevaURL =
         generarURL(
@@ -977,9 +905,7 @@ function cambiarPagina(
     );
 
 
-    /* ==========================================
-       CAMBIAR POWER BI
-    ========================================== */
+    /* CAMBIAR POWER BI */
 
     iframe.src =
         nuevaURL;
@@ -1052,81 +978,6 @@ collapseBtn.addEventListener(
 
             collapseBtn.title =
                 "Contraer páginas";
-
-        }
-
-    }
-);
-
-
-
-/* ============================================================
-   FULLSCREEN
-============================================================ */
-
-fullscreenBtn.addEventListener(
-    "click",
-    async function(){
-
-        try{
-
-            if(
-                !document.fullscreenElement
-            ){
-
-                await reportArea
-                    .requestFullscreen();
-
-            }
-
-            else{
-
-                await document
-                    .exitFullscreen();
-
-            }
-
-        }
-
-        catch(error){
-
-            console.error(
-                "Error fullscreen:",
-                error
-            );
-
-        }
-
-    }
-);
-
-
-
-/* ============================================================
-   ICONO FULLSCREEN
-============================================================ */
-
-document.addEventListener(
-    "fullscreenchange",
-    function(){
-
-        const icon =
-            fullscreenBtn.querySelector("i");
-
-
-        if(
-            document.fullscreenElement
-        ){
-
-            icon.className =
-                "fa-solid fa-compress";
-
-        }
-
-        else{
-
-            icon.className =
-                "fa-solid fa-expand";
 
         }
 
