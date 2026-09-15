@@ -32,26 +32,14 @@
         overflow: hidden;
 
         background:
-            radial-gradient(
-                circle at 82% 16%,
-                rgba(255, 230, 0, .16),
-                transparent 27%
-            ),
-            radial-gradient(
-                circle at 8% 88%,
-                rgba(255,255,255,.10),
-                transparent 30%
-            ),
             linear-gradient(
                 145deg,
                 #003c73 0%,
-                #005aa3 44%,
+                #005aa3 45%,
                 #0077c8 100%
             );
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 12px;
     }
 
 
@@ -60,201 +48,122 @@
     ====================================== */
 
     .app {
-        width: 96vw;
-        height: 94vh;
-
-        max-width: 1900px;
-
-        display: flex;
-
-        border-radius: 30px;
-
-        overflow: hidden;
-
-        background:
-            rgba(255,255,255,.96);
-
-        box-shadow:
-            0 40px 100px rgba(0, 24, 55, .36);
-
-        border:
-            1px solid rgba(255,255,255,.35);
-
-        backdrop-filter:
-            blur(20px);
-    }
-
-
-    /* ======================================
-       SIDEBAR
-    ====================================== */
-
-    .sidebar {
-        width: 220px;
-        min-width: 220px;
-
-        padding: 24px 20px;
+        width: 100%;
+        height: 100%;
 
         display: flex;
         flex-direction: column;
 
-        background:
-            linear-gradient(
-                180deg,
-                rgba(0, 87, 155, .99),
-                rgba(0, 57, 108, .99)
-            );
+        overflow: hidden;
 
-        color: #ffffff;
+        background: #f5f7fa;
+
+        border-radius: 20px;
+
+        box-shadow:
+            0 20px 60px rgba(0, 24, 55, .25);
     }
 
 
     /* ======================================
-       LOGO
+       HEADER COMPACTO
     ====================================== */
 
-    .logo-wrapper {
-        width: 100%;
+    .topbar {
+        height: 58px;
+        min-height: 58px;
 
-        padding: 14px 16px;
+        padding: 0 22px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         background: #ffffff;
 
-        border-radius: 14px;
+        border-bottom:
+            1px solid rgba(17, 24, 39, .06);
+    }
 
-        box-shadow:
-            0 5px 14px rgba(0, 20, 45, .08);
+
+    /* IZQUIERDA */
+
+    .brand {
+        display: flex;
+        align-items: center;
+
+        gap: 16px;
+    }
+
+
+    .logo {
+        width: 105px;
+        height: 40px;
 
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .logo-wrapper img {
-        display: block;
-
-        max-width: 135px;
-        max-height: 50px;
-
-        width: auto;
-        height: auto;
+    .logo img {
+        max-width: 100%;
+        max-height: 36px;
 
         object-fit: contain;
     }
 
 
-    /* ======================================
-       PROGRAMA
-    ====================================== */
+    .divider {
+        width: 1px;
+        height: 28px;
 
-    .program {
-        margin-top: 28px;
-
-        padding: 17px;
-
-        border-radius: 18px;
-
-        background:
-            rgba(255,255,255,.085);
-
-        border:
-            1px solid rgba(255,255,255,.11);
-
-        backdrop-filter:
-            blur(14px);
+        background: #e5e7eb;
     }
 
-    .program-label {
-        font-size: 9px;
 
-        text-transform: uppercase;
-
-        letter-spacing: 1.5px;
-
-        color:
-            rgba(255,255,255,.52);
-    }
-
-    .program-title {
-        margin-top: 8px;
-
+    .title h1 {
         font-size: 16px;
 
-        font-weight: 600;
+        font-weight: 650;
 
-        line-height: 1.35;
+        color: #111827;
 
-        letter-spacing: -.2px;
+        line-height: 1.1;
     }
 
 
-    /* ======================================
-       ESTADO
-    ====================================== */
+    .title p {
+        margin-top: 3px;
 
-    .status {
-        margin-top: 18px;
+        font-size: 10px;
 
-        display: flex;
-        align-items: center;
-
-        gap: 9px;
-
-        font-size: 11px;
-
-        color:
-            rgba(255,255,255,.72);
-    }
-
-    .status-dot {
-        width: 8px;
-        height: 8px;
-
-        border-radius: 50%;
-
-        background: #ffe600;
-
-        box-shadow:
-            0 0 0 5px rgba(255,230,0,.08),
-            0 0 16px rgba(255,230,0,.52);
+        color: #8a94a3;
     }
 
 
-    /* ======================================
-       SIDEBAR FOOTER
-    ====================================== */
+    /* DERECHA */
 
-    .sidebar-footer {
-        margin-top: auto;
+    .badge {
+        padding: 7px 13px;
 
-        padding-top: 18px;
+        border-radius: 999px;
 
-        border-top:
-            1px solid rgba(255,255,255,.11);
-    }
+        background:
+            rgba(255, 230, 0, .17);
 
-    .sidebar-footer strong {
-        display: block;
+        border:
+            1px solid rgba(214, 190, 0, .25);
 
-        font-size: 11px;
+        color: #655b00;
+
+        font-size: 10px;
 
         font-weight: 600;
     }
 
-    .sidebar-footer span {
-        display: block;
-
-        margin-top: 4px;
-
-        font-size: 9px;
-
-        color:
-            rgba(255,255,255,.48);
-    }
-
 
     /* ======================================
-       MAIN
+       CONTENIDO
     ====================================== */
 
     .main {
@@ -263,99 +172,32 @@
         min-width: 0;
         min-height: 0;
 
-        padding: 24px;
+        padding: 8px;
 
         display: flex;
-        flex-direction: column;
-
-        background:
-            linear-gradient(
-                180deg,
-                #fafbfd 0%,
-                #f3f5f8 100%
-            );
     }
 
 
     /* ======================================
-       TOP BAR
-    ====================================== */
-
-    .topbar {
-        min-height: 66px;
-
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-
-        padding: 2px 2px 18px;
-    }
-
-    .title h1 {
-        font-size: 27px;
-
-        font-weight: 650;
-
-        letter-spacing: -1px;
-
-        color: #111827;
-    }
-
-    .title p {
-        margin-top: 5px;
-
-        font-size: 11px;
-
-        color: #8a94a3;
-    }
-
-
-    .badge {
-        padding: 9px 15px;
-
-        border-radius: 999px;
-
-        background:
-            rgba(255, 230, 0, .18);
-
-        border:
-            1px solid rgba(214, 190, 0, .28);
-
-        color: #655b00;
-
-        font-size: 10px;
-
-        font-weight: 600;
-
-        backdrop-filter:
-            blur(10px);
-    }
-
-
-    /* ======================================
-       REPORT CARD
+       POWER BI
     ====================================== */
 
     .report {
         flex: 1;
 
-        min-height: 0;
         min-width: 0;
+        min-height: 0;
 
         position: relative;
 
         overflow: hidden;
 
-        border-radius: 22px;
-
         background: #ffffff;
 
-        border:
-            1px solid rgba(17, 24, 39, .06);
+        border-radius: 14px;
 
         box-shadow:
-            0 18px 50px rgba(18, 34, 58, .08),
-            0 2px 10px rgba(18, 34, 58, .03);
+            0 5px 20px rgba(18, 34, 58, .06);
     }
 
 
@@ -367,21 +209,16 @@
         top: 0;
         left: 28px;
 
-        width: 90px;
-        height: 4px;
-
-        border-radius:
-            0 0 8px 8px;
+        width: 85px;
+        height: 3px;
 
         background: #ffe600;
 
-        z-index: 3;
+        border-radius: 0 0 5px 5px;
+
+        z-index: 5;
     }
 
-
-    /* ======================================
-       POWER BI
-    ====================================== */
 
     .report iframe {
         position: absolute;
@@ -401,123 +238,66 @@
        RESPONSIVE
     ====================================== */
 
-    @media(max-width: 900px) {
+    @media(max-width: 700px) {
+
+        body {
+            padding: 5px;
+        }
 
         .app {
-            width: 98vw;
-            height: 96vh;
-
-            border-radius: 20px;
+            border-radius: 12px;
         }
 
-        .sidebar {
-            width: 175px;
-            min-width: 175px;
+        .topbar {
+            height: 50px;
+            min-height: 50px;
 
-            padding: 18px 14px;
+            padding: 0 12px;
         }
 
-        .logo-wrapper img {
-            max-width: 110px;
+        .logo {
+            width: 80px;
         }
 
-        .main {
-            padding: 14px;
-        }
-
-        .title h1 {
-            font-size: 22px;
-        }
-    }
-
-
-    @media(max-width: 650px) {
-
-        .sidebar {
-            display: none;
-        }
-
+        .divider,
+        .title p,
         .badge {
             display: none;
         }
 
+        .title h1 {
+            font-size: 14px;
+        }
+
         .main {
-            padding: 8px;
+            padding: 5px;
         }
 
         .report {
-            border-radius: 14px;
+            border-radius: 9px;
         }
     }
 
 </style>
-
 </head>
 
 <body>
 
-
 <div class="app">
 
+    <!-- HEADER -->
 
-    <!-- SIDEBAR -->
+    <header class="topbar">
 
-    <aside class="sidebar">
+        <div class="brand">
 
-
-        <!-- LOGO COPPEL -->
-
-        <div class="logo-wrapper">
-
-            <img
-                src="logo.jpg"
-                alt="Coppel">
-
-        </div>
-
-
-        <!-- PROGRAMA -->
-
-        <div class="program">
-
-            <div class="program-label">
-                Programa
+            <div class="logo">
+                <img
+                    src="logo.jpg"
+                    alt="Coppel">
             </div>
 
-            <div class="program-title">
-                La Pícara Soñadora
-            </div>
-
-        </div>
-
-
-
-        <!-- FOOTER -->
-
-        <div class="sidebar-footer">
-
-            <strong>
-                Cliente Coppel
-            </strong>
-
-            <span>
-                Effective
-            </span>
-
-        </div>
-
-    </aside>
-
-
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-
-        <!-- HEADER -->
-
-        <div class="topbar">
+            <div class="divider"></div>
 
             <div class="title">
 
@@ -531,15 +311,19 @@
 
             </div>
 
-
-            <div class="badge">
-                Coppel · 2026
-            </div>
-
         </div>
 
 
-        <!-- POWER BI -->
+        <div class="badge">
+            Coppel · 2026
+        </div>
+
+    </header>
+
+
+    <!-- POWER BI -->
+
+    <main class="main">
 
         <section class="report">
 
@@ -553,12 +337,9 @@
 
         </section>
 
-
     </main>
 
-
 </div>
-
 
 </body>
 </html>
