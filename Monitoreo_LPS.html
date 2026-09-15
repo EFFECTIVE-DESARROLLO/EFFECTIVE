@@ -60,7 +60,6 @@
     ====================================== */
 
     .app {
-
         width: 96vw;
         height: 94vh;
 
@@ -91,7 +90,6 @@
     ====================================== */
 
     .sidebar {
-
         width: 220px;
         min-width: 220px;
 
@@ -116,18 +114,16 @@
     ====================================== */
 
     .logo-wrapper {
-
         width: 100%;
 
         padding: 14px 16px;
 
-        background:
-            rgba(255,255,255,.96);
+        background: #ffffff;
 
-        border-radius: 18px;
+        border-radius: 14px;
 
         box-shadow:
-            0 10px 30px rgba(0, 20, 45, .15);
+            0 5px 14px rgba(0, 20, 45, .08);
 
         display: flex;
         align-items: center;
@@ -135,7 +131,6 @@
     }
 
     .logo-wrapper img {
-
         display: block;
 
         max-width: 135px;
@@ -153,7 +148,6 @@
     ====================================== */
 
     .program {
-
         margin-top: 28px;
 
         padding: 17px;
@@ -171,7 +165,6 @@
     }
 
     .program-label {
-
         font-size: 9px;
 
         text-transform: uppercase;
@@ -183,7 +176,6 @@
     }
 
     .program-title {
-
         margin-top: 8px;
 
         font-size: 16px;
@@ -201,7 +193,6 @@
     ====================================== */
 
     .status {
-
         margin-top: 18px;
 
         display: flex;
@@ -216,7 +207,6 @@
     }
 
     .status-dot {
-
         width: 8px;
         height: 8px;
 
@@ -235,7 +225,6 @@
     ====================================== */
 
     .sidebar-footer {
-
         margin-top: auto;
 
         padding-top: 18px;
@@ -245,7 +234,6 @@
     }
 
     .sidebar-footer strong {
-
         display: block;
 
         font-size: 11px;
@@ -254,7 +242,6 @@
     }
 
     .sidebar-footer span {
-
         display: block;
 
         margin-top: 4px;
@@ -271,7 +258,6 @@
     ====================================== */
 
     .main {
-
         flex: 1;
 
         min-width: 0;
@@ -296,7 +282,6 @@
     ====================================== */
 
     .topbar {
-
         min-height: 66px;
 
         display: flex;
@@ -307,7 +292,6 @@
     }
 
     .title h1 {
-
         font-size: 27px;
 
         font-weight: 650;
@@ -318,7 +302,6 @@
     }
 
     .title p {
-
         margin-top: 5px;
 
         font-size: 11px;
@@ -328,7 +311,6 @@
 
 
     .badge {
-
         padding: 9px 15px;
 
         border-radius: 999px;
@@ -355,7 +337,6 @@
     ====================================== */
 
     .report {
-
         flex: 1;
 
         min-height: 0;
@@ -379,7 +360,6 @@
 
 
     .report::before {
-
         content: "";
 
         position: absolute;
@@ -404,7 +384,6 @@
     ====================================== */
 
     .report iframe {
-
         position: absolute;
 
         inset: 0;
@@ -425,7 +404,6 @@
     @media(max-width: 900px) {
 
         .app {
-
             width: 98vw;
             height: 96vh;
 
@@ -433,7 +411,6 @@
         }
 
         .sidebar {
-
             width: 175px;
             min-width: 175px;
 
@@ -441,17 +418,14 @@
         }
 
         .logo-wrapper img {
-
             max-width: 110px;
         }
 
         .main {
-
             padding: 14px;
         }
 
         .title h1 {
-
             font-size: 22px;
         }
     }
@@ -460,22 +434,18 @@
     @media(max-width: 650px) {
 
         .sidebar {
-
             display: none;
         }
 
         .badge {
-
             display: none;
         }
 
         .main {
-
             padding: 8px;
         }
 
         .report {
-
             border-radius: 14px;
         }
     }
@@ -490,9 +460,7 @@
 <div class="app">
 
 
-    <!-- ============================
-         SIDEBAR
-    ============================= -->
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
@@ -504,6 +472,7 @@
             <img
                 src="logo.jpg"
                 alt="Coppel">
+
         </div>
 
 
@@ -551,9 +520,7 @@
 
 
 
-    <!-- ============================
-         MAIN
-    ============================= -->
+    <!-- MAIN -->
 
     <main class="main">
 
@@ -582,9 +549,7 @@
         </div>
 
 
-        <!-- ========================
-             POWER BI
-        ========================= -->
+        <!-- POWER BI -->
 
         <section class="report">
 
