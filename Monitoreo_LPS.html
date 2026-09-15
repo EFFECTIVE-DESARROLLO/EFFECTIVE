@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coppel | La Pícara Soñadora</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "SF Pro Display",
+            "Segoe UI",
+            Arial,
+            sans-serif;
+
+        overflow: hidden;
+
+        background:
+            radial-gradient(
+                circle at 82% 16%,
+                rgba(255, 230, 0, .16),
+                transparent 27%
+            ),
+            radial-gradient(
+                circle at 8% 88%,
+                rgba(255,255,255,.10),
+                transparent 30%
+            ),
+            linear-gradient(
+                145deg,
+                #003c73 0%,
+                #005aa3 44%,
+                #0077c8 100%
+            );
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* ======================================
+       APP
+    ====================================== */
+
+    .app {
+
+        width: 96vw;
+        height: 94vh;
+
+        max-width: 1900px;
+
+        display: flex;
+
+        border-radius: 30px;
+
+        overflow: hidden;
+
+        background:
+            rgba(255,255,255,.96);
+
+        box-shadow:
+            0 40px 100px rgba(0, 24, 55, .36);
+
+        border:
+            1px solid rgba(255,255,255,.35);
+
+        backdrop-filter:
+            blur(20px);
+    }
+
+
+    /* ======================================
+       SIDEBAR
+    ====================================== */
+
+    .sidebar {
+
+        width: 220px;
+        min-width: 220px;
+
+        padding: 24px 20px;
+
+        display: flex;
+        flex-direction: column;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 87, 155, .99),
+                rgba(0, 57, 108, .99)
+            );
+
+        color: #ffffff;
+    }
+
+
+    /* ======================================
+       LOGO
+    ====================================== */
+
+    .logo-wrapper {
+
+        width: 100%;
+
+        padding: 14px 16px;
+
+        background:
+            rgba(255,255,255,.96);
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 10px 30px rgba(0, 20, 45, .15);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-wrapper img {
+
+        display: block;
+
+        max-width: 135px;
+        max-height: 50px;
+
+        width: auto;
+        height: auto;
+
+        object-fit: contain;
+    }
+
+
+    /* ======================================
+       PROGRAMA
+    ====================================== */
+
+    .program {
+
+        margin-top: 28px;
+
+        padding: 17px;
+
+        border-radius: 18px;
+
+        background:
+            rgba(255,255,255,.085);
+
+        border:
+            1px solid rgba(255,255,255,.11);
+
+        backdrop-filter:
+            blur(14px);
+    }
+
+    .program-label {
+
+        font-size: 9px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 1.5px;
+
+        color:
+            rgba(255,255,255,.52);
+    }
+
+    .program-title {
+
+        margin-top: 8px;
+
+        font-size: 16px;
+
+        font-weight: 600;
+
+        line-height: 1.35;
+
+        letter-spacing: -.2px;
+    }
+
+
+    /* ======================================
+       ESTADO
+    ====================================== */
+
+    .status {
+
+        margin-top: 18px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 9px;
+
+        font-size: 11px;
+
+        color:
+            rgba(255,255,255,.72);
+    }
+
+    .status-dot {
+
+        width: 8px;
+        height: 8px;
+
+        border-radius: 50%;
+
+        background: #ffe600;
+
+        box-shadow:
+            0 0 0 5px rgba(255,230,0,.08),
+            0 0 16px rgba(255,230,0,.52);
+    }
+
+
+    /* ======================================
+       SIDEBAR FOOTER
+    ====================================== */
+
+    .sidebar-footer {
+
+        margin-top: auto;
+
+        padding-top: 18px;
+
+        border-top:
+            1px solid rgba(255,255,255,.11);
+    }
+
+    .sidebar-footer strong {
+
+        display: block;
+
+        font-size: 11px;
+
+        font-weight: 600;
+    }
+
+    .sidebar-footer span {
+
+        display: block;
+
+        margin-top: 4px;
+
+        font-size: 9px;
+
+        color:
+            rgba(255,255,255,.48);
+    }
+
+
+    /* ======================================
+       MAIN
+    ====================================== */
+
+    .main {
+
+        flex: 1;
+
+        min-width: 0;
+        min-height: 0;
+
+        padding: 24px;
+
+        display: flex;
+        flex-direction: column;
+
+        background:
+            linear-gradient(
+                180deg,
+                #fafbfd 0%,
+                #f3f5f8 100%
+            );
+    }
+
+
+    /* ======================================
+       TOP BAR
+    ====================================== */
+
+    .topbar {
+
+        min-height: 66px;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        padding: 2px 2px 18px;
+    }
+
+    .title h1 {
+
+        font-size: 27px;
+
+        font-weight: 650;
+
+        letter-spacing: -1px;
+
+        color: #111827;
+    }
+
+    .title p {
+
+        margin-top: 5px;
+
+        font-size: 11px;
+
+        color: #8a94a3;
+    }
+
+
+    .badge {
+
+        padding: 9px 15px;
+
+        border-radius: 999px;
+
+        background:
+            rgba(255, 230, 0, .18);
+
+        border:
+            1px solid rgba(214, 190, 0, .28);
+
+        color: #655b00;
+
+        font-size: 10px;
+
+        font-weight: 600;
+
+        backdrop-filter:
+            blur(10px);
+    }
+
+
+    /* ======================================
+       REPORT CARD
+    ====================================== */
+
+    .report {
+
+        flex: 1;
+
+        min-height: 0;
+        min-width: 0;
+
+        position: relative;
+
+        overflow: hidden;
+
+        border-radius: 22px;
+
+        background: #ffffff;
+
+        border:
+            1px solid rgba(17, 24, 39, .06);
+
+        box-shadow:
+            0 18px 50px rgba(18, 34, 58, .08),
+            0 2px 10px rgba(18, 34, 58, .03);
+    }
+
+
+    .report::before {
+
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 28px;
+
+        width: 90px;
+        height: 4px;
+
+        border-radius:
+            0 0 8px 8px;
+
+        background: #ffe600;
+
+        z-index: 3;
+    }
+
+
+    /* ======================================
+       POWER BI
+    ====================================== */
+
+    .report iframe {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        border: 0;
+
+        display: block;
+    }
+
+
+    /* ======================================
+       RESPONSIVE
+    ====================================== */
+
+    @media(max-width: 900px) {
+
+        .app {
+
+            width: 98vw;
+            height: 96vh;
+
+            border-radius: 20px;
+        }
+
+        .sidebar {
+
+            width: 175px;
+            min-width: 175px;
+
+            padding: 18px 14px;
+        }
+
+        .logo-wrapper img {
+
+            max-width: 110px;
+        }
+
+        .main {
+
+            padding: 14px;
+        }
+
+        .title h1 {
+
+            font-size: 22px;
+        }
+    }
+
+
+    @media(max-width: 650px) {
+
+        .sidebar {
+
+            display: none;
+        }
+
+        .badge {
+
+            display: none;
+        }
+
+        .main {
+
+            padding: 8px;
+        }
+
+        .report {
+
+            border-radius: 14px;
+        }
+    }
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- ============================
+         SIDEBAR
+    ============================= -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO COPPEL -->
+
+        <div class="logo-wrapper">
+
+            <img
+                src="logo.jpg"
+                alt="Coppel">
+        </div>
+
+
+        <!-- PROGRAMA -->
+
+        <div class="program">
+
+            <div class="program-label">
+                Programa
+            </div>
+
+            <div class="program-title">
+                La Pícara Soñadora
+            </div>
+
+        </div>
+
+
+        <!-- ESTADO -->
+
+        <div class="status">
+
+            <div class="status-dot"></div>
+
+            Monitoreo activo
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="sidebar-footer">
+
+            <strong>
+                Cliente Coppel
+            </strong>
+
+            <span>
+                Inteligencia de medios
+            </span>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ============================
+         MAIN
+    ============================= -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <div class="topbar">
+
+            <div class="title">
+
+                <h1>
+                    Actividad de Monitoreo
+                </h1>
+
+                <p>
+                    La Pícara Soñadora · Coppel
+                </p>
+
+            </div>
+
+
+            <div class="badge">
+                Coppel · 2026
+            </div>
+
+        </div>
+
+
+        <!-- ========================
+             POWER BI
+        ========================= -->
+
+        <section class="report">
+
+            <iframe
+                title="LPS_ACTIVIDAD MONITOREO"
+
+                src="https://app.powerbi.com/reportEmbed?reportId=293c36af-5d7a-4128-a5f4-0cbe77975aeb&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d&filterPaneEnabled=false&navContentPaneEnabled=false&actionBarEnabled=false"
+
+                allowfullscreen="true">
+            </iframe>
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+</html>
