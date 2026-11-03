@@ -278,9 +278,7 @@ body {
 
     display: grid;
 
-    grid-template-columns:
-        290px
-        minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
 
     overflow: hidden;
 
@@ -297,280 +295,7 @@ body {
         rgba(7,59,124,.10);
 }
 
-.dashboard.collapsed {
-    grid-template-columns:
-        60px
-        minmax(0,1fr);
-}
 
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-.sidebar {
-    min-width: 0;
-    min-height: 0;
-
-    display: grid;
-
-    grid-template-rows:
-        58px
-        minmax(0,1fr);
-
-    overflow: hidden;
-
-    border-right:
-        1px solid
-        var(--line);
-
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #f8fbff 100%
-        );
-}
-
-
-/* =========================================================
-   SIDEBAR HEADER
-========================================================= */
-
-.sidebar-header {
-    height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding:
-        0 13px
-        0 17px;
-
-    border-bottom:
-        1px solid
-        var(--line);
-}
-
-.sidebar-copy strong {
-    display: block;
-
-    color: var(--blue-dark);
-
-    font-size: 13px;
-    font-weight: 800;
-}
-
-.sidebar-copy span {
-    display: block;
-
-    margin-top: 2px;
-
-    color: var(--muted);
-
-    font-size: 9.5px;
-}
-
-.dashboard.collapsed
-.sidebar-copy {
-    display: none;
-}
-
-
-/* =========================================================
-   BOTÓN COLAPSAR
-========================================================= */
-
-.collapse-btn {
-    width: 32px;
-    height: 32px;
-
-    display: grid;
-    place-items: center;
-
-    flex-shrink: 0;
-
-    border: 0;
-    border-radius: 9px;
-
-    background: var(--blue-soft);
-
-    color: var(--blue);
-
-    cursor: pointer;
-
-    transition: .2s ease;
-}
-
-.collapse-btn:hover {
-    color: #ffffff;
-    background: var(--blue);
-}
-
-
-/* =========================================================
-   LISTA
-========================================================= */
-
-.pages {
-    min-height: 0;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    overscroll-behavior: contain;
-
-    padding:
-        8px
-        7px
-        12px;
-
-    scrollbar-gutter: stable;
-}
-
-.pages::-webkit-scrollbar {
-    width: 6px;
-}
-
-.pages::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.pages::-webkit-scrollbar-thumb {
-    background: #cbd9ea;
-    border-radius: 999px;
-}
-
-.pages::-webkit-scrollbar-thumb:hover {
-    background: #9fb9d9;
-}
-
-
-/* =========================================================
-   BOTONES DE PÁGINA
-========================================================= */
-
-.page-btn {
-    position: relative;
-
-    width: 100%;
-    min-height: 40px;
-
-    margin-bottom: 3px;
-
-    padding:
-        6px
-        10px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    border: 0;
-    border-radius: 10px;
-
-    background: transparent;
-
-    color: #40516a;
-
-    font-family: inherit;
-
-    font-size: 10.5px;
-    font-weight: 600;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition: .15s ease;
-}
-
-.page-btn:hover {
-    color: var(--blue-dark);
-    background: var(--blue-soft);
-}
-
-.page-btn.active {
-    color: var(--blue-dark);
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--yellow-soft),
-            #eef5ff
-        );
-}
-
-.page-btn.active::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 7px;
-    bottom: 7px;
-
-    width: 4px;
-
-    border-radius: 4px;
-
-    background: var(--blue);
-}
-
-
-/* =========================================================
-   ICONO
-========================================================= */
-
-.page-icon {
-    width: 28px;
-    height: 28px;
-
-    display: grid;
-    place-items: center;
-
-    flex-shrink: 0;
-
-    border-radius: 8px;
-
-    color: var(--blue);
-
-    background: #eff5fd;
-}
-
-.page-btn.active
-.page-icon {
-    color: var(--blue-dark);
-    background: var(--yellow);
-}
-
-
-/* =========================================================
-   TEXTO PAGINA
-========================================================= */
-
-.page-label {
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-.dashboard.collapsed
-.page-label {
-    display: none;
-}
-
-.dashboard.collapsed
-.page-btn {
-    justify-content: center;
-
-    padding-left: 0;
-    padding-right: 0;
-}
 
 
 /* =========================================================
@@ -844,22 +569,12 @@ body {
     }
 
     .dashboard {
-        grid-template-columns:
-            270px
-            minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .dashboard.collapsed {
-        grid-template-columns:
-            56px
-            minmax(0,1fr);
-    }
+    
 
-    .sidebar {
-        grid-template-rows:
-            54px
-            minmax(0,1fr);
-    }
+    
 
     .report-area {
         grid-template-rows:
@@ -867,20 +582,13 @@ body {
             minmax(0,1fr);
     }
 
-    .sidebar-header,
     .report-toolbar {
         height: 54px;
     }
 
-    .page-btn {
-        min-height: 37px;
-        margin-bottom: 2px;
-    }
+    
 
-    .page-icon {
-        width: 26px;
-        height: 26px;
-    }
+    
 
     .toolbar-icon {
         width: 32px;
@@ -926,16 +634,10 @@ body {
     }
 
     .dashboard {
-        grid-template-columns:
-            260px
-            minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .sidebar {
-        grid-template-rows:
-            50px
-            minmax(0,1fr);
-    }
+    
 
     .report-area {
         grid-template-rows:
@@ -943,20 +645,13 @@ body {
             minmax(0,1fr);
     }
 
-    .sidebar-header,
     .report-toolbar {
         height: 50px;
     }
 
-    .page-btn {
-        min-height: 35px;
-        font-size: 10px;
-    }
+    
 
-    .page-icon {
-        width: 25px;
-        height: 25px;
-    }
+    
 
     .toolbar-icon {
         width: 30px;
@@ -982,18 +677,14 @@ body {
     }
 
     .dashboard {
-        grid-template-columns:
-            300px
-            minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .header {
         height: 68px;
     }
 
-    .page-btn {
-        font-size: 11px;
-    }
+    
 
 }
 
@@ -1005,9 +696,7 @@ body {
 @media (max-width: 900px) {
 
     .dashboard {
-        grid-template-columns:
-            215px
-            minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .date-pill {
@@ -1044,24 +733,14 @@ body {
     }
 
     .dashboard {
-        grid-template-columns:
-            54px
-            minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .sidebar-copy,
-    .page-label {
-        display: none !important;
-    }
+    
 
-    .collapse-btn {
-        display: none;
-    }
+    
 
-    .page-btn {
-        justify-content: center;
-        padding: 0;
-    }
+    
 
     .coppel-logo-img {
         height: 38px;
@@ -1153,52 +832,7 @@ body {
 >
 
 
-<!-- =========================================================
-     MENU
-========================================================= -->
 
-<aside class="sidebar">
-
-
-    <div class="sidebar-header">
-
-
-        <div class="sidebar-copy">
-
-            <strong>
-                Contenido del reporte
-            </strong>
-
-            <span>
-                Selecciona una sección
-            </span>
-
-        </div>
-
-
-        <button
-            class="collapse-btn"
-            id="collapseBtn"
-            title="Contraer menú"
-        >
-
-            <i class="fas fa-angles-left"></i>
-
-        </button>
-
-
-    </div>
-
-
-
-    <div
-        class="pages"
-        id="pages"
-    >
-    </div>
-
-
-</aside>
 
 
 
@@ -1264,7 +898,7 @@ body {
 
         <div class="spinner"></div>
 
-        Cargando sección...
+        Cargando reporte...
 
     </div>
 
@@ -1324,135 +958,16 @@ const TENANT_ID =
 
 
 
-/* =========================================================
-   PAGINAS CLIENTE
-========================================================= */
-
-const paginas = [
-
-    {
-        titulo: "Coppel PORTADA",
-        pageId: "881bff93b9de002cba6a",
-        icono: "fa-house"
-    },
-
-    {
-        titulo: "Coppel GLOSARIO-TERMINOS",
-        pageId: "0a85d6136e4d5605b004",
-        icono: "fa-book"
-    },
-
-    {
-        titulo: "Coppel EIC-CONFIDENCIAL",
-        pageId: "8db29d4c626d4a60dbb6",
-        icono: "fa-lock"
-    },
-
-    {
-        titulo: "Coppel Configuración",
-        pageId: "d7945875ca331449a3a0",
-        icono: "fa-sliders"
-    },
-
-
-    
-
-    {
-        titulo: "Coppel SOI marca-medio",
-        pageId: "d7cff51812c40c095684",
-        icono: "fa-chart-bar"
-    },
-
-    {
-        titulo: "Coppel SOV marca-medio impresiones",
-        pageId: "80f8296d8837b75ec863",
-        icono: "fa-chart-column"
-    },
-
-    {
-        titulo: "Coppel SOI por tipo de tiendas YTD",
-        pageId: "05b6a8037608c3395038",
-        icono: "fa-store"
-    },
-
-    {
-        titulo: "Coppel Inversión por Medio",
-        pageId: "b004a9ed7cd4b9e00453",
-        icono: "fa-dollar-sign"
-    },
-
-    {
-        titulo: "Coppel SOI por temporalidad YTD",
-        pageId: "63ac364b5e80876e3764",
-        icono: "fa-chart-line"
-    },
-
-    {
-        titulo: "Coppel Actividad Tv Abierta Nacional",
-        pageId: "3476180640a1e911b741",
-        icono: "fa-tv"
-    },
-
-    {
-        titulo: "Coppel Tv abierta, SOV / SOI",
-        pageId: "0fcdc9064c0be0be5026",
-        icono: "fa-tv"
-    },
-
-    {
-        titulo: "Coppel Tv abierta SOV / SOI mes actual",
-        pageId: "7dc1d0dccd8ee123d40d",
-        icono: "fa-calendar"
-    },
-
-    {
-        titulo: "Coppel Tv local",
-        pageId: "883600c3ab088535b05d",
-        icono: "fa-location-dot"
-    },
-
-    {
-        titulo: "Coppel Tv de Paga",
-        pageId: "0b40b97a3d74da3dda03",
-        icono: "fa-satellite-dish"
-    },
-
-    {
-        titulo: "Coppel Radio 49 Plazas",
-        pageId: "033aca8780bdb0300b06",
-        icono: "fa-radio"
-    },
-
-    {
-        titulo: "Coppel Radio Footprint",
-        pageId: "de5aad3ea5869580840d",
-        icono: "fa-tower-broadcast"
-    },
-
-    {
-        titulo: "Coppel DIGITAL",
-        pageId: "4af16653c4d4d4bb0208",
-        icono: "fa-globe"
-    }
-
-];
-
-
+const PAGE_ID = "881bff93b9de002cba6a";
 
 /* =========================================================
    DOM
 ========================================================= */
 
-const dashboard =
-    document.getElementById(
-        "dashboard"
-    );
 
 
-const pagesContainer =
-    document.getElementById(
-        "pages"
-    );
+
+
 
 
 const frame =
@@ -1467,10 +982,7 @@ const loading =
     );
 
 
-const collapseBtn =
-    document.getElementById(
-        "collapseBtn"
-    );
+
 
 
 const currentPageTitle =
@@ -1524,178 +1036,11 @@ function generarPowerBiURL(
 
 
 
-/* =========================================================
-   CREAR MENU
-========================================================= */
-
-function crearMenu() {
-
-
-    pagesContainer.innerHTML = "";
-
-
-    paginas.forEach(
-
-        (
-            pagina,
-            index
-        ) => {
-
-
-            const boton =
-
-                document.createElement(
-                    "button"
-                );
-
-
-            boton.className =
-                "page-btn";
-
-
-            boton.title =
-                pagina.titulo;
-
-
-            boton.innerHTML = `
-
-                <span class="page-icon">
-
-                    <i class="fas ${pagina.icono}"></i>
-
-                </span>
-
-
-                <span class="page-label">
-
-                    ${pagina.titulo}
-
-                </span>
-
-            `;
-
-
-            if (
-                index === 0
-            ) {
-
-                boton.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            boton.addEventListener(
-
-                "click",
-
-                () => {
-
-                    cambiarPagina(
-                        pagina,
-                        boton
-                    );
-
-                }
-
-            );
-
-
-            pagesContainer.appendChild(
-                boton
-            );
-
-
-        }
-
-    );
-
-
-}
-
-
-
-/* =========================================================
-   CAMBIAR PAGINA
-========================================================= */
-
-function cambiarPagina(
-    pagina,
-    boton
-) {
-
-
-    document
-        .querySelectorAll(
-            ".page-btn"
-        )
-        .forEach(
-
-            b => {
-
-                b.classList.remove(
-                    "active"
-                );
-
-            }
-
-        );
-
-
-    boton.classList.add(
-        "active"
-    );
-
-
-    currentPageTitle.textContent =
-        pagina.titulo;
-
-
-    loading.classList.remove(
-        "hidden"
-    );
-
-
-    frame.src =
-        generarPowerBiURL(
-            pagina.pageId
-        );
-
-
-}
-
-
-
-/* =========================================================
-   INICIO
-========================================================= */
-
+/* INICIO */
 function iniciarReporte() {
-
-
-    const primeraPagina =
-        paginas[0];
-
-
-    currentPageTitle.textContent =
-        primeraPagina.titulo;
-
-
-    loading.classList.remove(
-        "hidden"
-    );
-
-
-    frame.src =
-        generarPowerBiURL(
-            primeraPagina.pageId
-        );
-
-
+    loading.classList.remove("hidden");
+    frame.src = generarPowerBiURL(PAGE_ID);
 }
-
-
 
 /* =========================================================
    IFRAME CARGADO
@@ -1721,68 +1066,6 @@ frame.addEventListener(
             150
 
         );
-
-
-    }
-
-);
-
-
-
-/* =========================================================
-   COLAPSAR MENU
-========================================================= */
-
-collapseBtn.addEventListener(
-
-    "click",
-
-    () => {
-
-
-        dashboard.classList.toggle(
-            "collapsed"
-        );
-
-
-        const icon =
-
-            collapseBtn.querySelector(
-                "i"
-            );
-
-
-        if (
-
-            dashboard.classList.contains(
-                "collapsed"
-            )
-
-        ) {
-
-
-            icon.className =
-                "fas fa-angles-right";
-
-
-            collapseBtn.title =
-                "Mostrar menú";
-
-
-        }
-
-        else {
-
-
-            icon.className =
-                "fas fa-angles-left";
-
-
-            collapseBtn.title =
-                "Contraer menú";
-
-
-        }
 
 
     }
@@ -1835,8 +1118,6 @@ currentDate.textContent =
 /* =========================================================
    START
 ========================================================= */
-
-crearMenu();
 
 iniciarReporte();
 
